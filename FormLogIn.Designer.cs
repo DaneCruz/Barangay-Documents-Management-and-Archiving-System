@@ -134,9 +134,9 @@
             this.label1.Location = new System.Drawing.Point(60, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 36);
+            this.label1.Size = new System.Drawing.Size(173, 36);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Welcome!";
+            this.label1.Text = "carl daniel ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button2
