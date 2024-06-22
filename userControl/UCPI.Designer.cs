@@ -42,6 +42,7 @@
             this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox9 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox10 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -280,11 +281,21 @@
             this.guna2TextBox10.TabIndex = 3;
             this.guna2TextBox10.TextChanged += new System.EventHandler(this.guna2TextBox7_TextChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(892, 427);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 30);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "NEXT";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // UCPI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.guna2TextBox5);
             this.Controls.Add(this.guna2TextBox10);
@@ -325,5 +336,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox8;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox9;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox10;
+        private System.Windows.Forms.Button button1;
     }
 }
