@@ -39,11 +39,12 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.PeachPuff;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.Maroon;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1066, 73);
+            this.panel1.Size = new System.Drawing.Size(1083, 73);
             this.panel1.TabIndex = 1;
             // 
             // panel2
@@ -54,7 +55,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 73);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1066, 62);
+            this.panel2.Size = new System.Drawing.Size(1083, 62);
             this.panel2.TabIndex = 1;
             // 
             // guna2Button3
@@ -76,7 +77,7 @@
             this.guna2Button3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button3.ForeColor = System.Drawing.Color.Black;
             this.guna2Button3.HoverState.CustomBorderColor = System.Drawing.Color.Red;
-            this.guna2Button3.Location = new System.Drawing.Point(711, 0);
+            this.guna2Button3.Location = new System.Drawing.Point(725, 0);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(355, 62);
             this.guna2Button3.TabIndex = 0;
@@ -103,7 +104,7 @@
             this.guna2Button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.HoverState.CustomBorderColor = System.Drawing.Color.Red;
-            this.guna2Button2.Location = new System.Drawing.Point(355, 0);
+            this.guna2Button2.Location = new System.Drawing.Point(361, 0);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(355, 62);
             this.guna2Button2.TabIndex = 0;
@@ -139,22 +140,26 @@
             // 
             // panelContainer
             // 
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 135);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1066, 454);
+            this.panelContainer.Size = new System.Drawing.Size(1083, 492);
             this.panelContainer.TabIndex = 0;
             // 
             // FormBRIC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 589);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1083, 627);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormBRIC";
             this.Text = "FormBRIC";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
