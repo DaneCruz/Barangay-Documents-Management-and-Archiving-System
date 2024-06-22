@@ -52,6 +52,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Ivory;
             this.panel2.Controls.Add(this.guna2Button3);
             this.panel2.Controls.Add(this.guna2Button2);
             this.panel2.Controls.Add(this.guna2Button1);

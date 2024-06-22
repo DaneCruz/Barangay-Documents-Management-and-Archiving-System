@@ -46,6 +46,7 @@
             // 
             // label1
             // 
+            this.label1.AutoEllipsis = true;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 143);
@@ -53,6 +54,7 @@
             this.label1.Size = new System.Drawing.Size(110, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -282,6 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Ivory;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.guna2TextBox5);
             this.Controls.Add(this.guna2TextBox10);
