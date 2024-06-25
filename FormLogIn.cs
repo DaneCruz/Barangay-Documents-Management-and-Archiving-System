@@ -60,6 +60,13 @@ namespace BARANGAY
                 string login = "SELECT * FROM login WHERE username = @username AND password = @password";
                 using (SQLiteCommand cmd = new SQLiteCommand(login, conn))
                 {
+                    // Check if username or password fields are empty
+                    if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                    {
+                        MessageBox.Show("Please enter username and password.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Exit method early to prevent further execution
+                    }
+
                     // Add parameters to the command
                     cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                     cmd.Parameters.AddWithValue("@password", txtPassword.Text);
@@ -68,13 +75,19 @@ namespace BARANGAY
                     {
                         if (dr.Read())
                         {
+                            // Successful login
                             new MainMenu().Show();
                             this.Hide();
                         }
                         else
                         {
-                            MessageBox.Show("Invalid Username or Password, Please Try Again",
+                            // Failed login attempt
+                            MessageBox.Show("Invalid Username or Password. Please try again.",
                                             "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            // Clear password field and refocus on username field
+                            txtPassword.Text = "";
+                            txtUsername.Focus();
                         }
                     }
                 }
@@ -88,6 +101,7 @@ namespace BARANGAY
                 conn.Close(); // Ensure connection is always closed in the finally block
             }
         }
+
 
         private void button2_Click_1(object sender, EventArgs e)
         {
