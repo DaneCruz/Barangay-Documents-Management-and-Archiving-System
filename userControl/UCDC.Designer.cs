@@ -50,6 +50,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.guna2ImageButton1);
             this.Name = "UCDC";
             this.Size = new System.Drawing.Size(1066, 454);

@@ -29,26 +29,40 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.Maroon;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1083, 73);
+            this.panel1.Size = new System.Drawing.Size(1083, 44);
             this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Location = new System.Drawing.Point(359, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(385, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Certificate of Residency";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -57,7 +71,7 @@
             this.panel2.Controls.Add(this.guna2Button2);
             this.panel2.Controls.Add(this.guna2Button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 73);
+            this.panel2.Location = new System.Drawing.Point(0, 44);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1083, 62);
             this.panel2.TabIndex = 1;
@@ -153,23 +167,10 @@
             // panelContainer
             // 
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 135);
+            this.panelContainer.Location = new System.Drawing.Point(0, 106);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1083, 492);
+            this.panelContainer.Size = new System.Drawing.Size(1083, 521);
             this.panelContainer.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(541, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(385, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Certificate of Residency";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormBRIC
             // 
@@ -189,6 +190,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -199,7 +201,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelContainer;
     }
 }

@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BARANGAY
+namespace BARANGAY.userControl
 {
-    public partial class FormClearance : Form
+    public partial class UCPI1 : UserControl
     {
-        public FormClearance()
+        public UCPI1()
         {
             InitializeComponent();
         }
-        private void FromClearance_Load(object sender, EventArgs e)
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

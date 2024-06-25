@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BARANGAY.userControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -107,11 +108,11 @@ namespace BARANGAY
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FormClearance f = new FormClearance();
-            f.TopLevel = false;
-            panel3.Controls.Add(f);
-            f.BringToFront();
-            f.Show();
+            UCBC c = new UCBC();
+            c.TopLevel = false;
+            panel3.Controls.Add(c);
+            c.BringToFront();
+            c.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)

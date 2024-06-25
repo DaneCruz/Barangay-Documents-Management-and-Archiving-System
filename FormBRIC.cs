@@ -58,5 +58,10 @@ namespace BARANGAY
             UCDC uc = new UCDC();
             addUserControl(uc);
         }
+
+        private void panelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
