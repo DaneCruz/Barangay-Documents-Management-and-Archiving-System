@@ -198,6 +198,12 @@
     <Compile Include="userControl\UCDC1.Designer.cs">
       <DependentUpon>UCDC1.cs</DependentUpon>
     </Compile>
+    <Compile Include="userControl\UCDC2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCDC2.Designer.cs">
+      <DependentUpon>UCDC2.cs</DependentUpon>
+    </Compile>
     <Compile Include="userControl\UCPI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,11 +216,23 @@
     <Compile Include="userControl\UCPI1.Designer.cs">
       <DependentUpon>UCPI1.cs</DependentUpon>
     </Compile>
+    <Compile Include="userControl\UCPI2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCPI2.Designer.cs">
+      <DependentUpon>UCPI2.cs</DependentUpon>
+    </Compile>
     <Compile Include="userControl\UCUP.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userControl\UCUP.Designer.cs">
       <DependentUpon>UCUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userControl\UCUP2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCUP2.Designer.cs">
+      <DependentUpon>UCUP2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormBRIC.resx">
       <DependentUpon>FormBRIC.cs</DependentUpon>
@@ -261,14 +279,23 @@
     <EmbeddedResource Include="userControl\UCDC1.resx">
       <DependentUpon>UCDC1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCDC2.resx">
+      <DependentUpon>UCDC2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCPI.resx">
       <DependentUpon>UCPI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCPI1.resx">
       <DependentUpon>UCPI1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCPI2.resx">
+      <DependentUpon>UCPI2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCUP.resx">
       <DependentUpon>UCUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCUP2.resx">
+      <DependentUpon>UCUP2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="database.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
