@@ -28,34 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.image1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // image1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(371, 53);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(268, 362);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.image1.Location = new System.Drawing.Point(351, 48);
+            this.image1.Name = "image1";
+            this.image1.Size = new System.Drawing.Size(268, 362);
+            this.image1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.image1.TabIndex = 0;
+            this.image1.TabStop = false;
+            this.image1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // UCDC2
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(393, 434);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(209, 43);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "UPLOAD";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // UCDC1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "UCDC2";
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.image1);
+            this.Name = "UCDC1";
             this.Size = new System.Drawing.Size(1083, 492);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox image1;
+        private System.Windows.Forms.Button button1;
     }
 }

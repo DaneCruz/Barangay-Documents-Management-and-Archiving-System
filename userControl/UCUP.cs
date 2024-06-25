@@ -42,5 +42,10 @@ namespace BARANGAY.userControl
             }
 
         }
+
+        private void image1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
