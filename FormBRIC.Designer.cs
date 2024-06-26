@@ -49,7 +49,7 @@
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1083, 44);
+            this.panel1.Size = new System.Drawing.Size(1083, 40);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -58,7 +58,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(359, 6);
+            this.label1.Location = new System.Drawing.Point(546, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(385, 38);
             this.label1.TabIndex = 0;
@@ -73,16 +73,16 @@
             this.panel2.Controls.Add(this.guna2Button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 44);
+            this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1083, 62);
+            this.panel2.Size = new System.Drawing.Size(1083, 44);
             this.panel2.TabIndex = 1;
             // 
             // guna2Button3
             // 
             this.guna2Button3.AutoRoundedCorners = true;
             this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.BorderRadius = 30;
+            this.guna2Button3.BorderRadius = 21;
             this.guna2Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.guna2Button3.CheckedState.BorderColor = System.Drawing.Color.White;
             this.guna2Button3.CheckedState.CustomBorderColor = System.Drawing.Color.Red;
@@ -102,7 +102,7 @@
             this.guna2Button3.HoverState.CustomBorderColor = System.Drawing.Color.Red;
             this.guna2Button3.Location = new System.Drawing.Point(722, 0);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(361, 62);
+            this.guna2Button3.Size = new System.Drawing.Size(361, 44);
             this.guna2Button3.TabIndex = 0;
             this.guna2Button3.Text = "Document";
             this.guna2Button3.UseTransparentBackground = true;
@@ -112,7 +112,7 @@
             // 
             this.guna2Button2.AutoRoundedCorners = true;
             this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderRadius = 30;
+            this.guna2Button2.BorderRadius = 21;
             this.guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.guna2Button2.CheckedState.BorderColor = System.Drawing.Color.White;
             this.guna2Button2.CheckedState.CustomBorderColor = System.Drawing.Color.Red;
@@ -129,9 +129,9 @@
             this.guna2Button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.HoverState.CustomBorderColor = System.Drawing.Color.Red;
-            this.guna2Button2.Location = new System.Drawing.Point(447, 0);
+            this.guna2Button2.Location = new System.Drawing.Point(444, 0);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(361, 62);
+            this.guna2Button2.Size = new System.Drawing.Size(361, 44);
             this.guna2Button2.TabIndex = 0;
             this.guna2Button2.Text = "Upload Photo";
             this.guna2Button2.UseTransparentBackground = true;
@@ -160,7 +160,7 @@
             this.guna2Button1.HoverState.CustomBorderColor = System.Drawing.Color.Red;
             this.guna2Button1.Location = new System.Drawing.Point(0, 0);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(361, 62);
+            this.guna2Button1.Size = new System.Drawing.Size(361, 44);
             this.guna2Button1.TabIndex = 0;
             this.guna2Button1.Text = "Personal Information";
             this.guna2Button1.UseTransparentBackground = true;
@@ -169,9 +169,9 @@
             // panelContainer
             // 
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 106);
+            this.panelContainer.Location = new System.Drawing.Point(0, 84);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1083, 521);
+            this.panelContainer.Size = new System.Drawing.Size(1083, 543);
             this.panelContainer.TabIndex = 0;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContainer_Paint_1);
             // 

@@ -41,5 +41,10 @@ namespace BARANGAY
             UCDC1 uc = new UCDC1();
             addUserControl(uc);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
