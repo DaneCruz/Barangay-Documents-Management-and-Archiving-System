@@ -127,7 +127,7 @@
             this.guna2Button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.HoverState.CustomBorderColor = System.Drawing.Color.Red;
-            this.guna2Button2.Location = new System.Drawing.Point(447, 0);
+            this.guna2Button2.Location = new System.Drawing.Point(640, 0);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(361, 62);
             this.guna2Button2.TabIndex = 0;

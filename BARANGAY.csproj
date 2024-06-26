@@ -204,6 +204,12 @@
     <Compile Include="userControl\UCBP2.Designer.cs">
       <DependentUpon>UCBP2.cs</DependentUpon>
     </Compile>
+    <Compile Include="userControl\UCDC3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCDC3.Designer.cs">
+      <DependentUpon>UCDC3.cs</DependentUpon>
+    </Compile>
     <Compile Include="userControl\UCDC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +234,12 @@
     <Compile Include="userControl\UCPI.Designer.cs">
       <DependentUpon>UCPI.cs</DependentUpon>
     </Compile>
+    <Compile Include="userControl\UCPI3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCPI3.Designer.cs">
+      <DependentUpon>UCPI3.cs</DependentUpon>
+    </Compile>
     <Compile Include="userControl\UCPI1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +251,12 @@
     </Compile>
     <Compile Include="userControl\UCPI2.Designer.cs">
       <DependentUpon>UCPI2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userControl\UCUP3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCUP3.Designer.cs">
+      <DependentUpon>UCUP3.cs</DependentUpon>
     </Compile>
     <Compile Include="userControl\UCUP.cs">
       <SubType>UserControl</SubType>
@@ -300,6 +318,9 @@
     <EmbeddedResource Include="userControl\UCBP2.resx">
       <DependentUpon>UCBP2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCDC3.resx">
+      <DependentUpon>UCDC3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCDC.resx">
       <DependentUpon>UCDC.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,11 +333,17 @@
     <EmbeddedResource Include="userControl\UCPI.resx">
       <DependentUpon>UCPI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCPI3.resx">
+      <DependentUpon>UCPI3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCPI1.resx">
       <DependentUpon>UCPI1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCPI2.resx">
       <DependentUpon>UCPI2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCUP3.resx">
+      <DependentUpon>UCUP3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCUP.resx">
       <DependentUpon>UCUP.cs</DependentUpon>
