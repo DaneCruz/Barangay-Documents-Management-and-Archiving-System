@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BARANGAY.userControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,22 @@ namespace BARANGAY
         {
             InitializeComponent();
         }
+        private void addUserControl(UserControl userControl)
+        {
+            userControl.Dock = DockStyle.Fill;
+            panelContainer.Controls.Clear();
+            panelContainer.Controls.Add(userControl);
+            userControl.BringToFront();
+        }
+        private void FormBP_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            UCBP1 uc = new UCBP1();
+            addUserControl(uc);
+        }
     }
-}
+    }
+

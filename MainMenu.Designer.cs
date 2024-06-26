@@ -148,7 +148,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(190, 40);
             this.button5.TabIndex = 5;
-            this.button5.Text = "Log Out";
+            this.button5.Text = "Manage Account";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
