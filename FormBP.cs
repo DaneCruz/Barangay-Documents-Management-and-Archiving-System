@@ -33,6 +33,12 @@ namespace BARANGAY
             UCBP1 uc = new UCBP1();
             addUserControl(uc);
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            UCBP2 uc = new UCBP2();
+            addUserControl(uc);
+        }
     }
     }
 

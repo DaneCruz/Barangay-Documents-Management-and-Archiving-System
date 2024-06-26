@@ -198,6 +198,12 @@
     <Compile Include="userControl\UCBP1.Designer.cs">
       <DependentUpon>UCBP1.cs</DependentUpon>
     </Compile>
+    <Compile Include="userControl\UCBP2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UCBP2.Designer.cs">
+      <DependentUpon>UCBP2.cs</DependentUpon>
+    </Compile>
     <Compile Include="userControl\UCDC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCBP1.resx">
       <DependentUpon>UCBP1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UCBP2.resx">
+      <DependentUpon>UCBP2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UCDC.resx">
       <DependentUpon>UCDC.cs</DependentUpon>
