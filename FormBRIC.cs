@@ -16,8 +16,7 @@ namespace BARANGAY
         public FormBRIC()
         {
             InitializeComponent();
-            UCPI uc = new UCPI();
-            addUserControl(uc);
+            
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)

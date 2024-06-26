@@ -16,8 +16,7 @@ namespace BARANGAY
         public UCBC()
         {
             InitializeComponent();
-            UCPI1 uc = new UCPI1();
-            addUserControl(uc);
+            
         }
 
         private void UCBC_Load(object sender, EventArgs e)
