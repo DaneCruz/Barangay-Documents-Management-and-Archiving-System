@@ -34,12 +34,25 @@ namespace BARANGAY
         public MainMenu(string username)
         {
             InitializeComponent();
-            _loggedInUsername = username;
+            _loggedInUsername = username; // Store the username
+            UpdateGreetingLabel(); // Update the greeting label
+            timer1.Start(); // Start the timer
+        }
+        private void UpdateGreetingLabel()
+        {
+            if (!string.IsNullOrEmpty(_loggedInUsername))
+            {
+                label4.Text = $"Hello! {_loggedInUsername}";
+            }
+            else
+            {
+                label4.Text = ""; // Handle case when username is empty or null
+            }
         }
         private void MainMenu_UserLoggedIn(string username)
         {
             _loggedInUsername = username; // Store the username
-            panel6.Invalidate(); // Trigger a repaint of panel6 to show the username
+            UpdateGreetingLabel(); // Update the greeting label
         }
 
         private void panel1_Resize(object sender, EventArgs e)
@@ -77,7 +90,7 @@ namespace BARANGAY
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new ManageAccount().Show();
+            new FormLogIn().Show();
             this.Hide();
         }
 
@@ -161,6 +174,16 @@ namespace BARANGAY
                     e.Graphics.DrawString(_loggedInUsername, font, brush, x, y);
                 }
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

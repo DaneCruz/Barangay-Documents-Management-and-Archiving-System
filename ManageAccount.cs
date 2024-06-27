@@ -24,14 +24,31 @@ namespace BARANGAY
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new FormLogIn().Show();
-            this.Hide();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             new MainMenu().Show();
             this.Hide();
+        }
+        private string _loggedInUsername = ""; // To store the username
+
+        // Event handler for the UserLoggedIn event
+        public ManageAccount(string username)
+        {
+            InitializeComponent();
+            _loggedInUsername = username;
+        }
+        private void MainMenu_UserLoggedIn(string username)
+        {
+            _loggedInUsername = username; // Store the username
+            panel6.Invalidate(); // Trigger a repaint of panel6 to show the username
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

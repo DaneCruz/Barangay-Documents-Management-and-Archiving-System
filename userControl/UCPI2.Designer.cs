@@ -574,7 +574,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "UCPI2";
-            this.Size = new System.Drawing.Size(1083, 492);
+            this.Size = new System.Drawing.Size(1083, 536);
             this.ResumeLayout(false);
             this.PerformLayout();
 
