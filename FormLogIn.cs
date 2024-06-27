@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using BCrypt.Net;
 
 namespace BARANGAY
 {
@@ -50,57 +51,69 @@ namespace BARANGAY
             this.Hide();
         }
 
-        private void button1_Click_1(object sender, EventArgs e) // Login button
+        private void button1_Click_1(object sender, EventArgs e)
         {
             try
             {
-                conn.Open(); // Open connection within the try block
+                conn.Open();
 
-                // Parameterized query for security (prevents SQL injection)
-                string login = "SELECT * FROM login WHERE username = @username AND password = @password";
+                // Parameterized query (secure)
+                string login = "SELECT username, password FROM login WHERE username = @username";
                 using (SQLiteCommand cmd = new SQLiteCommand(login, conn))
                 {
-                    // Check if username or password fields are empty
+                    // Input validation 
                     if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
                     {
                         MessageBox.Show("Please enter username and password.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Exit method early to prevent further execution
+                        return;
                     }
 
-                    // Add parameters to the command
                     cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+
 
                     using (SQLiteDataReader dr = cmd.ExecuteReader())
                     {
                         if (dr.Read())
                         {
-                            // Successful login
-                            new MainMenu().Show();
-                            this.Hide();
+                            string hashedPasswordFromDb = dr["password"].ToString();
+
+                            if (BCrypt.Net.BCrypt.Verify(txtPassword.Text, hashedPasswordFromDb))
+                            {
+                                // Successful login
+                                string retrievedUsername = dr["username"].ToString();
+
+                                MainMenu mainMenuForm = new MainMenu(retrievedUsername);
+                                mainMenuForm.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                // Incorrect password
+                                MessageBox.Show("Incorrect password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtPassword.Text = "";
+                                txtPassword.Focus();
+                            }
                         }
                         else
                         {
-                            // Failed login attempt
-                            MessageBox.Show("Invalid Username or Password. Please try again.",
-                                            "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            // Clear password field and refocus on username field
-                            txtPassword.Text = "";
+                            // Username not found
+                            MessageBox.Show("Invalid username. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtUsername.Text = "";
                             txtUsername.Focus();
                         }
                     }
                 }
             }
-            catch (SQLiteException ex) // Catch SQLite-specific exceptions
+            catch (Exception ex)
             {
-                MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                conn.Close(); // Ensure connection is always closed in the finally block
+                conn.Close();
             }
         }
+
 
 
         private void button2_Click_1(object sender, EventArgs e)

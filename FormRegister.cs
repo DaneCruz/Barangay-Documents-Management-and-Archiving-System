@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 namespace BARANGAY
 {
@@ -86,12 +87,17 @@ namespace BARANGAY
                 cmd = new SQLiteCommand(registerQuery, conn);
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                // Hash the password using BCrypt before storing it
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
+                cmd.Parameters.AddWithValue("@password", hashedPassword); // Store the hash
                 cmd.ExecuteNonQuery();
 
+
                 MessageBox.Show("Your Account has been Successfully Created", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                txtComPassword.Text = "";
+                // Successful Register
+                FormLogIn loginForm = new FormLogIn();
+                loginForm.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
