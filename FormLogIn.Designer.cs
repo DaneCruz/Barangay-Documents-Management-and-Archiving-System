@@ -50,7 +50,7 @@
             this.label6.Location = new System.Drawing.Point(90, 475);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 16);
+            this.label6.Size = new System.Drawing.Size(167, 23);
             this.label6.TabIndex = 23;
             this.label6.Text = "Create Account";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -65,7 +65,7 @@
             this.label5.Location = new System.Drawing.Point(63, 450);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(155, 16);
+            this.label5.Size = new System.Drawing.Size(237, 23);
             this.label5.TabIndex = 22;
             this.label5.Text = "Don\'t Have an Account";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -76,7 +76,7 @@
             this.checkbox.Location = new System.Drawing.Point(155, 230);
             this.checkbox.Margin = new System.Windows.Forms.Padding(4);
             this.checkbox.Name = "checkbox";
-            this.checkbox.Size = new System.Drawing.Size(117, 21);
+            this.checkbox.Size = new System.Drawing.Size(167, 25);
             this.checkbox.TabIndex = 19;
             this.checkbox.Text = "Show Password";
             this.checkbox.UseVisualStyleBackColor = true;
@@ -85,14 +85,13 @@
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.Location = new System.Drawing.Point(12, 200);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(260, 22);
+            this.txtPassword.Size = new System.Drawing.Size(260, 30);
             this.txtPassword.TabIndex = 16;
-            this.txtPassword.UseWaitCursor = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
@@ -101,7 +100,7 @@
             this.label3.Location = new System.Drawing.Point(12, 174);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.Size = new System.Drawing.Size(95, 21);
             this.label3.TabIndex = 15;
             this.label3.Text = "Password:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -112,7 +111,7 @@
             this.txtUsername.Location = new System.Drawing.Point(12, 141);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(260, 22);
+            this.txtUsername.Size = new System.Drawing.Size(260, 30);
             this.txtUsername.TabIndex = 14;
             // 
             // label2
@@ -121,7 +120,7 @@
             this.label2.Location = new System.Drawing.Point(12, 115);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 17);
+            this.label2.Size = new System.Drawing.Size(103, 21);
             this.label2.TabIndex = 13;
             this.label2.Text = "Username:";
             // 
@@ -134,7 +133,7 @@
             this.label1.Location = new System.Drawing.Point(60, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 36);
+            this.label1.Size = new System.Drawing.Size(238, 51);
             this.label1.TabIndex = 12;
             this.label1.Text = "Welcome!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,7 +171,7 @@
             // 
             // FormLogIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(285, 554);
