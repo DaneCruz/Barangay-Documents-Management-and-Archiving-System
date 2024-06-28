@@ -83,7 +83,7 @@ namespace BARANGAY
             try
             {
                 conn.Open();
-                string registerQuery = "INSERT INTO login (username, password) VALUES (@username, @password)";
+                string registerQuery = "INSERT INTO login (username, password) VALUES (@username, @hashedPassword)";
                 cmd = new SQLiteCommand(registerQuery, conn);
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@password", txtPassword.Text);
