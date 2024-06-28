@@ -21,10 +21,17 @@ namespace BARANGAY.userControl
         {
 
         }
-
+        private void addUserControl(UserControl userControl, UCPI2 uCPI2)
+        {
+            userControl.Dock = DockStyle.Fill;
+            uCPI2.Controls.Clear();
+            uCPI2.Controls.Add(userControl);
+            userControl.BringToFront();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-
+            FmWebCamera f = new FmWebCamera();
+            f.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

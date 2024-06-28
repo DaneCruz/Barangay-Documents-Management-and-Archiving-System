@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BARANGAY
 {
-    public partial class FormClearance : Form
+    public partial class UCCP1 : Form
     {
-        public FormClearance()
+        public UCCP1()
         {
             InitializeComponent();
         }

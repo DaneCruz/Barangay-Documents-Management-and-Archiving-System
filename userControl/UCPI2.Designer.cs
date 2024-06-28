@@ -57,6 +57,7 @@
             this.guna2TextBox19 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.guna2TextBox20 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // guna2TextBox11
@@ -539,11 +540,23 @@
             this.guna2TextBox20.TabIndex = 20;
             this.guna2TextBox20.TextChanged += new System.EventHandler(this.guna2TextBox5_TextChanged);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(787, 471);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(235, 47);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Capture Photo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // UCPI2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.guna2TextBox11);
             this.Controls.Add(this.guna2TextBox10);
             this.Controls.Add(this.guna2TextBox9);
@@ -611,5 +624,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox19;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox20;
+        private System.Windows.Forms.Button button1;
     }
 }

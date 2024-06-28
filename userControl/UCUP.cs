@@ -40,7 +40,6 @@ namespace BARANGAY.userControl
             {
                 MessageBox.Show("An error occurred", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void image1_Click(object sender, EventArgs e)
