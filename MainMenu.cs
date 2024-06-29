@@ -152,29 +152,7 @@ namespace BARANGAY
             label3.Text = DateTime.Now.ToLongTimeString();
         }
 
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(_loggedInUsername))
-            {
-                using (Font font = new Font("Century Gothic", 12, FontStyle.Bold))
-                using (Brush brush = new SolidBrush(Color.Black))
-                {
-                    // Draw "Hello!" first
-                    string greeting = "Hello!";
-                    e.Graphics.DrawString(greeting, font, brush, 0, 0); // Start at the top-left (0,0)
-
-                    // Measure the width of the greeting
-                    SizeF greetingSize = e.Graphics.MeasureString(greeting, font);
-
-                    // Calculate the starting position for the username
-                    float x = greetingSize.Width + 5; // Add a small margin (5 pixels) after the greeting
-                    float y = 0; // Keep the username on the same line
-
-                    // Draw the username right after the greeting
-                    e.Graphics.DrawString(_loggedInUsername, font, brush, x, y);
-                }
-            }
-        }
+   
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -185,5 +163,6 @@ namespace BARANGAY
         {
 
         }
+
     }
 }
