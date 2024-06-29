@@ -69,7 +69,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(56, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(72, 23);
             this.label4.TabIndex = 7;
             this.label4.Text = "label4";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -80,7 +80,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label3.Location = new System.Drawing.Point(667, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 19);
+            this.label3.Size = new System.Drawing.Size(53, 23);
             this.label3.TabIndex = 5;
             this.label3.Text = "Time";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -91,7 +91,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label2.Location = new System.Drawing.Point(451, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 19);
+            this.label2.Size = new System.Drawing.Size(59, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "Date";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -193,7 +193,7 @@
             // 
             this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Location = new System.Drawing.Point(138, 12);
+            this.panel5.Location = new System.Drawing.Point(129, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(112, 108);
             this.panel5.TabIndex = 1;
@@ -220,7 +220,7 @@
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Location = new System.Drawing.Point(12, 12);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(120, 108);
+            this.panel4.Size = new System.Drawing.Size(111, 108);
             this.panel4.TabIndex = 0;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -241,7 +241,7 @@
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1199, 641);
@@ -250,9 +250,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMenu";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Barangay Management System KNL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

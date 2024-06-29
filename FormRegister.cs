@@ -67,47 +67,91 @@ namespace BARANGAY
         {
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtComPassword.Text))
             {
-                MessageBox.Show("Username and Password fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("All fields are required.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (txtPassword.Text != txtComPassword.Text)
             {
-                MessageBox.Show("Passwords do not match, Please Re-Enter", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.Text = "";
-                txtComPassword.Text = "";
+                MessageBox.Show("Passwords do not match.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Clear();
+                txtComPassword.Clear();
                 txtPassword.Focus();
+                return;
+            }
+
+            if (!IsPasswordStrong(txtPassword.Text))
+            {
+                MessageBox.Show("Password is not strong enough. It should be at least 8 characters long and contain a mix of uppercase, lowercase, numbers, and symbols.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
                 conn.Open();
-                string registerQuery = "INSERT INTO login (username, password) VALUES (@username, @hashedPassword)";
-                cmd = new SQLiteCommand(registerQuery, conn);
-                cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                // Hash the password using BCrypt before storing it
+
+                // Check if username already exists
+                if (UsernameExists(txtUsername.Text))
+                {
+                    MessageBox.Show("Username already exists. Please choose a different one.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Hash the password before storing it
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
-                cmd.Parameters.AddWithValue("@password", hashedPassword); // Store the hash
-                cmd.ExecuteNonQuery();
 
+                // Parameterized query for registration
+                string registerQuery = "INSERT INTO login (username, password) VALUES (@username, @hashedPassword)";
+                using (SQLiteCommand cmd = new SQLiteCommand(registerQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                    cmd.Parameters.AddWithValue("@hashedPassword", hashedPassword);
+                    cmd.ExecuteNonQuery();
+                }
 
-                MessageBox.Show("Your Account has been Successfully Created", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Successful Register
+                MessageBox.Show("Your Account has been successfully created.", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Open login form
                 FormLogIn loginForm = new FormLogIn();
                 loginForm.Show();
                 this.Hide();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Log the exception (optional, for debugging)
+                // ... (add logging code here)
             }
             finally
             {
                 conn.Close();
             }
         }
+
+
+        // Helper function to check password strength
+        private bool IsPasswordStrong(string password)
+        {
+            // Implement your password strength rules here
+            return password.Length >= 8 &&
+                   password.Any(char.IsUpper) &&
+                   password.Any(char.IsLower) &&
+                   password.Any(char.IsDigit) &&
+                   password.Any(ch => !char.IsLetterOrDigit(ch));
+        }
+
+        // Helper function to check if username exists
+        private bool UsernameExists(string username)
+        {
+            string checkQuery = "SELECT COUNT(*) FROM login WHERE username = @username";
+            using (SQLiteCommand checkCmd = new SQLiteCommand(checkQuery, conn))
+            {
+                checkCmd.Parameters.AddWithValue("@username", username);
+                int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
 
         private void label5_Click(object sender, EventArgs e)
         {
