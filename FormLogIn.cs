@@ -57,47 +57,51 @@ namespace BARANGAY
             {
                 conn.Open();
 
-                // Parameterized query (secure)
-                string login = "SELECT username, password FROM login WHERE username = @username";
-                using (SQLiteCommand cmd = new SQLiteCommand(login, conn))
+                // Secure parameterized query with password hashing
+                string loginQuery = "SELECT username, password FROM login WHERE username = @username";
+                using (SQLiteCommand cmd = new SQLiteCommand(loginQuery, conn))
                 {
-                    // Input validation 
-                    if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                    // Input validation (also trim whitespace)
+                    string username = txtUsername.Text.Trim();
+                    string password = txtPassword.Text.Trim();
+                    if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                     {
-                        MessageBox.Show("Please enter username and password.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Please enter both username and password.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
-                    cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-
+                    cmd.Parameters.AddWithValue("@username", username);
 
                     using (SQLiteDataReader dr = cmd.ExecuteReader())
                     {
                         if (dr.Read())
                         {
+                            // Hash verification
                             string hashedPasswordFromDb = dr["password"].ToString();
 
-                            if (BCrypt.Net.BCrypt.Verify(txtPassword.Text, hashedPasswordFromDb))
+                            if (BCrypt.Net.BCrypt.Verify(password, hashedPasswordFromDb))
                             {
-                                // Successful login
+                                // Successful login (open MainMenu on the UI thread)
                                 string retrievedUsername = dr["username"].ToString();
-
-                                MainMenu mainMenuForm = new MainMenu(retrievedUsername);
-                                mainMenuForm.Show();
-                                this.Hide();
+                                this.BeginInvoke(new Action(() =>
+                                {
+                                    MainMenu mainMenuForm = new MainMenu(retrievedUsername);
+                                    mainMenuForm.Show();
+                                    this.Hide();
+                                }));
                             }
                             else
                             {
                                 // Incorrect password
-                                MessageBox.Show("Incorrect password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                txtPassword.Text = "";
-                                txtPassword.Focus();
+                                MessageBox.Show("Incorrect password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtPassword.Text = ""; // Clear the password field
+                                txtPassword.Focus();   // Set focus back to the password field
                             }
                         }
                         else
                         {
                             // Username not found
-                            MessageBox.Show("Invalid username. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Invalid username.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtUsername.Text = "";
                             txtUsername.Focus();
                         }
@@ -107,12 +111,18 @@ namespace BARANGAY
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Optional: Log the exception for debugging
+                // You can use a logging library (e.g., log4net, NLog) or write to a file
+                // Example: 
+                // File.AppendAllText("error_log.txt", $"Login Error: {ex.ToString()}\n"); 
             }
             finally
             {
                 conn.Close();
             }
         }
+
 
 
 

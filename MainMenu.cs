@@ -67,11 +67,8 @@ namespace BARANGAY
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormID f = new FormID();
-            f.TopLevel = false;
-            panel3.Controls.Add(f);
-            f.BringToFront();
-            f.Show();
+            FormID id = new FormID();
+            id.Show();
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
