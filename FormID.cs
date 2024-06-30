@@ -87,6 +87,17 @@ namespace BARANGAY
                     f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
                     f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
                     f.ShowDialog();
+                }else if (colName == "btnDelete1")
+                {
+                    if(MessageBox.Show("Do you want to delete this ?", clsvar._title,MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        conn.Open();
+                        cmd = new SQLiteCommand("delete FROM id_card WHERE id like'" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", conn);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        MessageBox.Show("Record has been successfully deleted", clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadRecord();
+                    }
                 }
             }catch(Exception ex)
             {
@@ -124,7 +135,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), dr["birth_date"].ToString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Registered_On"].ToString(), dr["Expires_On"].ToString(), dr["Condition"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString());
                 }
                 dr.Close();
                 conn.Close();

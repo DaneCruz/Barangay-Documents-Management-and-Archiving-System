@@ -17,7 +17,7 @@ namespace BARANGAY
         SQLiteConnection conn;
         SQLiteCommand cmd;
         FormID f;
-        internal string _ID;
+        public string _ID;
 
         public FrmAccounts(FormID f)
         {
