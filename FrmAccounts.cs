@@ -91,6 +91,7 @@ namespace BARANGAY
         private void btnCancel_Click(object sender, EventArgs e)
         {
             clear();
+            this.Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -126,6 +127,13 @@ namespace BARANGAY
                 conn.Close();
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FmWebCamera open = new FmWebCamera();
+            open.Show();
+            open.BringToFront();
         }
     }
 }
