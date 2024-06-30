@@ -54,6 +54,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -259,7 +260,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Aqua;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(89, 543);
+            this.btnSave.Location = new System.Drawing.Point(34, 545);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 29);
             this.btnSave.TabIndex = 25;
@@ -271,7 +272,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Aqua;
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(192, 543);
+            this.btnUpdate.Location = new System.Drawing.Point(147, 545);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(107, 29);
             this.btnUpdate.TabIndex = 26;
@@ -283,13 +284,12 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(294, 543);
+            this.btnCancel.Location = new System.Drawing.Point(260, 545);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(107, 29);
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label12
             // 
@@ -300,12 +300,25 @@
             this.label12.TabIndex = 29;
             this.label12.Text = "ADDRESS:";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Aqua;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(260, 512);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 29);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Capture Image";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 586);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -370,5 +383,6 @@
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.Button button1;
     }
 }

@@ -163,17 +163,29 @@
     <Compile Include="Brg.cs" />
     <Compile Include="clsvar.cs" />
     <Compile Include="dbcon.cs" />
-    <Compile Include="Form2.cs">
+    <Compile Include="FormClearance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="FormClearance.Designer.cs">
+      <DependentUpon>FormClearance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmWebCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmWebCamera.Designer.cs">
+      <DependentUpon>FmWebCamera.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBRIC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormBRIC.Designer.cs">
       <DependentUpon>FormBRIC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormID.Designer.cs">
+      <DependentUpon>FormID.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogIn.cs">
       <SubType>Form</SubType>
@@ -210,18 +222,6 @@
     </Compile>
     <Compile Include="FormCertifications.Designer.cs">
       <DependentUpon>FormCertifications.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormClearance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormClearance.Designer.cs">
-      <DependentUpon>FormClearance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormID.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormID.Designer.cs">
-      <DependentUpon>FormID.cs</DependentUpon>
     </Compile>
     <Compile Include="FromResidency.cs">
       <SubType>Form</SubType>
@@ -315,11 +315,17 @@
     <Compile Include="userControl\UCUP2.Designer.cs">
       <DependentUpon>UCUP2.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="FormClearance.resx">
+      <DependentUpon>FormClearance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmWebCamera.resx">
+      <DependentUpon>FmWebCamera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBRIC.resx">
       <DependentUpon>FormBRIC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormID.resx">
+      <DependentUpon>FormID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogIn.resx">
       <DependentUpon>FormLogIn.cs</DependentUpon>
@@ -338,12 +344,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCertifications.resx">
       <DependentUpon>FormCertifications.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormClearance.resx">
-      <DependentUpon>FormClearance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormID.resx">
-      <DependentUpon>FormID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FromResidency.resx">
       <DependentUpon>FromResidency.cs</DependentUpon>
