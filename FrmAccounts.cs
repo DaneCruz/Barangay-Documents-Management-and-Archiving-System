@@ -18,6 +18,7 @@ namespace BARANGAY
         SQLiteCommand cmd;
         FormID f;
         public string _ID;
+        private FormBP formBP;
 
         public FrmAccounts(FormID f)
         {
@@ -25,6 +26,11 @@ namespace BARANGAY
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
             cmd = new SQLiteCommand();
             this.f = f;
+        }
+
+        public FrmAccounts(FormBP formBP)
+        {
+            this.formBP = formBP;
         }
 
         private void button2_Click(object sender, EventArgs e)
