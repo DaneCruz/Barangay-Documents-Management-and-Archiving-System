@@ -205,6 +205,12 @@
     <Compile Include="FrmAccounts.Designer.cs">
       <DependentUpon>FrmAccounts.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAccountsBRIC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccountsBRIC.Designer.cs">
+      <DependentUpon>FrmAccountsBRIC.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAccounts.resx">
       <DependentUpon>FrmAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAccountsBRIC.resx">
+      <DependentUpon>FrmAccountsBRIC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
