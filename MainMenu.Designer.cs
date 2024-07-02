@@ -69,7 +69,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(56, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 23);
+            this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "label4";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -80,7 +80,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label3.Location = new System.Drawing.Point(667, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 23);
+            this.label3.Size = new System.Drawing.Size(39, 19);
             this.label3.TabIndex = 5;
             this.label3.Text = "Time";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -91,7 +91,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label2.Location = new System.Drawing.Point(451, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 23);
+            this.label2.Size = new System.Drawing.Size(43, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Date";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -150,12 +150,13 @@
             this.button4.BackColor = System.Drawing.Color.Maroon;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(31, 252);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(190, 30);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Certifications";
+            this.button4.Text = "Barangay Business Clearance \r\n\r\n";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -241,7 +242,7 @@
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1199, 641);
