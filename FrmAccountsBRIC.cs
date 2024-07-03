@@ -72,8 +72,8 @@ namespace BARANGAY
             txtName.Clear();
             txtAddress.Clear();
             txtContactNumber.Clear();
-            cboStatus.SelectedIndex = -1;
-            cboCondition.SelectedIndex = -1;
+            cboStatus.SelectedIndex = 0;
+            cboCondition.SelectedIndex = 0;
             dtBirthDate.Value = DateTime.Now;
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;

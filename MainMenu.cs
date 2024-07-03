@@ -135,11 +135,11 @@ namespace BARANGAY
 
         private void button3_Click(object sender, EventArgs e)
         {
-            UCBC c = new UCBC();
-            c.TopLevel = false;
-            panel3.Controls.Add(c);
-            c.BringToFront();
-            c.Show();
+            UCBC f = new UCBC();
+            f.TopLevel = false;
+            panel3.Controls.Add(f);
+            f.BringToFront();
+            f.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
