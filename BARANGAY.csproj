@@ -217,6 +217,12 @@
     <Compile Include="FrmAccountsBC1.Designer.cs">
       <DependentUpon>FrmAccountsBC1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAccountsBP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccountsBP.Designer.cs">
+      <DependentUpon>FrmAccountsBP.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAccountsBRIC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAccountsBC1.resx">
       <DependentUpon>FrmAccountsBC1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAccountsBP.resx">
+      <DependentUpon>FrmAccountsBP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAccountsBRIC.resx">
       <DependentUpon>FrmAccountsBRIC.cs</DependentUpon>
