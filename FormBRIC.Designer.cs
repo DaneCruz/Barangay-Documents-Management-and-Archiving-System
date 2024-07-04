@@ -64,18 +64,18 @@
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1083, 40);
+            this.panel1.Size = new System.Drawing.Size(1083, 30);
             this.panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label1.Location = new System.Drawing.Point(546, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(385, 38);
+            this.label1.Size = new System.Drawing.Size(289, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Certificate of Residency";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,9 +87,9 @@
             this.panel2.Controls.Add(this.button2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 40);
+            this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1083, 44);
+            this.panel2.Size = new System.Drawing.Size(1083, 42);
             this.panel2.TabIndex = 1;
             // 
             // button1
@@ -111,7 +111,7 @@
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(976, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 44);
+            this.button2.Size = new System.Drawing.Size(107, 42);
             this.button2.TabIndex = 2;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = false;
@@ -121,9 +121,9 @@
             // 
             this.panelContainer.Controls.Add(this.dataGridView1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 84);
+            this.panelContainer.Location = new System.Drawing.Point(0, 72);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1083, 543);
+            this.panelContainer.Size = new System.Drawing.Size(1083, 555);
             this.panelContainer.TabIndex = 0;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContainer_Paint_1);
             // 
@@ -180,7 +180,7 @@
             this.dataGridView1.RowHeadersWidth = 40;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1083, 543);
+            this.dataGridView1.Size = new System.Drawing.Size(1083, 555);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 

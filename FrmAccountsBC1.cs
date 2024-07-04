@@ -11,26 +11,27 @@ using System.Data.SQLite;
 
 namespace BARANGAY
 {
-    public partial class FrmAccountsBRIC : Form
+    public partial class FrmAccountsBC1 : Form
     {
         SQLiteConnection conn;
         SQLiteCommand cmd;
-        FormBRIC f;
+        UCBC f;
         public string _ID;
 
-        public FrmAccountsBRIC(FormBRIC f)
+        public FrmAccountsBC1(UCBC f)
         {
             InitializeComponent();
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
             cmd = new SQLiteCommand();
-            // Initialize the FormBRIC object
-            this.f = f; // Corrected to use the passed-in form
+            this.f = f;
         }
 
-        public FrmAccountsBRIC()
-        {
-            InitializeComponent(); // Added to initialize components
-        }
+        // Remove the default constructor if it's not needed.
+        // If you need it for some reason, ensure InitializeComponent() is called.
+        // public FrmAccountsBC1()
+        // {
+        //     InitializeComponent();
+        // }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -44,15 +45,14 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO residency (Name, birth_date, status, address, Contact_Number, Condition) " +
-                                 "VALUES (@Name, @birth_date, @status, @address, @Contact_Number, @Condition)";
+                    string sql = "INSERT INTO barangay_clearance (Name, birth_date, status, address, purpose) " +
+                                 "VALUES (@Name, @birth_date, @status, @address, @purpose)";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Contact_Number", txtContactNumber.Text);
-                    cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
+                    cmd.Parameters.AddWithValue("@purpose", txtContactNumber.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully saved!", "Save Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,15 +72,14 @@ namespace BARANGAY
             txtName.Clear();
             txtAddress.Clear();
             txtContactNumber.Clear();
-            cboStatus.SelectedIndex = 0;
-            cboCondition.SelectedIndex = 0;
+            cboStatus.SelectedIndex = -1;
             dtBirthDate.Value = DateTime.Now;
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             txtName.Focus();
         }
 
-        private void cboCondition_KeyPress(object sender, KeyPressEventArgs e)
+        private void cboStatus_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
@@ -98,14 +97,13 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE residency SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, Contact_Number=@Contact_Number, Condition=@Condition WHERE id = @ID";
+                    string sql = "UPDATE barangay_clearance SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, purpose=@purpose WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Contact_Number", txtContactNumber.Text);
-                    cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
+                    cmd.Parameters.AddWithValue("@purpose", txtContactNumber.Text);
                     cmd.Parameters.AddWithValue("@ID", _ID);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -120,18 +118,6 @@ namespace BARANGAY
                 conn.Close();
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FmWebCamera open = new FmWebCamera();
-            open.Show();
-            open.BringToFront();
-        }
-
-        private void cboStatus_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
         }
     }
 }
