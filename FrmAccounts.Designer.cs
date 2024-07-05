@@ -54,8 +54,21 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_captureImg = new System.Windows.Forms.Button();
+            this.id_num = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btn_uploadSigntr = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btn_imgSave = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -66,7 +79,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(405, 42);
+            this.panel2.Size = new System.Drawing.Size(1147, 42);
             this.panel2.TabIndex = 3;
             // 
             // label1
@@ -80,9 +93,9 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(306, 6);
+            this.button2.Location = new System.Drawing.Point(1048, 9);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 30);
             this.button2.TabIndex = 1;
@@ -255,12 +268,13 @@
             this.label11.Size = new System.Drawing.Size(82, 17);
             this.label11.TabIndex = 23;
             this.label11.Text = "CONDITION";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Aqua;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(34, 545);
+            this.btnSave.Location = new System.Drawing.Point(34, 599);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 29);
             this.btnSave.TabIndex = 25;
@@ -272,7 +286,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Aqua;
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(147, 545);
+            this.btnUpdate.Location = new System.Drawing.Point(147, 599);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(107, 29);
             this.btnUpdate.TabIndex = 26;
@@ -284,12 +298,13 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(260, 545);
+            this.btnCancel.Location = new System.Drawing.Point(260, 599);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(107, 29);
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // label12
             // 
@@ -300,25 +315,129 @@
             this.label12.TabIndex = 29;
             this.label12.Text = "ADDRESS:";
             // 
-            // button1
+            // btn_captureImg
             // 
-            this.button1.BackColor = System.Drawing.Color.Aqua;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(260, 512);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 29);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Capture Image";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_captureImg.BackColor = System.Drawing.Color.Aqua;
+            this.btn_captureImg.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_captureImg.Location = new System.Drawing.Point(531, 383);
+            this.btn_captureImg.Name = "btn_captureImg";
+            this.btn_captureImg.Size = new System.Drawing.Size(113, 29);
+            this.btn_captureImg.TabIndex = 30;
+            this.btn_captureImg.Text = "CAPTURE IMAGE";
+            this.btn_captureImg.UseVisualStyleBackColor = false;
+            this.btn_captureImg.Click += new System.EventHandler(this.btn_captureImg_Click);
+            // 
+            // id_num
+            // 
+            this.id_num.Location = new System.Drawing.Point(10, 529);
+            this.id_num.Name = "id_num";
+            this.id_num.Size = new System.Drawing.Size(383, 23);
+            this.id_num.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 509);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 17);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "BARANGAY ID NO.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(408, 74);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(351, 303);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(673, 435);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(194, 43);
+            this.pictureBox2.TabIndex = 34;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btn_uploadSigntr
+            // 
+            this.btn_uploadSigntr.BackColor = System.Drawing.Color.Aqua;
+            this.btn_uploadSigntr.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_uploadSigntr.Location = new System.Drawing.Point(693, 484);
+            this.btn_uploadSigntr.Name = "btn_uploadSigntr";
+            this.btn_uploadSigntr.Size = new System.Drawing.Size(164, 29);
+            this.btn_uploadSigntr.TabIndex = 35;
+            this.btn_uploadSigntr.Text = "UPLOAD SIGNATURE";
+            this.btn_uploadSigntr.UseVisualStyleBackColor = false;
+            this.btn_uploadSigntr.Click += new System.EventHandler(this.btn_uploadSigntr_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LimeGreen;
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(711, 562);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(133, 43);
+            this.button4.TabIndex = 36;
+            this.button4.Text = "PRINT";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // btn_imgSave
+            // 
+            this.btn_imgSave.BackColor = System.Drawing.Color.Aqua;
+            this.btn_imgSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_imgSave.Location = new System.Drawing.Point(913, 388);
+            this.btn_imgSave.Name = "btn_imgSave";
+            this.btn_imgSave.Size = new System.Drawing.Size(113, 29);
+            this.btn_imgSave.TabIndex = 37;
+            this.btn_imgSave.Text = "SAVE IMAGE";
+            this.btn_imgSave.UseVisualStyleBackColor = false;
+            this.btn_imgSave.Click += new System.EventHandler(this.btn_imgSave_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(784, 74);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(351, 303);
+            this.pictureBox3.TabIndex = 38;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(552, 54);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 17);
+            this.label13.TabIndex = 39;
+            this.label13.Text = "Preview";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(909, 54);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(117, 17);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "Captured Image";
             // 
             // FrmAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 586);
+            this.ClientSize = new System.Drawing.Size(1147, 644);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.btn_imgSave);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btn_uploadSigntr);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.id_num);
+            this.Controls.Add(this.btn_captureImg);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -350,6 +469,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,6 +505,16 @@
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button btn_captureImg;
+        public System.Windows.Forms.TextBox id_num;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.Button btn_uploadSigntr;
+        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Button btn_imgSave;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

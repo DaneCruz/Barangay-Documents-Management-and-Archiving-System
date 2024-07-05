@@ -27,15 +27,6 @@ namespace BARANGAY
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
         }
 
-
-        private void addUserControl(UserControl userControl)
-        {
-            userControl.Dock = DockStyle.Fill;
-            panelContainer.Controls.Clear();
-            panelContainer.Controls.Add(userControl);
-            userControl.BringToFront();
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -63,13 +54,19 @@ namespace BARANGAY
                     f.txtRelationship.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                     f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                     f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    f.id_num.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                     f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
                     f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
                     f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
+
+                    // Pass image path to FrmAccounts
+                    f.LoadImage(dataGridView1.Rows[e.RowIndex].Cells["image"].Value.ToString());
+
                     f.ShowDialog();
-                }else if (colName == "btnDelete1")
+                }
+                else if (colName == "btnDelete1")
                 {
-                    if(MessageBox.Show("Do you want to delete this ?", clsvar._title,MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to delete this ?", clsvar._title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         conn.Open();
                         cmd = new SQLiteCommand("delete FROM id_card WHERE id like'" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", conn);
@@ -79,10 +76,12 @@ namespace BARANGAY
                         LoadRecord();
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 conn.Close();
                 MessageBox.Show(ex.Message, clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // You can add additional logging or handling for the exception here if needed
             }
         }
 
@@ -91,7 +90,6 @@ namespace BARANGAY
             try
             {
                 LoadRecord();
-                MessageBox.Show("Data loaded successfully!");
             }
             catch (Exception ex)
             {
@@ -111,17 +109,16 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SQLiteCommand("SELECT * FROM id_card", conn);
-                dr = cmd.ExecuteReader();
+                cmd = new SQLiteCommand("SELECT id, Name, birth_date, Status, Address, Guardian, Relationship, Contact_Number, Registered_On, Expires_On, Condition, id_num, image FROM id_card", conn); dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString(), dr["id_num"].ToString(), dr["image"].ToString());
                 }
                 dr.Close();
                 conn.Close();
                 dataGridView1.ClearSelection();
-
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 conn.Close();
                 MessageBox.Show(ex.Message, clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Warning);

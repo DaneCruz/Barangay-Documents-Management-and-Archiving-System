@@ -37,6 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelContainer = new System.Windows.Forms.Panel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +49,10 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -125,6 +127,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -152,6 +156,8 @@
             this.Column9,
             this.Column10,
             this.Column11,
+            this.Column12,
+            this.image,
             this.btnEdit1,
             this.btnDelete1});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -175,12 +181,22 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // panelContainer
+            // 
+            this.panelContainer.Controls.Add(this.dataGridView1);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(0, 70);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(1083, 557);
+            this.panelContainer.TabIndex = 3;
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 120;
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
-            this.Column1.Width = 46;
+            this.Column1.Width = 120;
             // 
             // Column2
             // 
@@ -247,9 +263,24 @@
             // Column11
             // 
             this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column11.HeaderText = "Condition";
+            this.Column11.HeaderText = "Civil Status";
             this.Column11.Name = "Column11";
-            this.Column11.Width = 96;
+            this.Column11.Width = 101;
+            // 
+            // Column12
+            // 
+            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column12.HeaderText = "Barangay ID No.";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
+            this.Column12.Width = 136;
+            // 
+            // image
+            // 
+            this.image.HeaderText = "";
+            this.image.Name = "image";
+            this.image.Visible = false;
+            this.image.Width = 17;
             // 
             // btnEdit1
             // 
@@ -266,15 +297,6 @@
             this.btnDelete1.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete1.Image")));
             this.btnDelete1.Name = "btnDelete1";
             this.btnDelete1.Width = 5;
-            // 
-            // panelContainer
-            // 
-            this.panelContainer.Controls.Add(this.dataGridView1);
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 70);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1083, 557);
-            this.panelContainer.TabIndex = 3;
             // 
             // FormID
             // 
@@ -323,6 +345,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn image;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete1;
     }

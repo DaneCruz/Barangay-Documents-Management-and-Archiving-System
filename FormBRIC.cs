@@ -126,7 +126,6 @@ namespace BARANGAY
             try
             {
                 LoadRecord();
-                MessageBox.Show("Data loaded successfully!");
             }
             catch (Exception ex)
             {

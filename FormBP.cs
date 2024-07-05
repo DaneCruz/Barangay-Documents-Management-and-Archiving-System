@@ -101,12 +101,6 @@ namespace BARANGAY
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            FrmAccounts f = new FrmAccounts(this);
-            f.btnUpdate.Enabled = false;
-            f.ShowDialog();
-        }
         public void LoadRecord()
         {
             try
@@ -129,6 +123,13 @@ namespace BARANGAY
                 conn.Close();
                 MessageBox.Show(ex.Message, clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmAccounts add = new FrmAccounts(this);
+            add.btnUpdate.Enabled = false;
+            add.ShowDialog();
         }
     }
 }
