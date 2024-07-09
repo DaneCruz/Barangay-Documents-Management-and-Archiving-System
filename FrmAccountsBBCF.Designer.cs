@@ -229,9 +229,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 237);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 17);
+            this.label4.Size = new System.Drawing.Size(129, 17);
             this.label4.TabIndex = 59;
-            this.label4.Text = "CONTACTE NUMBER:";
+            this.label4.Text = "CONTACT NUMBER:";
             // 
             // txtContactNumber
             // 

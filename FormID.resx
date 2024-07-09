@@ -150,6 +150,12 @@
   <metadata name="Column11.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Column12.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="image.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="btnEdit1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -157,7 +163,7 @@
   <data name="btnEdit1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACISURBVDhP3ZNB
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACISURBVDhP3ZNB
         DkAwEEV7ZtYS17B1LSexYn5KI5PfdqZY8JKXVI3XboQvsB0+yhnMxiejV3SIxulpBdg8bVjDi6hnezH7
         vSXsjoJauCkKSgMsCqpRkBti0U40RYH1Rtgb4jJRPES/nMUxLhMsClxh9pwLNIVXsRQF7jDUvzHDFfbw
         w/Ad3yaEHd9sVHbrGNfyAAAAAElFTkSuQmCC
@@ -169,7 +175,7 @@
   <data name="btnDelete1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAQ5JREFUSEvNlUsOgjAQhltYcg0XbFgQWLECrsCaxHNxA+MtfKyU6EoP40L7JG2H
+        vAAADrwBlbxySQAAAQ5JREFUSEvNlUsOgjAQhltYcg0XbFgQWLECrsCaxHNxA+MtfKyU6EoP40L7JG2H
         QrGa8CV/mOlPZ1oeKXKh7/sNwuhNwkEYY3r9GaxoEARaEyP3ghWZWDXzm6bZ83SGKIpe5mqlwjAcHRfN
         gWidruu2JAZYJ2ky3o1NRVE8yBUwerOndOgu1J3I3By3+VKqR2Irk6YDTvOHm5Ikued5fo3j+CmGUJZl
         FxGiNE1vNG/bdieGKMuaEGhsbh34ZVkeeEoeu+5bAUXmmlRVdeQpQ/WtgCKraFLX9YmnDNW3AoqspcmZ
