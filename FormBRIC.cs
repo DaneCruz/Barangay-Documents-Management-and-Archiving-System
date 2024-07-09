@@ -23,7 +23,7 @@ namespace BARANGAY
         {
             InitializeComponent();
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
-            LoadRecord(); // Ensure LoadRecord is called on initialization
+            this.Load += FormBRIC_Load; // Ensure LoadRecord is called on initialization
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
