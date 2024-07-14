@@ -300,10 +300,10 @@ namespace BARANGAY
                     IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
                     // Case-insensitive field lookup
-                    string nameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "NameField");
-                    string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "AddressField");
-                    string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "Birth_dateField");
-                    string statusFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "StatusField");
+                    string nameFieldName = fields.Keys.FirstOrDefault(k => k == "NameField");
+                    string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
+                    string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k == "Birth_dateField");
+                    string statusFieldName = fields.Keys.FirstOrDefault(k => k == "StatusField");
 
                     if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName))
                     {
