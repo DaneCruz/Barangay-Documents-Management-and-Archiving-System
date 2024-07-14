@@ -1,13 +1,21 @@
-﻿using System;
+﻿using iText.Forms;
+using iText.Forms.Fields;
+using iText.Kernel.Pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
+using Emgu.CV;
+using Emgu.CV.Structure;
+using System.Drawing.Imaging;
+using iText.Kernel.Exceptions;
 
 namespace BARANGAY
 {
@@ -17,6 +25,9 @@ namespace BARANGAY
         SQLiteCommand cmd;
         FormBRIC f;
         public string _ID;
+        private FormBP formBP;
+        Capture _capture;
+        bool _streaming;
 
         public FrmAccountsBRIC(FormBRIC f)
         {
@@ -25,6 +36,41 @@ namespace BARANGAY
             cmd = new SQLiteCommand();
             // Initialize the FormBRIC object
             this.f = f; // Corrected to use the passed-in form
+            InitializeCamera();
+        }
+        private void InitializeCamera()
+        {
+            try
+            {
+                _capture = new Capture(); // Initialize camera capture
+                if (_capture == null || _capture.Ptr == IntPtr.Zero)
+                {
+                    MessageBox.Show("Failed to open webcam. Please make sure it is connected and try again.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Application.Idle += Streaming; // Start streaming frames
+                _streaming = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing webcam capture: {ex.Message}", "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void Streaming(object sender, EventArgs e)
+        {
+            try
+            {
+                var frame = _capture.QueryFrame()?.ToImage<Bgr, byte>();
+                if (frame != null)
+                {
+                    var bmp = frame.Bitmap;
+                    pictureBox1.Image = bmp; // Display frame in pictureBox1
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during streaming: {ex.Message}", "Streaming Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public FrmAccountsBRIC()
@@ -132,6 +178,174 @@ namespace BARANGAY
         private void cboStatus_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void btn_captureImg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frame = _capture.QueryFrame()?.ToImage<Bgr, byte>();
+                if (frame != null)
+                {
+                    var bmp = frame.Bitmap;
+                    pictureBox3.Image = bmp;
+                    MessageBox.Show("Image captured successfully!", "Capture Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to capture image. Please try again.", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during image capture: {ex.Message}", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private string savedImagePath;
+
+        private void btn_imgSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var saveFileDialog = new SaveFileDialog
+                {
+                    Title = "Save Your Photo",
+                    Filter = "JPEG Image|*.jpg",
+                    InitialDirectory = @"C:\Users\user\source\repos\Project - Copy\ID Images" // Set your desired folder path here
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (pictureBox3.Image != null)
+                    {
+                        pictureBox3.Image.Save(saveFileDialog.FileName, ImageFormat.Jpeg); // Save captured image
+                        savedImagePath = saveFileDialog.FileName; // Store the path
+                        MessageBox.Show("Picture Saved Successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No image to save.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during image save: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadImage(string imagePath)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        pictureBox3.Image = Image.FromFile(imagePath); // Load image into pictureBox3
+                    }
+                    else
+                    {
+                        MessageBox.Show("Image file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Image path is empty or null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void FrmAccounts_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_capture != null)
+            {
+                _capture.Dispose(); // Release camera capture resources
+            }
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            PrintToPdf(txtName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text);
+        }
+        private void PrintToPdf(string name, string address, string birth_date, string status)
+        {
+            try
+            {
+                // Use an absolute path or ensure the relative path is correct
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string outputPath = Path.Combine(desktopPath, @"Certificate of Residency Template.pdf");
+                // Ensure the output directory exists
+                string outputDir = Path.GetDirectoryName(outputPath);
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
+
+                if (!File.Exists(templatePath))
+                {
+                    MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (PdfReader reader = new PdfReader(templatePath))
+                using (PdfWriter writer = new PdfWriter(outputPath))
+                using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                {
+                    PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
+                    IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+
+                    // Case-insensitive field lookup
+                    string nameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "NameField");
+                    string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "AddressField");
+                    string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "Birth_dateField");
+                    string statusFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "StatusField");
+
+                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName))
+                    {
+                        MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Use more specific field setting methods if available
+                    fields[nameFieldName].SetValue(name);
+                    fields[addressFieldName].SetValue(address);
+                    fields[birth_dateFieldName].SetValue(birth_date);
+                    fields[statusFieldName].SetValue(status);
+
+                    form.FlattenFields();
+                }
+
+                MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (PdfException pdfEx)
+            {
+                // Log the error for debugging
+                // Provide more specific error messages based on the exception
+                MessageBox.Show($"A PDF error occurred while filling the PDF: {pdfEx.Message}", "PDF Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (IOException ioEx)
+            {
+                // Log the error for debugging
+                // Provide more specific error messages based on the exception
+                MessageBox.Show($"An IO error occurred while filling the PDF: {ioEx.Message}", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Log the error for debugging
+                // Provide more specific error messages based on the exception
+                MessageBox.Show($"An unknown error occurred while filling the PDF: {ex.Message}", "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            clear();
+            this.Close();
         }
     }
 }
