@@ -60,7 +60,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_uploadSigntr = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_print = new System.Windows.Forms.Button();
             this.btn_imgSave = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -333,6 +333,7 @@
             this.id_num.Name = "id_num";
             this.id_num.Size = new System.Drawing.Size(383, 23);
             this.id_num.TabIndex = 31;
+            this.id_num.TextChanged += new System.EventHandler(this.id_num_TextChanged);
             // 
             // label3
             // 
@@ -372,16 +373,17 @@
             this.btn_uploadSigntr.UseVisualStyleBackColor = false;
             this.btn_uploadSigntr.Click += new System.EventHandler(this.btn_uploadSigntr_Click);
             // 
-            // button4
+            // btn_print
             // 
-            this.button4.BackColor = System.Drawing.Color.LimeGreen;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(711, 562);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(133, 43);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "PRINT";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_print.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_print.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_print.Location = new System.Drawing.Point(711, 562);
+            this.btn_print.Name = "btn_print";
+            this.btn_print.Size = new System.Drawing.Size(133, 43);
+            this.btn_print.TabIndex = 36;
+            this.btn_print.Text = "PRINT";
+            this.btn_print.UseVisualStyleBackColor = false;
+            this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // btn_imgSave
             // 
@@ -431,7 +433,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btn_imgSave);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btn_print);
             this.Controls.Add(this.btn_uploadSigntr);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -511,7 +513,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         public System.Windows.Forms.Button btn_uploadSigntr;
-        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Button btn_print;
         public System.Windows.Forms.Button btn_imgSave;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label13;

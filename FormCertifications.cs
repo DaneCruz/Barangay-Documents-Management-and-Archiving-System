@@ -1,4 +1,4 @@
-﻿using BARANGAY.userControl;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,23 +35,6 @@ namespace BARANGAY
             userControl.BringToFront();
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            UCPI3 uc = new UCPI3();
-            addUserControl(uc);
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            UCUP3 uc = new UCUP3();
-            addUserControl(uc);
-        }
-
-        private void guna2Button3_Click(object sender, EventArgs e)
-        {
-            UCDC3 uc = new UCDC3();
-            addUserControl(uc);
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {

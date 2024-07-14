@@ -117,14 +117,15 @@
             // 
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
-            "single",
-            "married",
-            "divorced",
-            "widowed"});
+            "Single",
+            "Married",
+            "Divorced",
+            "Widowed"});
             this.cboStatus.Location = new System.Drawing.Point(10, 163);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(383, 25);
             this.cboStatus.TabIndex = 44;
+            this.cboStatus.SelectedIndexChanged += new System.EventHandler(this.cboStatus_SelectedIndexChanged);
             this.cboStatus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboStatus_KeyPress);
             // 
             // label8

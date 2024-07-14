@@ -1,4 +1,4 @@
-﻿using BARANGAY.userControl;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,30 +33,6 @@ namespace BARANGAY
             panelContainer.Controls.Clear();
             panelContainer.Controls.Add(userControl);
             userControl.BringToFront();
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            UCBP1 uc = new UCBP1();
-            addUserControl(uc);
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            UCBP2 uc = new UCBP2();
-            addUserControl(uc);
-        }
-
-        private void guna2Button1_Click_1(object sender, EventArgs e)
-        {
-            UCBP1 uc = new UCBP1();
-            addUserControl(uc);
-        }
-
-        private void guna2Button2_Click_1(object sender, EventArgs e)
-        {
-            UCBP2 uc = new UCBP2();
-            addUserControl(uc);
         }
 
         private void button2_Click(object sender, EventArgs e)
