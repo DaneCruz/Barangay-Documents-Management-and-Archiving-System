@@ -1,5 +1,4 @@
-﻿using BARANGAY.userControl;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,9 +90,15 @@ namespace BARANGAY
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new FormLogIn().Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                new FormLogIn().Show();
+                this.Hide();
+            }
         }
+
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {

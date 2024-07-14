@@ -125,5 +125,10 @@ namespace BARANGAY
         {
 
         }
+
+        private void cboStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

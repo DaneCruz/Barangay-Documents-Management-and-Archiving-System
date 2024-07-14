@@ -1,5 +1,4 @@
-﻿using BARANGAY.userControl;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,7 +45,6 @@ namespace BARANGAY
                 {
                     FrmAccounts f = new FrmAccounts(this);
                     f.btnSave.Enabled = false;
-                    f._ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                     f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                     f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                     f.txtGuardian.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -54,7 +52,7 @@ namespace BARANGAY
                     f.txtRelationship.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                     f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                     f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
-                    f.id_num.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    f.id_num.Text = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
                     f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
                     f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
                     f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());

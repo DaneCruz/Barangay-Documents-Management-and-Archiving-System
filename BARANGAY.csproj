@@ -86,6 +86,9 @@
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="Emgu.CV.UI, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <HintPath>packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.dll</HintPath>
     </Reference>
@@ -106,6 +109,9 @@
     </Reference>
     <Reference Include="itext.barcodes, Version=8.0.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\itext.8.0.4\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.bouncy-castle-adapter, Version=8.0.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext.bouncy-castle-adapter.8.0.4\lib\net461\itext.bouncy-castle-adapter.dll</HintPath>
     </Reference>
     <Reference Include="itext.bouncy-castle-connector, Version=8.0.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\itext.8.0.4\lib\net461\itext.bouncy-castle-connector.dll</HintPath>
@@ -238,15 +244,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brg.cs" />
     <Compile Include="clsvar.cs" />
-    <Compile Include="dbcon.cs" />
-    <Compile Include="FormClearance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormClearance.Designer.cs">
-      <DependentUpon>FormClearance.cs</DependentUpon>
-    </Compile>
     <Compile Include="FmWebCamera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,87 +337,6 @@
     <Compile Include="UCBC.Designer.cs">
       <DependentUpon>UCBC.cs</DependentUpon>
     </Compile>
-    <Compile Include="userControl\UCBP1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCBP1.Designer.cs">
-      <DependentUpon>UCBP1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCBP2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCBP2.Designer.cs">
-      <DependentUpon>UCBP2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCDC3.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCDC3.Designer.cs">
-      <DependentUpon>UCDC3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCDC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCDC.Designer.cs">
-      <DependentUpon>UCDC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCDC1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCDC1.Designer.cs">
-      <DependentUpon>UCDC1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCDC2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCDC2.Designer.cs">
-      <DependentUpon>UCDC2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCPI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCPI.Designer.cs">
-      <DependentUpon>UCPI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCPI3.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCPI3.Designer.cs">
-      <DependentUpon>UCPI3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCPI1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCPI1.Designer.cs">
-      <DependentUpon>UCPI1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCPI2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCPI2.Designer.cs">
-      <DependentUpon>UCPI2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCUP3.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCUP3.Designer.cs">
-      <DependentUpon>UCUP3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCUP.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCUP.Designer.cs">
-      <DependentUpon>UCUP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userControl\UCUP2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userControl\UCUP2.Designer.cs">
-      <DependentUpon>UCUP2.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="FormClearance.resx">
-      <DependentUpon>FormClearance.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FmWebCamera.resx">
       <DependentUpon>FmWebCamera.cs</DependentUpon>
     </EmbeddedResource>
@@ -475,45 +392,6 @@
     <EmbeddedResource Include="UCBC.resx">
       <DependentUpon>UCBC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCBP1.resx">
-      <DependentUpon>UCBP1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCBP2.resx">
-      <DependentUpon>UCBP2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCDC3.resx">
-      <DependentUpon>UCDC3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCDC.resx">
-      <DependentUpon>UCDC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCDC1.resx">
-      <DependentUpon>UCDC1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCDC2.resx">
-      <DependentUpon>UCDC2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCPI.resx">
-      <DependentUpon>UCPI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCPI3.resx">
-      <DependentUpon>UCPI3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCPI1.resx">
-      <DependentUpon>UCPI1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCPI2.resx">
-      <DependentUpon>UCPI2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCUP3.resx">
-      <DependentUpon>UCUP3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCUP.resx">
-      <DependentUpon>UCUP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userControl\UCUP2.resx">
-      <DependentUpon>UCUP2.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="database.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -528,6 +406,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Template.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

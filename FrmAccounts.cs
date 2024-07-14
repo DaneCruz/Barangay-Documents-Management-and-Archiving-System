@@ -1,19 +1,21 @@
-﻿using System;
-using System.IO;    
+﻿using iText.Forms;
+using iText.Forms.Fields;
+using iText.Kernel.Pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Drawing.Imaging;
-
+using iText.Kernel.Exceptions;
 
 namespace BARANGAY
 {
@@ -35,6 +37,7 @@ namespace BARANGAY
             this.f = f;
             InitializeCamera(); // Initialize camera on form load
         }
+
         private void InitializeCamera()
         {
             try
@@ -53,6 +56,7 @@ namespace BARANGAY
                 MessageBox.Show($"Error initializing webcam capture: {ex.Message}", "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void Streaming(object sender, EventArgs e)
         {
             try
@@ -100,7 +104,6 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@Registered_On", dtRegisteredOn.Value);
                     cmd.Parameters.AddWithValue("@Expires_On", dtExpiresOn.Value);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
-                    cmd.Parameters.AddWithValue("@ID", _ID);
                     cmd.Parameters.AddWithValue("@id_num", id_num.Text);
                     cmd.Parameters.AddWithValue("@image", savedImagePath); // Add image path parameter
                     cmd.ExecuteNonQuery();
@@ -116,7 +119,6 @@ namespace BARANGAY
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
         public void clear()
         {
@@ -141,7 +143,6 @@ namespace BARANGAY
             e.Handled = true;
         }
 
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -161,15 +162,16 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@Registered_On", dtRegisteredOn.Value);
                     cmd.Parameters.AddWithValue("@Expires_On", dtExpiresOn.Value);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
-                    cmd.Parameters.AddWithValue("@ID", _ID);
+                    cmd.Parameters.AddWithValue("@ID", _ID); // Ensure _ID is assigned correctly
                     cmd.Parameters.AddWithValue("@id_num", id_num.Text);
-                    cmd.Parameters.AddWithValue("@image", savedImagePath); // Add image path parameter
+                    cmd.Parameters.AddWithValue("@image", savedImagePath); // Ensure savedImagePath is set correctly
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully updated!", "Update Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clear();
-                    f.LoadRecord();
-                    this.Dispose();
+                    // Reset form fields, refresh parent form, and dispose current form
+                    clear();    // Reset form fields
+                    f.LoadRecord(); // Refresh parent form or data grid
+                    this.Dispose(); // Dispose the current form if needed
                 }
             }
             catch (Exception ex)
@@ -191,7 +193,6 @@ namespace BARANGAY
             clear();
             this.Close();
         }
-
 
         private void btn_captureImg_Click(object sender, EventArgs e)
         {
@@ -247,6 +248,7 @@ namespace BARANGAY
                 MessageBox.Show($"An error occurred during image save: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void LoadImage(string imagePath)
         {
             try
@@ -280,6 +282,7 @@ namespace BARANGAY
                 _capture.Dispose(); // Release camera capture resources
             }
         }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -306,5 +309,86 @@ namespace BARANGAY
                 MessageBox.Show($"An error occurred while uploading the signature: {ex.Message}", "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void id_num_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            PrintToPdf(txtName.Text, txtAddress.Text, txtContactNumber.Text);
+        }
+
+        private void PrintToPdf(string name, string address, string Contact_Number)
+        {
+            try
+            {
+                // Use an absolute path or ensure the relative path is correct
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string outputPath = Path.Combine(desktopPath, @"FilledTemplate.pdf");
+                // Ensure the output directory exists
+                string outputDir = Path.GetDirectoryName(outputPath);
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
+
+                if (!File.Exists(templatePath))
+                {
+                    MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (PdfReader reader = new PdfReader(templatePath))
+                using (PdfWriter writer = new PdfWriter(outputPath))
+                using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                {
+                    PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
+                    IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+
+                    // Case-insensitive field lookup
+                    string nameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "namefield");
+                    string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield");
+                    string contactFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "contactnumberfield");
+
+                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(contactFieldName))
+                    {
+                        MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Use more specific field setting methods if available
+                    fields[nameFieldName].SetValue(name);
+                    fields[addressFieldName].SetValue(address);
+                    fields[contactFieldName].SetValue(Contact_Number);
+
+                    form.FlattenFields();
+                }
+
+                MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (PdfException pdfEx)
+            {
+                // Log the error for debugging
+                // Provide more specific error messages based on the exception
+                MessageBox.Show($"A PDF error occurred while filling the PDF: {pdfEx.Message}", "PDF Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (IOException ioEx)
+            {
+                // Log the error for debugging
+                // Provide more specific error messages based on the exception
+                MessageBox.Show($"An IO error occurred while filling the PDF: {ioEx.Message}", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Log the error for debugging
+                // Provide more specific error messages based on the exception
+                MessageBox.Show($"An unknown error occurred while filling the PDF: {ex.Message}", "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }
