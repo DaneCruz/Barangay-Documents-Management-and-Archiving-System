@@ -106,7 +106,7 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE bbcf SET Name=@Name, birth_date=@birth_date, address=@address, Contact_Number=@Contact_Number, date_of_issuance=@date_of_issuance, place_of_issuance=@place_of_issuance, administered_by=@administered_by WHERE id = @ID";
+                    string sql = "UPDATE bbcf SET Name=@Name, address=@address, business_name=@business_name, business_type=@business_type, day_of_issuance=@day_of_issuance, monthyear_of_issuance=@monthyear_of_issuance, or_date=@or_date, amount=@amount,  administered_by=@administered_by WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Name", txtOwnersName.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -141,16 +141,16 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtOwnersName.Text, txtAddress.Text);
+            PrintToPdf(txtOwnersName.Text, txtAddress.Text, txtBusinessName.Text, txtBusinessType.Text, txtDay.Text, txtMonthYear.Text, dtRegisteredOn.Text, txtAmount.Text);
         }
-        private void PrintToPdf(string name, string address)
+        private void PrintToPdf(string name, string address, string businessname, string businesstype, string day, string monthyear, string ordate, string amount)
         {
             try
             {
                 // Use an absolute path or ensure the relative path is correct
                 string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string outputPath = Path.Combine(desktopPath, @"Certificate of Residency Template.pdf");
+                string outputPath = Path.Combine(desktopPath, @"Barangay Business Clearance Template.pdf");
                 // Ensure the output directory exists
                 string outputDir = Path.GetDirectoryName(outputPath);
                 if (!Directory.Exists(outputDir))
@@ -172,12 +172,17 @@ namespace BARANGAY
                     IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
                     // Case-insensitive field lookup
-                    string nameFieldName = fields.Keys.FirstOrDefault(k => k == "NameField");
+                    string nameFieldName = fields.Keys.FirstOrDefault(k => k == "OwnersNameField");
                     string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
-                    string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k == "Birth_dateField");
-                    string statusFieldName = fields.Keys.FirstOrDefault(k => k == "StatusField");
+                    string businessnameFieldName = fields.Keys.FirstOrDefault(k => k == "BusinessNameField");
+                    string businesstypeFieldName = fields.Keys.FirstOrDefault(k => k == "BusinessTypeField");
+                    string dayFieldName = fields.Keys.FirstOrDefault(k => k == "DayField");
+                    string monthyearFieldName = fields.Keys.FirstOrDefault(k => k == "MonthYearField");
+                    string ordateFieldName = fields.Keys.FirstOrDefault(k => k == "OrDateField");
+                    string amountFieldName = fields.Keys.FirstOrDefault(k => k == "AmountField");
 
-                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName))
+
+                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(businessnameFieldName) || string.IsNullOrEmpty(businesstypeFieldName) || string.IsNullOrEmpty(dayFieldName) || string.IsNullOrEmpty(monthyearFieldName) || string.IsNullOrEmpty(ordateFieldName) || string.IsNullOrEmpty(amountFieldName))
                     {
                         MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -186,6 +191,12 @@ namespace BARANGAY
                     // Use more specific field setting methods if available
                     fields[nameFieldName].SetValue(name);
                     fields[addressFieldName].SetValue(address);
+                    fields[businessnameFieldName].SetValue(businessname);
+                    fields[businesstypeFieldName].SetValue(businesstype);
+                    fields[dayFieldName].SetValue(day);
+                    fields[monthyearFieldName].SetValue(monthyear);
+                    fields[ordateFieldName].SetValue(ordate);
+                    fields[amountFieldName].SetValue(amount);
 
                     form.FlattenFields();
                 }
