@@ -53,6 +53,12 @@
             this.btn_print = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_captureImg = new System.Windows.Forms.Button();
+            this.dtIssued = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtValidUntil = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAdministeredBy = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +77,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(262, 435);
+            this.btnCancel.Location = new System.Drawing.Point(262, 481);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(107, 29);
             this.btnCancel.TabIndex = 53;
@@ -83,7 +89,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Aqua;
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(149, 435);
+            this.btnUpdate.Location = new System.Drawing.Point(149, 481);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(107, 29);
             this.btnUpdate.TabIndex = 52;
@@ -95,7 +101,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Aqua;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(36, 435);
+            this.btnSave.Location = new System.Drawing.Point(36, 481);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 29);
             this.btnSave.TabIndex = 51;
@@ -277,7 +283,7 @@
             // 
             this.btn_print.BackColor = System.Drawing.Color.LimeGreen;
             this.btn_print.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_print.Location = new System.Drawing.Point(703, 428);
+            this.btn_print.Location = new System.Drawing.Point(706, 468);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(133, 43);
             this.btn_print.TabIndex = 60;
@@ -305,12 +311,70 @@
             this.btn_captureImg.UseVisualStyleBackColor = false;
             this.btn_captureImg.Click += new System.EventHandler(this.btn_captureImg_Click);
             // 
+            // dtIssued
+            // 
+            this.dtIssued.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtIssued.Location = new System.Drawing.Point(10, 351);
+            this.dtIssued.Name = "dtIssued";
+            this.dtIssued.Size = new System.Drawing.Size(383, 23);
+            this.dtIssued.TabIndex = 66;
+            this.dtIssued.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtIssued_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 331);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 17);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "ISSUED:";
+            // 
+            // dtValidUntil
+            // 
+            this.dtValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtValidUntil.Location = new System.Drawing.Point(12, 398);
+            this.dtValidUntil.Name = "dtValidUntil";
+            this.dtValidUntil.Size = new System.Drawing.Size(383, 23);
+            this.dtValidUntil.TabIndex = 68;
+            this.dtValidUntil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtIssued_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 378);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 17);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "VALID UNTIL:";
+            // 
+            // txtAdministeredBy
+            // 
+            this.txtAdministeredBy.Location = new System.Drawing.Point(10, 442);
+            this.txtAdministeredBy.Name = "txtAdministeredBy";
+            this.txtAdministeredBy.Size = new System.Drawing.Size(383, 23);
+            this.txtAdministeredBy.TabIndex = 70;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 422);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 17);
+            this.label5.TabIndex = 69;
+            this.label5.Text = "ADMINISTERED BY:";
+            // 
             // FrmAccountsBRIC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1147, 481);
+            this.ClientSize = new System.Drawing.Size(1147, 523);
             this.ControlBox = false;
+            this.Controls.Add(this.txtAdministeredBy);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dtValidUntil);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtIssued);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox3);
@@ -374,5 +438,11 @@
         public System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Button btn_captureImg;
+        public System.Windows.Forms.DateTimePicker dtIssued;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.DateTimePicker dtValidUntil;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtAdministeredBy;
+        private System.Windows.Forms.Label label5;
     }
 }

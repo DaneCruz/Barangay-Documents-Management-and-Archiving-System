@@ -40,11 +40,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -147,11 +149,13 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column5,
             this.Column3,
             this.Column4,
-            this.Column5,
             this.Column8,
             this.Column9,
+            this.Column6,
+            this.Column7,
             this.Column10,
             this.btnEdit1,
             this.btnDelete1});
@@ -181,27 +185,13 @@
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
-            this.Column1.Width = 46;
+            this.Column1.Width = 44;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Name";
+            this.Column2.HeaderText = "Owners Name";
             this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.HeaderText = "Birth Date";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 94;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.HeaderText = "Status";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 69;
             // 
             // Column5
             // 
@@ -210,26 +200,54 @@
             this.Column5.Name = "Column5";
             this.Column5.Width = 80;
             // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.HeaderText = "Business Name";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 124;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column4.HeaderText = "Business Type";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 112;
+            // 
             // Column8
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column8.HeaderText = "Contact Number";
+            this.Column8.HeaderText = "Day of Issuance";
             this.Column8.Name = "Column8";
-            this.Column8.Width = 142;
+            this.Column8.Width = 131;
             // 
             // Column9
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column9.HeaderText = "Date of Issuance";
+            this.Column9.HeaderText = "Month & Year of Issuance";
             this.Column9.Name = "Column9";
-            this.Column9.Width = 138;
+            this.Column9.Width = 193;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column6.HeaderText = "OR Date";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 86;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column7.HeaderText = "Amount";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 83;
             // 
             // Column10
             // 
             this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column10.HeaderText = "Place of Issuance";
+            this.Column10.HeaderText = "Administered by";
             this.Column10.Name = "Column10";
-            this.Column10.Width = 142;
+            this.Column10.Width = 134;
             // 
             // btnEdit1
             // 
@@ -281,16 +299,18 @@
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete1;
-        private System.Windows.Forms.Button button1;
     }
 }

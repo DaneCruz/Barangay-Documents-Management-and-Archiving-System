@@ -51,13 +51,15 @@ namespace BARANGAY
                     FrmAccountsBBCF f = new FrmAccountsBBCF(this);
                     f.btnSave.Enabled = false;
                     f._ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString());
-                    f.txtPlace.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    f.txtOwnersName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    f.txtAmount.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    f.txtBusinessName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    f.txtBusinessType.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    f.txtDay.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    f.txtMonthYear.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString());
+                    f.txtAdministeredBy.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
                     f.ShowDialog();
                 }
                 else if (colName == "btnDelete1")
@@ -109,7 +111,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["date_of_issuance"].ToString()).ToShortDateString(), dr["place_of_issuance"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), dr["address"].ToString(), dr["business_name"].ToString(), dr["business_type"].ToString(), dr["day_of_issuance"].ToString(), dr["monthyear_of_issuance"].ToString(), DateTime.Parse(dr["or_date"].ToString()).ToShortDateString(), dr["amount"].ToString(), dr["administered_by"].ToString());
                 }
                 dr.Close();
                 conn.Close();

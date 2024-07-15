@@ -46,6 +46,9 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Issued = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valid_Until = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -153,6 +156,9 @@
             this.Column5,
             this.Column8,
             this.Column11,
+            this.Issued,
+            this.Valid_Until,
+            this.Column6,
             this.btnEdit1,
             this.btnDelete1});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -189,7 +195,7 @@
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
-            this.Column1.Width = 46;
+            this.Column1.Width = 44;
             // 
             // Column2
             // 
@@ -231,6 +237,27 @@
             this.Column11.HeaderText = "Condition";
             this.Column11.Name = "Column11";
             this.Column11.Width = 96;
+            // 
+            // Issued
+            // 
+            this.Issued.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Issued.HeaderText = "Issued";
+            this.Issued.Name = "Issued";
+            this.Issued.Width = 69;
+            // 
+            // Valid_Until
+            // 
+            this.Valid_Until.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Valid_Until.HeaderText = "Valid Until";
+            this.Valid_Until.Name = "Valid_Until";
+            this.Valid_Until.Width = 95;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column6.HeaderText = "Administered by";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 134;
             // 
             // btnEdit1
             // 
@@ -288,6 +315,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Issued;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valid_Until;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete1;
     }

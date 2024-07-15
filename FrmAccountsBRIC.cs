@@ -90,8 +90,8 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO residency (Name, birth_date, status, address, Contact_Number, Condition) " +
-                                 "VALUES (@Name, @birth_date, @status, @address, @Contact_Number, @Condition)";
+                    string sql = "INSERT INTO residency (Name, birth_date, status, address, Contact_Number, Condition, issued, valid_until,administered_by) " +
+                                 "VALUES (@Name, @birth_date, @status, @address, @Contact_Number, @Condition, @issued, @valid_until, @administered_by)";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
@@ -99,6 +99,9 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
                     cmd.Parameters.AddWithValue("@Contact_Number", txtContactNumber.Text);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
+                    cmd.Parameters.AddWithValue("issued", dtIssued.Value);
+                    cmd.Parameters.AddWithValue("valid_until", dtValidUntil.Value);
+                    cmd.Parameters.AddWithValue("@administered_by", txtAdministeredBy.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully saved!", "Save Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -121,6 +124,9 @@ namespace BARANGAY
             cboStatus.SelectedIndex = 0;
             cboCondition.SelectedIndex = 0;
             dtBirthDate.Value = DateTime.Now;
+            dtIssued.Value = DateTime.Now;
+            dtValidUntil.Value = DateTime.Now;
+            txtAdministeredBy.Clear();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             txtName.Focus();
@@ -144,7 +150,7 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE residency SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, Contact_Number=@Contact_Number, Condition=@Condition WHERE id = @ID";
+                    string sql = "UPDATE residency SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, Contact_Number=@Contact_Number, Condition=@Condition, issued=@issued, valid_until=@valid_until, administered_by=@administered_by WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
@@ -152,6 +158,9 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
                     cmd.Parameters.AddWithValue("@Contact_Number", txtContactNumber.Text);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
+                    cmd.Parameters.AddWithValue("@issued", dtIssued.Value);
+                    cmd.Parameters.AddWithValue("@valid_until", dtValidUntil.Value);
+                    cmd.Parameters.AddWithValue("@administered_by", txtAdministeredBy.Text);
                     cmd.Parameters.AddWithValue("@ID", _ID);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -269,9 +278,9 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text);
+            PrintToPdf(txtName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text);
         }
-        private void PrintToPdf(string name, string address, string birth_date, string status)
+        private void PrintToPdf(string name, string address, string birth_date, string status, string issued, string issued1, string ValidUntil)
         {
             try
             {
@@ -304,8 +313,11 @@ namespace BARANGAY
                     string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
                     string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k == "Birth_dateField");
                     string statusFieldName = fields.Keys.FirstOrDefault(k => k == "StatusField");
+                    string issuedFieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField");
+                    string issued1FieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField1");
+                    string validuntilFieldName = fields.Keys.FirstOrDefault(k => k == "ValidUntilField");
 
-                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName))
+                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName))
                     {
                         MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -316,6 +328,9 @@ namespace BARANGAY
                     fields[addressFieldName].SetValue(address);
                     fields[birth_dateFieldName].SetValue(birth_date);
                     fields[statusFieldName].SetValue(status);
+                    fields[issuedFieldName].SetValue(issued);
+                    fields[issued1FieldName].SetValue(issued1);
+                    fields[validuntilFieldName].SetValue(ValidUntil);
 
                     form.FlattenFields();
                 }
@@ -346,6 +361,11 @@ namespace BARANGAY
         {
             clear();
             this.Close();
+        }
+
+        private void dtIssued_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
