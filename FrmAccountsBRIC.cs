@@ -90,10 +90,12 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO residency (Name, birth_date, status, address, Contact_Number, Condition, issued, valid_until,administered_by) " +
-                                 "VALUES (@Name, @birth_date, @status, @address, @Contact_Number, @Condition, @issued, @valid_until, @administered_by)";
+                    string sql = "INSERT INTO residency (last_name, first_name, middle_name, birth_date, status, address, Contact_Number, Condition, issued, valid_until,administered_by) " +
+                                 "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @Contact_Number, @Condition, @issued, @valid_until, @administered_by)";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
+                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -118,7 +120,9 @@ namespace BARANGAY
 
         public void clear()
         {
-            txtName.Clear();
+            txtLastName.Clear();
+            txtFirstName.Clear();
+            txtMiddleName.Clear();
             txtAddress.Clear();
             txtContactNumber.Clear();
             cboStatus.SelectedIndex = 0;
@@ -129,7 +133,7 @@ namespace BARANGAY
             txtAdministeredBy.Clear();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
-            txtName.Focus();
+            txtLastName.Focus();
         }
 
         private void cboCondition_KeyPress(object sender, KeyPressEventArgs e)
@@ -150,9 +154,11 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE residency SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, Contact_Number=@Contact_Number, Condition=@Condition, issued=@issued, valid_until=@valid_until, administered_by=@administered_by WHERE id = @ID";
+                    string sql = "UPDATE residency SET last_name=@last_name, first_name=@first_name, middle_name=@middle_name, birth_date=@birth_date, status=@status, address=@address, Contact_Number=@Contact_Number, Condition=@Condition, issued=@issued, valid_until=@valid_until, administered_by=@administered_by WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
+                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -271,9 +277,9 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text);
+            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtFirstName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text);
         }
-        private void PrintToPdf(string name, string address, string birth_date, string status, string issued, string issued1, string ValidUntil)
+        private void PrintToPdf(string last_name, string first_name, string middle_name, string address, string birth_date, string status, string issued, string issued1, string ValidUntil)
         {
             try
             {
@@ -302,7 +308,9 @@ namespace BARANGAY
                     IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
                     // Case-insensitive field lookup
-                    string nameFieldName = fields.Keys.FirstOrDefault(k => k == "NameField");
+                    string lastnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "lastNameField");
+                    string firstnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "firstNameField");
+                    string middlenameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "middleNameField");
                     string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
                     string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k == "Birth_dateField");
                     string statusFieldName = fields.Keys.FirstOrDefault(k => k == "StatusField");
@@ -310,14 +318,16 @@ namespace BARANGAY
                     string issued1FieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField1");
                     string validuntilFieldName = fields.Keys.FirstOrDefault(k => k == "ValidUntilField");
 
-                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName))
+                    if (string.IsNullOrEmpty(lastnameFieldName) || (string.IsNullOrEmpty(firstnameFieldName) || (string.IsNullOrEmpty(middlenameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName))))
                     {
                         MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
                     // Use more specific field setting methods if available
-                    fields[nameFieldName].SetValue(name);
+                    fields[lastnameFieldName].SetValue(last_name);
+                    fields[firstnameFieldName].SetValue(first_name);
+                    fields[middlenameFieldName].SetValue(middle_name);
                     fields[addressFieldName].SetValue(address);
                     fields[birth_dateFieldName].SetValue(birth_date);
                     fields[statusFieldName].SetValue(status);
