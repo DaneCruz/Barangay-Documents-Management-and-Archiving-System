@@ -277,14 +277,14 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtFirstName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text);
+            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text);
         }
         private void PrintToPdf(string last_name, string first_name, string middle_name, string address, string birth_date, string status, string issued, string issued1, string ValidUntil)
         {
             try
             {
                 // Use an absolute path or ensure the relative path is correct
-                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"BRIC Template.pdf");
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 string outputPath = Path.Combine(desktopPath, @"Certificate of Residency Template.pdf");
                 // Ensure the output directory exists
@@ -308,9 +308,9 @@ namespace BARANGAY
                     IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
                     // Case-insensitive field lookup
-                    string lastnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "lastNameField");
-                    string firstnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "firstNameField");
-                    string middlenameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "middleNameField");
+                    string lastnameFieldName = fields.Keys.FirstOrDefault(k => k == "lastNameField");
+                    string firstnameFieldName = fields.Keys.FirstOrDefault(k => k == "firstNameField");
+                    string middlenameFieldName = fields.Keys.FirstOrDefault(k => k == "middleNameField");
                     string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
                     string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k == "Birth_dateField");
                     string statusFieldName = fields.Keys.FirstOrDefault(k => k == "StatusField");
@@ -318,7 +318,7 @@ namespace BARANGAY
                     string issued1FieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField1");
                     string validuntilFieldName = fields.Keys.FirstOrDefault(k => k == "ValidUntilField");
 
-                    if (string.IsNullOrEmpty(lastnameFieldName) || (string.IsNullOrEmpty(firstnameFieldName) || (string.IsNullOrEmpty(middlenameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName))))
+                    if (string.IsNullOrEmpty(lastnameFieldName) || (string.IsNullOrEmpty(firstnameFieldName) || (string.IsNullOrEmpty(middlenameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(issuedFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName))))
                     {
                         MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

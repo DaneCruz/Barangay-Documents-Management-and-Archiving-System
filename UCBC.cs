@@ -62,6 +62,10 @@ namespace BARANGAY
                         f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
                         f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                         f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+                        f.txtDay.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                        f.txtMonthYear.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                        f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
+                        f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
                         f.ShowDialog();
                     }
                     else if (colName == "btnDelete1")
@@ -119,7 +123,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString(), dr["day_of_issuance"].ToString(), dr["monthyear_of_issuance"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()));
                 }
                 dr.Close();
                 conn.Close();
