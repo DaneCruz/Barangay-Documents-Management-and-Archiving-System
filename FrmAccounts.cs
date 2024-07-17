@@ -360,30 +360,33 @@ namespace BARANGAY
             {
                 // Use an absolute path or ensure the relative path is correct
                 string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"ID Template.pdf");
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string outputPath = Path.Combine(desktopPath, @"ID Template.pdf");
-                // Ensure the output directory exists
-                string outputDir = Path.GetDirectoryName(outputPath);
-                if (!Directory.Exists(outputDir))
-                {
-                    Directory.CreateDirectory(outputDir);
-                }
 
+                // Ensure the output directory exists
                 if (!File.Exists(templatePath))
                 {
                     MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                using (PdfReader reader = new PdfReader(templatePath))
-                using (PdfWriter writer = new PdfWriter(outputPath))
-                using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                // Show SaveFileDialog to allow user to specify output path and name
+                SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
-                    IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+                    Filter = "PDF Files (*.pdf)|*.pdf",
+                    Title = "Save PDF File"
+                };
 
-                    // Case-insensitive field lookup
-                    string lastnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "lastnamefield");
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string outputPath = saveFileDialog.FileName;
+
+                    using (PdfReader reader = new PdfReader(templatePath))
+                    using (PdfWriter writer = new PdfWriter(outputPath))
+                    using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                    {
+                        PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
+                        IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+
+                        // Case-insensitive field lookup
+                        string lastnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "lastnamefield");
                     string firstnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "firstnamefield");
                     string middlenameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "middlenamefield");
                     string birthdateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "birthdatefield");
@@ -434,24 +437,30 @@ namespace BARANGAY
                     form.FlattenFields();
                 }
 
-                MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Inform the user of successful PDF creation
+                    MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Open the PDF in print mode
+                    System.Diagnostics.Process printProcess = new System.Diagnostics.Process();
+                    printProcess.StartInfo = new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = outputPath,
+                        UseShellExecute = true,
+                        Verb = "print"
+                    };
+                    printProcess.Start();
+                }
             }
             catch (PdfException pdfEx)
             {
-                // Log the error for debugging
-                // Provide more specific error messages based on the exception
                 MessageBox.Show($"A PDF error occurred while filling the PDF: {pdfEx.Message}", "PDF Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (IOException ioEx)
             {
-                // Log the error for debugging
-                // Provide more specific error messages based on the exception
                 MessageBox.Show($"An IO error occurred while filling the PDF: {ioEx.Message}", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Log the error for debugging
-                // Provide more specific error messages based on the exception
                 MessageBox.Show($"An unknown error occurred while filling the PDF: {ex.Message}", "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

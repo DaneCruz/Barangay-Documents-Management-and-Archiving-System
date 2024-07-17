@@ -17,7 +17,7 @@ namespace BARANGAY
     public partial class UCBC : Form
     {
         SQLiteConnection conn;
-        SQLiteCommand cmdUCBC;
+        SQLiteCommand cmd;
         SQLiteDataReader dr;
         public string _ID;
 
@@ -56,16 +56,6 @@ namespace BARANGAY
                     {
                         FrmAccountsBC1 f = new FrmAccountsBC1(this);
                         f.btnSave.Enabled = false;
-<<<<<<< HEAD
-                        f._ID = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                        f.txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells["last_name"].Value.ToString();
-                        f.txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells["first_name"].Value.ToString();
-                        f.txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells["middle_name"].Value.ToString();
-                        f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
-                        f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells["contact_number"].Value.ToString();
-                        f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString();
-                        f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["birth_date"].Value.ToString());
-=======
                         f._ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                         f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                         f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -76,7 +66,6 @@ namespace BARANGAY
                         f.txtMonthYear.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
                         f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
                         f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
                         f.ShowDialog();
                     }
                     else if (colName == "btnDelete1")
@@ -84,9 +73,9 @@ namespace BARANGAY
                         if (MessageBox.Show("Do you want to delete this?", clsvar._title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             conn.Open();
-                            cmdUCBC = new SQLiteCommand("DELETE FROM barangay_clearance WHERE id = @id", conn);
-                            cmdUCBC.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                            cmdUCBC.ExecuteNonQuery();
+                            cmd = new SQLiteCommand("DELETE FROM barangay_clearance WHERE id = @id", conn);
+                            cmd.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                            cmd.ExecuteNonQuery();
                             conn.Close();
                             MessageBox.Show("Record has been successfully deleted", clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadRecord();
@@ -130,15 +119,11 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmdUCBC = new SQLiteCommand("SELECT * FROM barangay_clearance", conn);
-                dr = cmdUCBC.ExecuteReader();
+                cmd = new SQLiteCommand("SELECT * FROM barangay_clearance", conn);
+                dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-<<<<<<< HEAD
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString());
-=======
                     dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString(), dr["day_of_issuance"].ToString(), dr["monthyear_of_issuance"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()));
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
                 }
                 dr.Close();
                 conn.Close();

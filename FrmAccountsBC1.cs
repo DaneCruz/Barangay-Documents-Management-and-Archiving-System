@@ -13,6 +13,7 @@ using iText.Forms;
 using iText.Kernel.Pdf;
 using System.IO;
 using iText.Kernel.Exceptions;
+using System.Xml.Linq;
 
 namespace BARANGAY
 {
@@ -51,17 +52,10 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-<<<<<<< HEAD
-                    string sql = "INSERT INTO barangay_clearance (last_name, first_name, middle_name, birth_date, status, address, purpose) " +
-                                 "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @purpose)";
-=======
                     string sql = "INSERT INTO barangay_clearance (Name, birth_date, status, address, purpose,day_of_issuance, monthyear_of_issuance, Registered_On, Expires_On) " +
                                  "VALUES (@Name, @birth_date, @status, @address, @purpose, @day_of_issuance, @monthyear_of_issuance, @Registered_On, @Expires_On)";
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
-                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
-                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
+                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -86,7 +80,7 @@ namespace BARANGAY
 
         public void clear()
         {
-            txtLastName.Clear();
+            txtName.Clear();
             txtAddress.Clear();
             txtContactNumber.Clear();
             cboStatus.SelectedIndex = -1;
@@ -97,7 +91,7 @@ namespace BARANGAY
             dtExpiresOn.Value = DateTime.Now;
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
-            txtLastName.Focus();
+            txtName.Focus();
         }
 
         private void cboStatus_KeyPress(object sender, KeyPressEventArgs e)
@@ -118,15 +112,9 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-<<<<<<< HEAD
-                    string sql = "UPDATE barangay_clearance SET last_name=@last_name, first_name=@first_name, middle_name=@middle_name, birth_date=@birth_date, status=@status, address=@address, purpose=@purpose WHERE id = @ID";
-=======
                     string sql = "UPDATE barangay_clearance SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, purpose=@purpose, day_of_issuance=@day_of_issuance, monthyear_of_issuance=@monthyear_of_issuance, Registered_On=@Registered_On, Expires_On=@Expires_On WHERE id = @ID";
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
-                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
-                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
+                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);

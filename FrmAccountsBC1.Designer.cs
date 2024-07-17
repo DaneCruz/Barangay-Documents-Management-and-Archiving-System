@@ -40,16 +40,10 @@
             this.txtContactNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-<<<<<<< HEAD
-            this.txtMiddleName = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-=======
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtMonthYear = new System.Windows.Forms.TextBox();
@@ -60,7 +54,6 @@
             this.dtRegisteredOn = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.dtExpiresOn = new System.Windows.Forms.DateTimePicker();
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,6 +177,22 @@
             this.txtAddress.Size = new System.Drawing.Size(383, 23);
             this.txtAddress.TabIndex = 59;
             // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(10, 83);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(383, 23);
+            this.txtName.TabIndex = 58;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "NAME:";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -204,55 +213,6 @@
             this.panel2.Size = new System.Drawing.Size(403, 42);
             this.panel2.TabIndex = 56;
             // 
-<<<<<<< HEAD
-            // txtMiddleName
-            // 
-            this.txtMiddleName.Location = new System.Drawing.Point(279, 79);
-            this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Size = new System.Drawing.Size(114, 23);
-            this.txtMiddleName.TabIndex = 77;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(278, 59);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 17);
-            this.label16.TabIndex = 76;
-            this.label16.Text = "MIDDLE NAME";
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Location = new System.Drawing.Point(147, 79);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(126, 23);
-            this.txtFirstName.TabIndex = 75;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(146, 59);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(81, 17);
-            this.label15.TabIndex = 74;
-            this.label15.Text = "FIRST NAME:";
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Location = new System.Drawing.Point(10, 79);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(126, 23);
-            this.txtLastName.TabIndex = 73;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
-            this.label2.TabIndex = 72;
-            this.label2.Text = "LAST NAME:";
-=======
             // label3
             // 
             this.label3.AutoSize = true;
@@ -339,7 +299,6 @@
             this.dtExpiresOn.Name = "dtExpiresOn";
             this.dtExpiresOn.Size = new System.Drawing.Size(381, 23);
             this.dtExpiresOn.TabIndex = 81;
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
             // 
             // FrmAccountsBC1
             // 
@@ -347,14 +306,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 617);
             this.ControlBox = false;
-<<<<<<< HEAD
-            this.Controls.Add(this.txtMiddleName);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.txtLastName);
-            this.Controls.Add(this.label2);
-=======
             this.Controls.Add(this.dtExpiresOn);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dtRegisteredOn);
@@ -365,7 +316,6 @@
             this.Controls.Add(this.txtMonthYear);
             this.Controls.Add(this.txtDay);
             this.Controls.Add(this.label5);
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -376,6 +326,8 @@
             this.Controls.Add(this.txtContactNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -404,16 +356,10 @@
         public System.Windows.Forms.TextBox txtContactNumber;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
-<<<<<<< HEAD
-        public System.Windows.Forms.TextBox txtMiddleName;
-        private System.Windows.Forms.Label label16;
-        public System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.Label label15;
-        public System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.Label label2;
-=======
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox txtMonthYear;
@@ -424,6 +370,5 @@
         public System.Windows.Forms.DateTimePicker dtRegisteredOn;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.DateTimePicker dtExpiresOn;
->>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
     }
 }
