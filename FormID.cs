@@ -45,17 +45,20 @@ namespace BARANGAY
                 {
                     FrmAccounts f = new FrmAccounts(this);
                     f.btnSave.Enabled = false;
-                    f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    f.txtGuardian.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    f.txtRelationship.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
-                    f.id_num.Text = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
-                    f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
-                    f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
+                    f._ID = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                    f.txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells["last_name"].Value.ToString();
+                    f.txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells["first_name"].Value.ToString();
+                    f.txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells["middle_name"].Value.ToString();
+                    f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
+                    f.txtGuardian.Text = dataGridView1.Rows[e.RowIndex].Cells["guardian"].Value.ToString();
+                    f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells["contact_number"].Value.ToString();
+                    f.txtRelationship.Text = dataGridView1.Rows[e.RowIndex].Cells["relationship"].Value.ToString();
+                    f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString();
+                    f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells["condition"].Value.ToString();
+                    f.id_num.Text = dataGridView1.Rows[e.RowIndex].Cells["id_num"].Value.ToString();
+                    f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["birth_date"].Value.ToString());
+                    f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["register"].Value.ToString());
+                    f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["expire"].Value.ToString());
 
                     // Pass image path to FrmAccounts
                     f.LoadImage(dataGridView1.Rows[e.RowIndex].Cells["image"].Value.ToString());
@@ -107,10 +110,10 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SQLiteCommand("SELECT id, Name, birth_date, Status, Address, Guardian, Relationship, Contact_Number, Registered_On, Expires_On, Condition, id_num, image FROM id_card", conn); dr = cmd.ExecuteReader();
+                cmd = new SQLiteCommand("SELECT * FROM id_card", conn); dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString(), dr["id_num"].ToString(), dr["image"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString(), dr["id_num"].ToString(), dr["image"].ToString());
                 }
                 dr.Close();
                 conn.Close();
@@ -120,6 +123,32 @@ namespace BARANGAY
             {
                 conn.Close();
                 MessageBox.Show(ex.Message, clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+
+        private void FilterRecords(string searchTerm)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                bool isVisible = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        isVisible = true;
+                        break;
+                    }
+                }
+                row.Visible = isVisible;
             }
         }
     }

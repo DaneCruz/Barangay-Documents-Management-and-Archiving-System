@@ -119,7 +119,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString());
                 }
                 dr.Close();
                 conn.Close();
@@ -129,6 +129,32 @@ namespace BARANGAY
             {
                 conn.Close();
                 MessageBox.Show(ex.Message, clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+
+        private void FilterRecords(string searchTerm)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                bool isVisible = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        isVisible = true;
+                        break;
+                    }
+                }
+                row.Visible = isVisible;
             }
         }
     }

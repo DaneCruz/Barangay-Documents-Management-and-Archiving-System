@@ -101,10 +101,11 @@ namespace BARANGAY
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
 
                 // Parameterized query for registration
-                string registerQuery = "INSERT INTO login (username, password) VALUES (@username, @hashedPassword)";
+                string registerQuery = "INSERT INTO login (username, password, special_key) VALUES (@username, @hashedPassword, @special_key)";
                 using (SQLiteCommand cmd = new SQLiteCommand(registerQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                    cmd.Parameters.AddWithValue("@special_key", txtSpecialKey.Text);
                     cmd.Parameters.AddWithValue("@hashedPassword", hashedPassword);
                     cmd.ExecuteNonQuery();
                 }

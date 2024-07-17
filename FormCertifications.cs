@@ -123,5 +123,31 @@ namespace BARANGAY
                 MessageBox.Show(ex.Message, clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+
+        private void FilterRecords(string searchTerm)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                bool isVisible = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        isVisible = true;
+                        break;
+                    }
+                }
+                row.Visible = isVisible;
+            }
+        }
     }
 }

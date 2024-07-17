@@ -34,7 +34,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.txtContactNumber = new System.Windows.Forms.TextBox();
+            this.txtOwnerName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -42,6 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtBusinessType = new System.Windows.Forms.TextBox();
             this.Lable1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.Aqua;
+            this.btnUpdate.BackColor = System.Drawing.Color.Tomato;
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(144, 299);
             this.btnUpdate.Name = "btnUpdate";
@@ -80,7 +81,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.Aqua;
+            this.btnSave.BackColor = System.Drawing.Color.Tomato;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(31, 299);
             this.btnSave.Name = "btnSave";
@@ -111,12 +112,12 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txtContactNumber
+            // txtOwnerName
             // 
-            this.txtContactNumber.Location = new System.Drawing.Point(10, 249);
-            this.txtContactNumber.Name = "txtContactNumber";
-            this.txtContactNumber.Size = new System.Drawing.Size(383, 23);
-            this.txtContactNumber.TabIndex = 77;
+            this.txtOwnerName.Location = new System.Drawing.Point(10, 249);
+            this.txtOwnerName.Name = "txtOwnerName";
+            this.txtOwnerName.Size = new System.Drawing.Size(383, 23);
+            this.txtOwnerName.TabIndex = 77;
             // 
             // label6
             // 
@@ -177,19 +178,32 @@
             this.Lable1.TabIndex = 86;
             this.Lable1.Text = "BUSINES TYPE:";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(144, 340);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 31);
+            this.button1.TabIndex = 88;
+            this.button1.Text = "PRINT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmAccountsBP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 365);
+            this.ClientSize = new System.Drawing.Size(403, 383);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBusinessType);
             this.Controls.Add(this.Lable1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtContactNumber);
+            this.Controls.Add(this.txtOwnerName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtName);
@@ -216,7 +230,7 @@
         public System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        public System.Windows.Forms.TextBox txtContactNumber;
+        public System.Windows.Forms.TextBox txtOwnerName;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txtAddress;
         public System.Windows.Forms.TextBox txtName;
@@ -224,5 +238,6 @@
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.TextBox txtBusinessType;
         private System.Windows.Forms.Label Lable1;
+        public System.Windows.Forms.Button button1;
     }
 }

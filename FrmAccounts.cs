@@ -91,10 +91,12 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO id_card (Name, birth_date, status, address, Guardian, Relationship, Contact_Number, Registered_On, Expires_On, Condition, id_num, image) " +
-                                "VALUES (@Name, @birth_date, @status, @address, @Guardian, @Relationship, @Contact_Number, @Registered_On, @Expires_On, @Condition, @id_num, @image)"; // Included id_num and image in column list
+                    string sql = "INSERT INTO id_card (last_name, first_name, middle_name, birth_date, status, address, Guardian, Relationship, Contact_Number, Registered_On, Expires_On, Condition, id_num, image) " +
+                                "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @Guardian, @Relationship, @Contact_Number, @Registered_On, @Expires_On, @Condition, @id_num, @image)"; // Included id_num and image in column list
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
+                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -122,7 +124,7 @@ namespace BARANGAY
 
         public void clear()
         {
-            txtName.Clear();
+            txtLastName.Clear();
             txtAddress.Clear();
             txtGuardian.Clear();
             txtContactNumber.Clear();
@@ -135,7 +137,7 @@ namespace BARANGAY
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             id_num.Clear();
-            txtName.Focus();
+            txtLastName.Focus();
         }
 
         private void cboCondition_KeyPress(object sender, KeyPressEventArgs e)
@@ -150,9 +152,33 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE id_card SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, Guardian=@Guardian, Relationship=@Relationship, Contact_Number=@Contact_Number, Registered_On=@Registered_On, Expires_On=@Expires_On, Condition=@Condition, id_num=@id_num, image=@image WHERE id = @ID";
+
+                    // Verify the existence of the record before attempting to update
+                    string checkSql = "SELECT COUNT(*) FROM id_card WHERE id = @id";
+                    cmd = new SQLiteCommand(checkSql, conn);
+                    cmd.Parameters.AddWithValue("@id", _ID);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        MessageBox.Show("Record not found. Please check the ID and try again.", "Record Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return;
+                    }
+
+                    string sql = "UPDATE id_card SET " +
+                                 "last_name=@last_name, first_name=@first_name, middle_name=@middle_name, " +
+                                 "birth_date=@birth_date, status=@status, address=@address, " +
+                                 "Guardian=@Guardian, Relationship=@Relationship, Contact_Number=@Contact_Number, " +
+                                 "Registered_On=@Registered_On, Expires_On=@Expires_On, Condition=@Condition, " +
+                                 "id_num=@id_num, image=@image " +
+                                 "WHERE id = @id";
+
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@id", _ID);
+                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
+                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -162,24 +188,32 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@Registered_On", dtRegisteredOn.Value);
                     cmd.Parameters.AddWithValue("@Expires_On", dtExpiresOn.Value);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
-                    cmd.Parameters.AddWithValue("@ID", _ID); // Ensure _ID is assigned correctly
                     cmd.Parameters.AddWithValue("@id_num", id_num.Text);
-                    cmd.Parameters.AddWithValue("@image", savedImagePath); // Ensure savedImagePath is set correctly
+                    cmd.Parameters.AddWithValue("@image", savedImagePath);
+
                     cmd.ExecuteNonQuery();
                     conn.Close();
+
                     MessageBox.Show("Record has been successfully updated!", "Update Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     // Reset form fields, refresh parent form, and dispose current form
-                    clear();    // Reset form fields
-                    f.LoadRecord(); // Refresh parent form or data grid
-                    this.Dispose(); // Dispose the current form if needed
+                    clear();
+                    f.LoadRecord();
+                    this.Dispose();
                 }
+            }
+            catch (SQLiteException sqlEx)
+            {
+                MessageBox.Show($"SQLite error: {sqlEx.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
             }
             catch (Exception ex)
             {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conn.Close();
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
 
 
@@ -317,10 +351,10 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtName.Text, txtAddress.Text, txtContactNumber.Text);
+            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, txtGuardian.Text, txtRelationship.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text, cboCondition.Text, id_num.Text);
         }
 
-        private void PrintToPdf(string name, string address, string Contact_Number)
+        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string Guardian, string Relationship, string Contact_Number, string Registered_On, string Expires_On, string Condition, string id_num)
         {
             try
             {
@@ -349,20 +383,53 @@ namespace BARANGAY
                     IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
                     // Case-insensitive field lookup
-                    string nameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "namefield");
+                    string lastnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "lastnamefield");
+                    string firstnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "firstnamefield");
+                    string middlenameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "middlenamefield");
+                    string birthdateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "birthdatefield");
+                    string statusFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "statusfield");
                     string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield");
+                    string guardianFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "guardianfield");
+                    string relationshipFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "relationshipfield");
                     string contactFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "contactnumberfield");
+                    string registerFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "registerfield");
+                    string expireFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "expirefield");
+                    string conditionFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "conditionfield");
+                    string idnumFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "idnumfield");
 
-                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(contactFieldName))
+
+                    if (string.IsNullOrEmpty(lastnameFieldName) || 
+                       (string.IsNullOrEmpty(firstnameFieldName) || 
+                       (string.IsNullOrEmpty(middlenameFieldName) || 
+                       (string.IsNullOrEmpty(birthdateFieldName) || 
+                       (string.IsNullOrEmpty(statusFieldName) || 
+                       (string.IsNullOrEmpty(addressFieldName) || 
+                       (string.IsNullOrEmpty(guardianFieldName) || 
+                       (string.IsNullOrEmpty(relationshipFieldName) || 
+                       (string.IsNullOrEmpty(contactFieldName) || 
+                       (string.IsNullOrEmpty(registerFieldName) || 
+                       (string.IsNullOrEmpty(expireFieldName) || 
+                       (string.IsNullOrEmpty(conditionFieldName) || 
+                       (string.IsNullOrEmpty(idnumFieldName))))))))))))))
                     {
                         MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
                     // Use more specific field setting methods if available
-                    fields[nameFieldName].SetValue(name);
+                    fields[lastnameFieldName].SetValue(last_name);
+                    fields[firstnameFieldName].SetValue(first_name);
+                    fields[middlenameFieldName].SetValue(middle_name);
+                    fields[birthdateFieldName].SetValue(birth_date);
+                    fields[statusFieldName].SetValue(status);
                     fields[addressFieldName].SetValue(address);
+                    fields[guardianFieldName].SetValue(Guardian);
+                    fields[relationshipFieldName].SetValue(Relationship);
                     fields[contactFieldName].SetValue(Contact_Number);
+                    fields[registerFieldName].SetValue(Registered_On);
+                    fields[expireFieldName].SetValue(Expires_On);
+                    fields[conditionFieldName].SetValue(Condition);
+                    fields[idnumFieldName].SetValue(id_num);
 
                     form.FlattenFields();
                 }

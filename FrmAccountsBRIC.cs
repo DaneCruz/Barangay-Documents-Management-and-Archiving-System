@@ -177,13 +177,6 @@ namespace BARANGAY
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FmWebCamera open = new FmWebCamera();
-            open.Show();
-            open.BringToFront();
-        }
-
         private void cboStatus_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
