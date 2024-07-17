@@ -58,6 +58,7 @@
             this.barangayc = new System.Windows.Forms.Label();
             this.businessc = new System.Windows.Forms.Label();
             this.cor = new System.Windows.Forms.Label();
+            this.btn_accounts = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,6 +115,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MistyRose;
+            this.panel2.Controls.Add(this.btn_accounts);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
@@ -398,6 +400,20 @@
             this.cor.TabIndex = 9;
             this.cor.Text = "#";
             // 
+            // btn_accounts
+            // 
+            this.btn_accounts.BackColor = System.Drawing.Color.Maroon;
+            this.btn_accounts.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_accounts.FlatAppearance.BorderSize = 2;
+            this.btn_accounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_accounts.ForeColor = System.Drawing.Color.White;
+            this.btn_accounts.Location = new System.Drawing.Point(31, 534);
+            this.btn_accounts.Name = "btn_accounts";
+            this.btn_accounts.Size = new System.Drawing.Size(190, 40);
+            this.btn_accounts.TabIndex = 7;
+            this.btn_accounts.Text = "Manage Accounts";
+            this.btn_accounts.UseVisualStyleBackColor = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -459,6 +475,7 @@
         private System.Windows.Forms.Label businessc;
         private System.Windows.Forms.Label barangayc;
         private System.Windows.Forms.Label bp;
+        private System.Windows.Forms.Button btn_accounts;
     }
 }
 

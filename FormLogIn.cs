@@ -23,7 +23,15 @@ namespace BARANGAY
 
         private void FormLogIn_Load(object sender, EventArgs e)
         {
+            txtUsername.Focus(); // Set focus to txtUsername textbox when form loads
 
+            // Configure autocomplete for txtUsername
+            var autoCompleteSource = new AutoCompleteStringCollection();
+            autoCompleteSource.AddRange(GetUsernamesFromDatabase().ToArray());
+
+            txtUsername.AutoCompleteCustomSource = autoCompleteSource;
+            txtUsername.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtUsername.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -49,6 +57,8 @@ namespace BARANGAY
         {
             new FormRegister().Show();
             this.Hide();
+            this.Close();
+            this.Dispose();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -153,5 +163,84 @@ namespace BARANGAY
         {
 
         }
+        private List<string> GetUsernamesFromDatabase()
+        {
+            List<string> usernames = new List<string>();
+
+            try
+            {
+                conn.Open();
+
+                string query = "SELECT username FROM login";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            usernames.Add(reader["username"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Handle exception as needed
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return usernames;
+        }
+
+        private void forgot_password_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+
+            // Validate if the username exists in the database
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Please enter your username to reset your password.", "Username Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                conn.Open();
+
+                // Check if the username exists in the database
+                string checkUserQuery = "SELECT COUNT(*) FROM login WHERE username = @username";
+                using (SQLiteCommand checkUserCmd = new SQLiteCommand(checkUserQuery, conn))
+                {
+                    checkUserCmd.Parameters.AddWithValue("@username", username);
+                    int userCount = Convert.ToInt32(checkUserCmd.ExecuteScalar());
+
+                    if (userCount > 0)
+                    {
+                        // User exists, proceed with password reset
+                        ResetPasswordForm resetPasswordForm = new ResetPasswordForm(username);
+                        resetPasswordForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        // Username does not exist
+                        MessageBox.Show("Username does not exist.", "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }
