@@ -351,17 +351,17 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, txtGuardian.Text, txtRelationship.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text, cboCondition.Text, id_num.Text);
+            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, dtBirthDate.Text, cboStatus.Text, txtAddress.Text, id_num.Text, txtGuardian.Text, txtRelationship.Text, txtAddress.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text);
         }
 
-        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string Guardian, string Relationship, string Contact_Number, string Registered_On, string Expires_On, string Condition, string id_num)
+        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string id_num, string Guardian, string Relationship, string address1, string Contact_Number, string Registered_On, string Expires_On)
         {
             try
             {
                 // Use an absolute path or ensure the relative path is correct
-                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"ID Template.pdf");
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string outputPath = Path.Combine(desktopPath, @"FilledTemplate.pdf");
+                string outputPath = Path.Combine(desktopPath, @"ID Template.pdf");
                 // Ensure the output directory exists
                 string outputDir = Path.GetDirectoryName(outputPath);
                 if (!Directory.Exists(outputDir))
@@ -389,13 +389,13 @@ namespace BARANGAY
                     string birthdateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "birthdatefield");
                     string statusFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "statusfield");
                     string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield");
+                    string idnumFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "idnumfield");
                     string guardianFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "guardianfield");
                     string relationshipFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "relationshipfield");
+                    string address1FieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield1");
                     string contactFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "contactnumberfield");
                     string registerFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "registerfield");
                     string expireFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "expirefield");
-                    string conditionFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "conditionfield");
-                    string idnumFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "idnumfield");
 
 
                     if (string.IsNullOrEmpty(lastnameFieldName) || 
@@ -405,12 +405,12 @@ namespace BARANGAY
                        (string.IsNullOrEmpty(statusFieldName) || 
                        (string.IsNullOrEmpty(addressFieldName) || 
                        (string.IsNullOrEmpty(guardianFieldName) || 
-                       (string.IsNullOrEmpty(relationshipFieldName) || 
+                       (string.IsNullOrEmpty(relationshipFieldName) ||
+                       (string.IsNullOrEmpty(idnumFieldName) ||
+                       (string.IsNullOrEmpty(address1FieldName) ||
                        (string.IsNullOrEmpty(contactFieldName) || 
                        (string.IsNullOrEmpty(registerFieldName) || 
-                       (string.IsNullOrEmpty(expireFieldName) || 
-                       (string.IsNullOrEmpty(conditionFieldName) || 
-                       (string.IsNullOrEmpty(idnumFieldName))))))))))))))
+                       (string.IsNullOrEmpty(expireFieldName))))))))))))))
                     {
                         MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -425,10 +425,10 @@ namespace BARANGAY
                     fields[addressFieldName].SetValue(address);
                     fields[guardianFieldName].SetValue(Guardian);
                     fields[relationshipFieldName].SetValue(Relationship);
+                    fields[address1FieldName].SetValue(address1);
                     fields[contactFieldName].SetValue(Contact_Number);
                     fields[registerFieldName].SetValue(Registered_On);
                     fields[expireFieldName].SetValue(Expires_On);
-                    fields[conditionFieldName].SetValue(Condition);
                     fields[idnumFieldName].SetValue(id_num);
 
                     form.FlattenFields();

@@ -42,12 +42,25 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.txtMiddleName = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+=======
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMonthYear = new System.Windows.Forms.TextBox();
+            this.txtDay = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btn_print = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtRegisteredOn = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtExpiresOn = new System.Windows.Forms.DateTimePicker();
+>>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +77,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(256, 317);
+            this.btnCancel.Location = new System.Drawing.Point(251, 530);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(107, 29);
             this.btnCancel.TabIndex = 70;
@@ -76,7 +89,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Aqua;
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(143, 317);
+            this.btnUpdate.Location = new System.Drawing.Point(138, 530);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(107, 29);
             this.btnUpdate.TabIndex = 69;
@@ -88,7 +101,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Aqua;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(30, 317);
+            this.btnSave.Location = new System.Drawing.Point(25, 530);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 29);
             this.btnSave.TabIndex = 68;
@@ -100,10 +113,10 @@
             // 
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
-            "Single",
-            "Married",
-            "Divorced",
-            "Widowed"});
+            "single",
+            "married",
+            "divorced",
+            "widowed"});
             this.cboStatus.Location = new System.Drawing.Point(10, 175);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(383, 25);
@@ -191,6 +204,7 @@
             this.panel2.Size = new System.Drawing.Size(403, 42);
             this.panel2.TabIndex = 56;
             // 
+<<<<<<< HEAD
             // txtMiddleName
             // 
             this.txtMiddleName.Location = new System.Drawing.Point(279, 79);
@@ -238,19 +252,120 @@
             this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 72;
             this.label2.Text = "LAST NAME:";
+=======
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 372);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 17);
+            this.label3.TabIndex = 76;
+            this.label3.Text = "MONTH, YEAR:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(126, 305);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 17);
+            this.label4.TabIndex = 75;
+            this.label4.Text = "DATE OF ISSUED";
+            // 
+            // txtMonthYear
+            // 
+            this.txtMonthYear.Location = new System.Drawing.Point(11, 392);
+            this.txtMonthYear.Name = "txtMonthYear";
+            this.txtMonthYear.Size = new System.Drawing.Size(383, 23);
+            this.txtMonthYear.TabIndex = 74;
+            // 
+            // txtDay
+            // 
+            this.txtDay.Location = new System.Drawing.Point(11, 342);
+            this.txtDay.Name = "txtDay";
+            this.txtDay.Size = new System.Drawing.Size(383, 23);
+            this.txtDay.TabIndex = 73;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 322);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 17);
+            this.label5.TabIndex = 72;
+            this.label5.Text = "DAY:";
+            // 
+            // btn_print
+            // 
+            this.btn_print.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_print.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_print.Location = new System.Drawing.Point(126, 565);
+            this.btn_print.Name = "btn_print";
+            this.btn_print.Size = new System.Drawing.Size(133, 43);
+            this.btn_print.TabIndex = 77;
+            this.btn_print.Text = "PRINT";
+            this.btn_print.UseVisualStyleBackColor = false;
+            this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 473);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 17);
+            this.label10.TabIndex = 80;
+            this.label10.Text = "EXPIRES ON";
+            // 
+            // dtRegisteredOn
+            // 
+            this.dtRegisteredOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtRegisteredOn.Location = new System.Drawing.Point(11, 447);
+            this.dtRegisteredOn.Name = "dtRegisteredOn";
+            this.dtRegisteredOn.Size = new System.Drawing.Size(383, 23);
+            this.dtRegisteredOn.TabIndex = 79;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(13, 427);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(105, 17);
+            this.label9.TabIndex = 78;
+            this.label9.Text = "REGISTERED ON";
+            // 
+            // dtExpiresOn
+            // 
+            this.dtExpiresOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtExpiresOn.Location = new System.Drawing.Point(10, 493);
+            this.dtExpiresOn.Name = "dtExpiresOn";
+            this.dtExpiresOn.Size = new System.Drawing.Size(381, 23);
+            this.dtExpiresOn.TabIndex = 81;
+>>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
             // 
             // FrmAccountsBC1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 365);
+            this.ClientSize = new System.Drawing.Size(403, 617);
             this.ControlBox = false;
+<<<<<<< HEAD
             this.Controls.Add(this.txtMiddleName);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.label2);
+=======
+            this.Controls.Add(this.dtExpiresOn);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.dtRegisteredOn);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btn_print);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtMonthYear);
+            this.Controls.Add(this.txtDay);
+            this.Controls.Add(this.label5);
+>>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -291,11 +406,24 @@
         public System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
+<<<<<<< HEAD
         public System.Windows.Forms.TextBox txtMiddleName;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label label2;
+=======
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtMonthYear;
+        public System.Windows.Forms.TextBox txtDay;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Button btn_print;
+        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.DateTimePicker dtRegisteredOn;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.DateTimePicker dtExpiresOn;
+>>>>>>> aaa9c110ea9b6f72242e98309b71716086e22ccb
     }
 }

@@ -149,7 +149,14 @@ namespace BARANGAY
             try
             {
                 // Use an absolute path or ensure the relative path is correct
-                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"BBCF Template.pdf");
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string outputPath = Path.Combine(desktopPath, @"Barangay Business Clearance Template.pdf");
+                string outputDir = Path.GetDirectoryName(outputPath);
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
 
                 // Ensure the template file exists
                 if (!File.Exists(templatePath))
@@ -167,7 +174,7 @@ namespace BARANGAY
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string outputPath = saveFileDialog.FileName;
+                    
 
                     using (PdfReader reader = new PdfReader(templatePath))
                     using (PdfWriter writer = new PdfWriter(outputPath))
