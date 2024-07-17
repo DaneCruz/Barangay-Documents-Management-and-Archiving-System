@@ -17,7 +17,7 @@ namespace BARANGAY
     public partial class FormBP : Form
     {
         SQLiteConnection conn;
-        SQLiteCommand cmd;
+        SQLiteCommand cmdBP;
         SQLiteDataReader dr;
         public string _ID;
 
@@ -63,9 +63,9 @@ namespace BARANGAY
                         if (MessageBox.Show("Do you want to delete this?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             conn.Open();
-                            cmd = new SQLiteCommand("DELETE FROM business_permit WHERE id = @id", conn);
-                            cmd.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                            cmd.ExecuteNonQuery();
+                            cmdBP = new SQLiteCommand("DELETE FROM business_permit WHERE id = @id", conn);
+                            cmdBP.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                            cmdBP.ExecuteNonQuery();
                             conn.Close();
                             MessageBox.Show("Record has been successfully deleted", "Delete Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadRecord();
@@ -109,8 +109,8 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SQLiteCommand("SELECT * FROM business_permit", conn);
-                dr = cmd.ExecuteReader();
+                cmdBP = new SQLiteCommand("SELECT * FROM business_permit", conn);
+                dr = cmdBP.ExecuteReader();
                 while (dr.Read())
                 {
                     dataGridView1.Rows.Add(dr["id"].ToString(), dr["business_name"].ToString(), dr["Business_Type"].ToString(), dr["business_address"].ToString(), dr["business_owner"].ToString());

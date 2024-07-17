@@ -44,23 +44,12 @@
             this.btnID = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cor = new System.Windows.Forms.Label();
-            this.businessc = new System.Windows.Forms.Label();
-            this.barangayc = new System.Windows.Forms.Label();
-            this.bp = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -247,128 +236,12 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Ivory;
-            this.panel3.Controls.Add(this.cor);
-            this.panel3.Controls.Add(this.businessc);
-            this.panel3.Controls.Add(this.barangayc);
-            this.panel3.Controls.Add(this.bp);
-            this.panel3.Controls.Add(this.id);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(256, 57);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(943, 584);
             this.panel3.TabIndex = 1;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // cor
-            // 
-            this.cor.AutoSize = true;
-            this.cor.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cor.ForeColor = System.Drawing.Color.Red;
-            this.cor.Location = new System.Drawing.Point(519, 415);
-            this.cor.Name = "cor";
-            this.cor.Size = new System.Drawing.Size(25, 25);
-            this.cor.TabIndex = 9;
-            this.cor.Text = "#";
-            // 
-            // businessc
-            // 
-            this.businessc.AutoSize = true;
-            this.businessc.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.businessc.ForeColor = System.Drawing.Color.Red;
-            this.businessc.Location = new System.Drawing.Point(519, 316);
-            this.businessc.Name = "businessc";
-            this.businessc.Size = new System.Drawing.Size(25, 25);
-            this.businessc.TabIndex = 8;
-            this.businessc.Text = "#";
-            // 
-            // barangayc
-            // 
-            this.barangayc.AutoSize = true;
-            this.barangayc.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barangayc.ForeColor = System.Drawing.Color.Red;
-            this.barangayc.Location = new System.Drawing.Point(519, 223);
-            this.barangayc.Name = "barangayc";
-            this.barangayc.Size = new System.Drawing.Size(25, 25);
-            this.barangayc.TabIndex = 7;
-            this.barangayc.Text = "#";
-            // 
-            // bp
-            // 
-            this.bp.AutoSize = true;
-            this.bp.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bp.ForeColor = System.Drawing.Color.Red;
-            this.bp.Location = new System.Drawing.Point(519, 128);
-            this.bp.Name = "bp";
-            this.bp.Size = new System.Drawing.Size(25, 25);
-            this.bp.TabIndex = 6;
-            this.bp.Text = "#";
-            // 
-            // id
-            // 
-            this.id.AutoSize = true;
-            this.id.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.id.ForeColor = System.Drawing.Color.Red;
-            this.id.Location = new System.Drawing.Point(519, 39);
-            this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(25, 25);
-            this.id.TabIndex = 5;
-            this.id.Text = "#";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(57, 417);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(443, 23);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "TOTAL NUMBER OF CERTIFICATE OF RESIDENCIES:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(57, 318);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(394, 23);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "TOTAL NUMBER OF BUSINESS CLEARANCES:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label7.Location = new System.Drawing.Point(57, 225);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(417, 23);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "TOTAL NUMBER OF BARANGAY CLEARANCES:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(57, 130);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(345, 23);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "TOTAL NUMBER OF BUSINESS PERMITS:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(57, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(394, 23);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "TOTAL NUMBER OF IDENTIFICATION CARDS:";
             // 
             // timer1
             // 
@@ -417,12 +290,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Barangay Management System KNL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
@@ -449,16 +319,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label id;
-        private System.Windows.Forms.Label cor;
-        private System.Windows.Forms.Label businessc;
-        private System.Windows.Forms.Label barangayc;
-        private System.Windows.Forms.Label bp;
     }
 }
 

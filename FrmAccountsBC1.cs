@@ -45,10 +45,12 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO barangay_clearance (Name, birth_date, status, address, purpose) " +
-                                 "VALUES (@Name, @birth_date, @status, @address, @purpose)";
+                    string sql = "INSERT INTO barangay_clearance (last_name, first_name, middle_name, birth_date, status, address, purpose) " +
+                                 "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @purpose)";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
+                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -69,14 +71,14 @@ namespace BARANGAY
 
         public void clear()
         {
-            txtName.Clear();
+            txtLastName.Clear();
             txtAddress.Clear();
             txtContactNumber.Clear();
             cboStatus.SelectedIndex = -1;
             dtBirthDate.Value = DateTime.Now;
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
-            txtName.Focus();
+            txtLastName.Focus();
         }
 
         private void cboStatus_KeyPress(object sender, KeyPressEventArgs e)
@@ -97,9 +99,11 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE barangay_clearance SET Name=@Name, birth_date=@birth_date, status=@status, address=@address, purpose=@purpose WHERE id = @ID";
+                    string sql = "UPDATE barangay_clearance SET last_name=@last_name, first_name=@first_name, middle_name=@middle_name, birth_date=@birth_date, status=@status, address=@address, purpose=@purpose WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
+                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
