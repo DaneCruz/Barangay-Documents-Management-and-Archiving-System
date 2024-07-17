@@ -16,6 +16,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Drawing.Imaging;
 using iText.Kernel.Exceptions;
+using System.Drawing.Printing;
 
 
 namespace BARANGAY
@@ -149,78 +150,79 @@ namespace BARANGAY
             {
                 // Use an absolute path or ensure the relative path is correct
                 string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string outputPath = Path.Combine(desktopPath, @"Barangay Business Clearance Template.pdf");
-                // Ensure the output directory exists
-                string outputDir = Path.GetDirectoryName(outputPath);
-                if (!Directory.Exists(outputDir))
-                {
-                    Directory.CreateDirectory(outputDir);
-                }
 
+                // Ensure the template file exists
                 if (!File.Exists(templatePath))
                 {
                     MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                using (PdfReader reader = new PdfReader(templatePath))
-                using (PdfWriter writer = new PdfWriter(outputPath))
-                using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                // Show SaveFileDialog to allow user to specify output path and name
+                SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
-                    IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+                    Filter = "PDF Files (*.pdf)|*.pdf",
+                    Title = "Save PDF File"
+                };
 
-                    // Case-insensitive field lookup
-                    string nameFieldName = fields.Keys.FirstOrDefault(k => k == "OwnersNameField");
-                    string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
-                    string businessnameFieldName = fields.Keys.FirstOrDefault(k => k == "BusinessNameField");
-                    string businesstypeFieldName = fields.Keys.FirstOrDefault(k => k == "BusinessTypeField");
-                    string dayFieldName = fields.Keys.FirstOrDefault(k => k == "DayField");
-                    string monthyearFieldName = fields.Keys.FirstOrDefault(k => k == "MonthYearField");
-                    string ordateFieldName = fields.Keys.FirstOrDefault(k => k == "OrDateField");
-                    string amountFieldName = fields.Keys.FirstOrDefault(k => k == "AmountField");
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string outputPath = saveFileDialog.FileName;
 
-
-                    if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(businessnameFieldName) || string.IsNullOrEmpty(businesstypeFieldName) || string.IsNullOrEmpty(dayFieldName) || string.IsNullOrEmpty(monthyearFieldName) || string.IsNullOrEmpty(ordateFieldName) || string.IsNullOrEmpty(amountFieldName))
+                    using (PdfReader reader = new PdfReader(templatePath))
+                    using (PdfWriter writer = new PdfWriter(outputPath))
+                    using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
                     {
-                        MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
+                        IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+
+                        // Case-insensitive field lookup
+                        string nameFieldName = fields.Keys.FirstOrDefault(k => k.Equals("OwnersNameField", StringComparison.OrdinalIgnoreCase));
+                        string addressFieldName = fields.Keys.FirstOrDefault(k => k.Equals("AddressField", StringComparison.OrdinalIgnoreCase));
+                        string businessnameFieldName = fields.Keys.FirstOrDefault(k => k.Equals("BusinessNameField", StringComparison.OrdinalIgnoreCase));
+                        string businesstypeFieldName = fields.Keys.FirstOrDefault(k => k.Equals("BusinessTypeField", StringComparison.OrdinalIgnoreCase));
+                        string dayFieldName = fields.Keys.FirstOrDefault(k => k.Equals("DayField", StringComparison.OrdinalIgnoreCase));
+                        string monthyearFieldName = fields.Keys.FirstOrDefault(k => k.Equals("MonthYearField", StringComparison.OrdinalIgnoreCase));
+                        string ordateFieldName = fields.Keys.FirstOrDefault(k => k.Equals("OrDateField", StringComparison.OrdinalIgnoreCase));
+                        string amountFieldName = fields.Keys.FirstOrDefault(k => k.Equals("AmountField", StringComparison.OrdinalIgnoreCase));
+
+                        if (string.IsNullOrEmpty(nameFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(businessnameFieldName) || string.IsNullOrEmpty(businesstypeFieldName) || string.IsNullOrEmpty(dayFieldName) || string.IsNullOrEmpty(monthyearFieldName) || string.IsNullOrEmpty(ordateFieldName) || string.IsNullOrEmpty(amountFieldName))
+                        {
+                            MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Set field values
+                        fields[nameFieldName].SetValue(name);
+                        fields[addressFieldName].SetValue(address);
+                        fields[businessnameFieldName].SetValue(businessname);
+                        fields[businesstypeFieldName].SetValue(businesstype);
+                        fields[dayFieldName].SetValue(day);
+                        fields[monthyearFieldName].SetValue(monthyear);
+                        fields[ordateFieldName].SetValue(ordate);
+                        fields[amountFieldName].SetValue(amount);
+
+                        form.FlattenFields();
                     }
 
-                    // Use more specific field setting methods if available
-                    fields[nameFieldName].SetValue(name);
-                    fields[addressFieldName].SetValue(address);
-                    fields[businessnameFieldName].SetValue(businessname);
-                    fields[businesstypeFieldName].SetValue(businesstype);
-                    fields[dayFieldName].SetValue(day);
-                    fields[monthyearFieldName].SetValue(monthyear);
-                    fields[ordateFieldName].SetValue(ordate);
-                    fields[amountFieldName].SetValue(amount);
+                    // Inform the user of successful PDF creation
+                    MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    form.FlattenFields();
                 }
-
-                MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (PdfException pdfEx)
             {
-                // Log the error for debugging
-                // Provide more specific error messages based on the exception
                 MessageBox.Show($"A PDF error occurred while filling the PDF: {pdfEx.Message}", "PDF Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (IOException ioEx)
             {
-                // Log the error for debugging
-                // Provide more specific error messages based on the exception
                 MessageBox.Show($"An IO error occurred while filling the PDF: {ioEx.Message}", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Log the error for debugging
-                // Provide more specific error messages based on the exception
                 MessageBox.Show($"An unknown error occurred while filling the PDF: {ex.Message}", "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

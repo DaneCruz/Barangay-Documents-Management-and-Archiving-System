@@ -54,7 +54,7 @@ namespace BARANGAY
                         f._ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                         f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                         f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        f.txtOwnerName.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                         f.txtBusinessType.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                         f.ShowDialog();
                     }
@@ -129,6 +129,32 @@ namespace BARANGAY
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            FilterRecords(searchBox.Text);
+        }
+
+        private void FilterRecords(string searchTerm)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                bool isVisible = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        isVisible = true;
+                        break;
+                    }
+                }
+                row.Visible = isVisible;
+            }
         }
     }
 }

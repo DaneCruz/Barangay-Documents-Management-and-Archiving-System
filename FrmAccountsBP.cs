@@ -8,6 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using iText.Forms.Fields;
+using iText.Forms;
+using iText.Kernel.Exceptions;
+using iText.Kernel.Pdf;
+using System.Drawing.Printing;
+using System.IO;
+
 
 namespace BARANGAY
 {
@@ -48,7 +55,7 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@business_name", txtName.Text);
                     cmd.Parameters.AddWithValue("@business_type", txtBusinessType.Text);
                     cmd.Parameters.AddWithValue("@business_address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@business_owner", txtContactNumber.Text);
+                    cmd.Parameters.AddWithValue("@business_owner", txtOwnerName.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully saved!", "Save Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -68,7 +75,7 @@ namespace BARANGAY
             txtName.Clear();
             txtBusinessType.Clear();
             txtAddress.Clear();
-            txtContactNumber.Clear();
+            txtOwnerName.Clear();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             txtName.Focus();
@@ -92,7 +99,7 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@business_name", txtName.Text);
                     cmd.Parameters.AddWithValue("@business_type", txtBusinessType.Text);
                     cmd.Parameters.AddWithValue("@business_address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@business_owner", txtContactNumber.Text);
+                    cmd.Parameters.AddWithValue("@business_owner", txtOwnerName.Text);
                     cmd.Parameters.AddWithValue("@ID", _ID);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -106,6 +113,91 @@ namespace BARANGAY
             {
                 conn.Close();
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PrintToPdf(txtName.Text, txtAddress.Text, txtBusinessType.Text, txtOwnerName.Text);
+        }
+        private void PrintToPdf(string business_name, string business_address, string business_type, string business_owner )
+        {
+            try
+            {
+                // Use an absolute path or ensure the relative path is correct
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Template.pdf");
+
+                // Ensure the template file exists
+                if (!File.Exists(templatePath))
+                {
+                    MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Show SaveFileDialog to allow user to specify output path and name
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "PDF Files (*.pdf)|*.pdf",
+                    Title = "Save PDF File"
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string outputPath = saveFileDialog.FileName;
+
+                    using (PdfReader reader = new PdfReader(templatePath))
+                    using (PdfWriter writer = new PdfWriter(outputPath))
+                    using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                    {
+                        PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
+                        IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+
+                        // Case-insensitive field lookup
+                        string businessnameFieldName = fields.Keys.FirstOrDefault(k => k.Equals("BusinessNameField", StringComparison.OrdinalIgnoreCase));
+                        string businesstypeFieldName = fields.Keys.FirstOrDefault(k => k.Equals("BusinessTypeField", StringComparison.OrdinalIgnoreCase));
+                        string addressFieldName = fields.Keys.FirstOrDefault(k => k.Equals("AddressField", StringComparison.OrdinalIgnoreCase));
+                        string ownerFieldName = fields.Keys.FirstOrDefault(k => k.Equals("OwnerField", StringComparison.OrdinalIgnoreCase));
+
+                        if (string.IsNullOrEmpty(businessnameFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(businesstypeFieldName) || string.IsNullOrEmpty(ownerFieldName))
+                        {
+                            MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Set field values
+                        fields[ownerFieldName].SetValue(business_owner);
+                        fields[addressFieldName].SetValue(business_address);
+                        fields[businessnameFieldName].SetValue(business_name);
+                        fields[businesstypeFieldName].SetValue(business_type);
+
+                        form.FlattenFields();
+                    }
+
+                    // Inform the user of successful PDF creation
+                    MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Open the PDF in print mode
+                    System.Diagnostics.Process printProcess = new System.Diagnostics.Process();
+                    printProcess.StartInfo = new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = outputPath,
+                        UseShellExecute = true,
+                        Verb = "print"
+                    };
+                    printProcess.Start();
+                }
+            }
+            catch (PdfException pdfEx)
+            {
+                MessageBox.Show($"A PDF error occurred while filling the PDF: {pdfEx.Message}", "PDF Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (IOException ioEx)
+            {
+                MessageBox.Show($"An IO error occurred while filling the PDF: {ioEx.Message}", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unknown error occurred while filling the PDF: {ex.Message}", "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

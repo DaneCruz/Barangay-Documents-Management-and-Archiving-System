@@ -81,7 +81,7 @@ namespace BARANGAY
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FormCertifications f = new FormCertifications();
+           FormCertifications f = new FormCertifications();
             f.TopLevel = false;
             panel3.Controls.Add(f);
             f.BringToFront();
