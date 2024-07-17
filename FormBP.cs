@@ -113,7 +113,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Business_Name"].ToString(), dr["Business_Type"].ToString(), dr["Business_Address"].ToString(), dr["Name_of_Owner"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["business_name"].ToString(), dr["Business_Type"].ToString(), dr["business_address"].ToString(), dr["business_owner"].ToString());
                 }
                 dr.Close();
                 conn.Close();
@@ -124,6 +124,11 @@ namespace BARANGAY
                 conn.Close();
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

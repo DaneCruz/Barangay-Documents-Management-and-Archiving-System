@@ -42,13 +42,13 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO business_permit (Business_Name, Business_Type, Business_address, Name_Of_Owner) " +
-                                 "VALUES (@Business_Name, @Business_Type, @Business_address, @Name_Of_Owner)";
+                    string sql = "INSERT INTO business_permit (business_name, business_type, business_address, business_owner) " +
+                                 "VALUES (@business_name, @business_type, @business_address, @business_owner)";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Business_Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Business_Type", txtBusinessType.Text);
-                    cmd.Parameters.AddWithValue("@Business_address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Name_Of_Owner", txtContactNumber.Text);
+                    cmd.Parameters.AddWithValue("@business_name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@business_type", txtBusinessType.Text);
+                    cmd.Parameters.AddWithValue("@business_address", txtAddress.Text);
+                    cmd.Parameters.AddWithValue("@business_owner", txtContactNumber.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully saved!", "Save Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -87,12 +87,12 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE business_permit SET Business_Name=@Business_Name, Business_Type=@Business_Type, Business_address=@Business_address, Name_Of_Owner=@Name_Of_Owner WHERE id = @ID";
+                    string sql = "UPDATE business_permit SET Business_Name=@business_name, business_type=@business_type, business_address=@business_address, busienss_owner=@business_owner WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@Business_Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Business_Type", txtBusinessType.Text);
-                    cmd.Parameters.AddWithValue("@Business_address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Name_Of_Owner", txtContactNumber.Text);
+                    cmd.Parameters.AddWithValue("@business_name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@business_type", txtBusinessType.Text);
+                    cmd.Parameters.AddWithValue("@business_address", txtAddress.Text);
+                    cmd.Parameters.AddWithValue("@business_owner", txtContactNumber.Text);
                     cmd.Parameters.AddWithValue("@ID", _ID);
                     cmd.ExecuteNonQuery();
                     conn.Close();

@@ -48,7 +48,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(68, 9);
+            this.label1.Location = new System.Drawing.Point(73, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 36);
             this.label1.TabIndex = 0;
@@ -58,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Location = new System.Drawing.Point(17, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtUsername.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtUsername.Location = new System.Drawing.Point(12, 93);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(261, 22);
@@ -77,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 134);
+            this.label3.Location = new System.Drawing.Point(17, 139);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtPassword.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtPassword.Location = new System.Drawing.Point(12, 154);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -97,7 +97,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 191);
+            this.label4.Location = new System.Drawing.Point(20, 196);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 17);
             this.label4.TabIndex = 5;
@@ -107,7 +107,7 @@
             // checkbox
             // 
             this.checkbox.AutoSize = true;
-            this.checkbox.Location = new System.Drawing.Point(159, 239);
+            this.checkbox.Location = new System.Drawing.Point(164, 244);
             this.checkbox.Name = "checkbox";
             this.checkbox.Size = new System.Drawing.Size(117, 21);
             this.checkbox.TabIndex = 7;
@@ -152,7 +152,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.ForeColor = System.Drawing.Color.Maroon;
-            this.label5.Location = new System.Drawing.Point(65, 459);
+            this.label5.Location = new System.Drawing.Point(70, 464);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(162, 17);
             this.label5.TabIndex = 10;
@@ -165,7 +165,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label6.Location = new System.Drawing.Point(97, 502);
+            this.label6.Location = new System.Drawing.Point(102, 507);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 17);
             this.label6.TabIndex = 11;
@@ -174,7 +174,7 @@
             // 
             // txtComPassword
             // 
-            this.txtComPassword.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtComPassword.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtComPassword.Location = new System.Drawing.Point(12, 211);
             this.txtComPassword.Name = "txtComPassword";
             this.txtComPassword.PasswordChar = '*';
@@ -188,7 +188,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(285, 554);
-            this.ControlBox = false;
             this.Controls.Add(this.txtComPassword);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -203,9 +202,10 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormRegister";
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FormRegister_Load);
