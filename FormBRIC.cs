@@ -73,16 +73,18 @@ namespace BARANGAY
                 {
                     FrmAccountsBRIC f = new FrmAccountsBRIC(this);
                     f.btnSave.Enabled = false;
-                    f._ID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    f.dtIssued.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString());
-                    f.dtValidUntil.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
-                    f.txtAdministeredBy.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
+                    f._ID = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                    f.txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells["last_name"].Value.ToString();
+                    f.txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells["first_name"].Value.ToString();
+                    f.txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells["middle_name"].Value.ToString();
+                    f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
+                    f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells["contact_number"].Value.ToString();
+                    f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString();
+                    f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells["condition"].Value.ToString();
+                    f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["birth_date"].Value.ToString());
+                    f.dtIssued.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["date_issued"].Value.ToString());
+                    f.dtValidUntil.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["Valid_Until"].Value.ToString());
+                    f.txtAdministeredBy.Text = dataGridView1.Rows[e.RowIndex].Cells["administered_by"].Value.ToString();
                     f.ShowDialog();
                 }
                 else if (colName == "btnDelete1")
@@ -142,7 +144,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    int v = dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Contact_Number"].ToString(), dr["Condition"].ToString(), DateTime.Parse(dr["Issued"].ToString()), DateTime.Parse(dr["Valid_Until"].ToString()), dr["administered_by"].ToString());
+                    int v = dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Contact_Number"].ToString(), dr["Condition"].ToString(), DateTime.Parse(dr["Issued"].ToString()).ToShortDateString(), DateTime.Parse(dr["Valid_Until"].ToString()).ToShortDateString(), dr["administered_by"].ToString());
                 }
                 dr.Close();
                 conn.Close();

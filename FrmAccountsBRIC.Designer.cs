@@ -40,8 +40,6 @@
             this.txtContactNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,6 +57,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtAdministeredBy = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtMiddleName = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -183,22 +187,6 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(383, 23);
             this.txtAddress.TabIndex = 34;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(10, 71);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(383, 23);
-            this.txtName.TabIndex = 33;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 17);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "NAME:";
             // 
             // label1
             // 
@@ -363,12 +351,66 @@
             this.label5.TabIndex = 69;
             this.label5.Text = "ADMINISTERED BY:";
             // 
+            // txtMiddleName
+            // 
+            this.txtMiddleName.Location = new System.Drawing.Point(281, 71);
+            this.txtMiddleName.Name = "txtMiddleName";
+            this.txtMiddleName.Size = new System.Drawing.Size(114, 23);
+            this.txtMiddleName.TabIndex = 76;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(280, 51);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 17);
+            this.label16.TabIndex = 75;
+            this.label16.Text = "MIDDLE NAME";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(149, 71);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(126, 23);
+            this.txtFirstName.TabIndex = 74;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(148, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(81, 17);
+            this.label15.TabIndex = 73;
+            this.label15.Text = "FIRST NAME:";
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Location = new System.Drawing.Point(12, 71);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(126, 23);
+            this.txtLastName.TabIndex = 72;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.TabIndex = 71;
+            this.label2.Text = "LAST NAME:";
+            // 
             // FrmAccountsBRIC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1147, 523);
             this.ControlBox = false;
+            this.Controls.Add(this.txtMiddleName);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtLastName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtAdministeredBy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtValidUntil);
@@ -394,8 +436,6 @@
             this.Controls.Add(this.txtContactNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtAddress);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -425,8 +465,6 @@
         public System.Windows.Forms.TextBox txtContactNumber;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txtAddress;
-        public System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label7;
@@ -444,5 +482,11 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox txtAdministeredBy;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox txtMiddleName;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.Label label15;
+        public System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.Label label2;
     }
 }
