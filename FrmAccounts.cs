@@ -25,7 +25,6 @@ namespace BARANGAY
         SQLiteCommand cmd;
         FormID f;
         public string _ID;
-        private FormBP formBP;
         Capture _capture;
         bool _streaming;
 
@@ -72,11 +71,6 @@ namespace BARANGAY
             {
                 MessageBox.Show($"An error occurred during streaming: {ex.Message}", "Streaming Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public FrmAccounts(FormBP formBP)
-        {
-            this.formBP = formBP;
         }
 
         private void button2_Click(object sender, EventArgs e)

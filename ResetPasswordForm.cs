@@ -95,6 +95,7 @@ namespace BARANGAY
                         MessageBox.Show("Password updated successfully.", "Password Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close(); // Close the reset password form
                         new FormLogIn().Show();
+                        this.Hide();
                     }
                     else
                     {

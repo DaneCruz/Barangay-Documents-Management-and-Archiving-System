@@ -180,13 +180,12 @@
             // 
             // forgot_password
             // 
-            this.forgot_password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.forgot_password.BackColor = System.Drawing.Color.Maroon;
+            this.forgot_password.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.forgot_password.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.forgot_password.Location = new System.Drawing.Point(82, 477);
+            this.forgot_password.Location = new System.Drawing.Point(0, 525);
             this.forgot_password.Name = "forgot_password";
-            this.forgot_password.Size = new System.Drawing.Size(124, 29);
+            this.forgot_password.Size = new System.Drawing.Size(285, 29);
             this.forgot_password.TabIndex = 26;
             this.forgot_password.Text = "Forgot Password";
             this.forgot_password.UseVisualStyleBackColor = false;
@@ -217,6 +216,7 @@
             this.Name = "FormLogIn";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.FormLogIn_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
