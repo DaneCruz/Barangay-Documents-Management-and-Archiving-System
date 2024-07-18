@@ -27,7 +27,6 @@ namespace BARANGAY
         SQLiteCommand cmd;
         FormCertifications f; // Changed type to FormCertifications to match the calling form
         public string _ID;
-        private FormBP formBP;
         Capture _capture;
         bool _streaming;
 

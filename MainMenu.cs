@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,21 +14,28 @@ namespace BARANGAY
 {
     public partial class MainMenu : Form
     {
+        public FormID formID;
+        public FormBP formBP;
+        public FormBRIC formBRIC;
+        public FormCertifications formCertifications;
+        public UCBC formUCBC;
+        private string _loggedInUsername = ""; // To store the username
+        private SQLiteConnection conn;
         public MainMenu()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
             timer1.Start();
+            conn = new SQLiteConnection("Data Source=database.db;Version=3");
         }
 
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        private string _loggedInUsername = ""; // To store the username
 
         // Event handler for the UserLoggedIn event
         public MainMenu(string username)
@@ -170,5 +178,15 @@ namespace BARANGAY
 
         }
 
+        private void bp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void id_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

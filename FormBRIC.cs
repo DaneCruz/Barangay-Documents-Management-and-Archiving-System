@@ -14,7 +14,7 @@ namespace BARANGAY
     public partial class FormBRIC : Form
     {
         SQLiteConnection conn;
-        SQLiteCommand cmd;
+        SQLiteCommand cmdBRIC;
         SQLiteDataReader dr;
         public string _ID;
 
@@ -25,34 +25,6 @@ namespace BARANGAY
             this.Load += FormBRIC_Load; // Ensure LoadRecord is called on initialization
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            // Your existing code
-        }
-
-        private void guna2Button3_Click(object sender, EventArgs e)
-        {
-            // Your existing code
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            // Your existing code
-        }
-
-        private void addUserControl(UserControl userControl)
-        {
-            userControl.Dock = DockStyle.Fill;
-            panelContainer.Controls.Clear();
-            panelContainer.Controls.Add(userControl);
-            userControl.BringToFront();
-        }
-
-
-        private void panelContainer_Paint(object sender, PaintEventArgs e)
-        {
-            // Your existing code
-        }
 
         private void panelContainer_Paint_1(object sender, PaintEventArgs e)
         {
@@ -92,9 +64,9 @@ namespace BARANGAY
                     if (MessageBox.Show("Do you want to delete this?", clsvar._title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         conn.Open();
-                        cmd = new SQLiteCommand("DELETE FROM residency WHERE id = @id", conn);
-                        cmd.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                        cmd.ExecuteNonQuery();
+                        cmdBRIC = new SQLiteCommand("DELETE FROM residency WHERE id = @id", conn);
+                        cmdBRIC.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        cmdBRIC.ExecuteNonQuery();
                         conn.Close();
                         MessageBox.Show("Record has been successfully deleted", clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadRecord();
@@ -140,8 +112,8 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SQLiteCommand("SELECT * FROM residency", conn);
-                dr = cmd.ExecuteReader();
+                cmdBRIC = new SQLiteCommand("SELECT * FROM residency", conn);
+                dr = cmdBRIC.ExecuteReader();
                 while (dr.Read())
                 {
                     int v = dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Contact_Number"].ToString(), dr["Condition"].ToString(), DateTime.Parse(dr["Issued"].ToString()).ToShortDateString(), DateTime.Parse(dr["Valid_Until"].ToString()).ToShortDateString(), dr["administered_by"].ToString());

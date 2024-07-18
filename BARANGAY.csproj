@@ -371,9 +371,11 @@
     <EmbeddedResource Include="UCBC.resx">
       <DependentUpon>UCBC.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\ID Template.pdf" />
     <None Include="database.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ID Template.pdf" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

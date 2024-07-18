@@ -17,7 +17,7 @@ namespace BARANGAY
     public partial class FormCertifications : Form
     {
         SQLiteConnection conn;
-        SQLiteCommand cmd;
+        SQLiteCommand cmdCertificationsCertifications;
         SQLiteDataReader dr;
         public string _ID;
 
@@ -67,8 +67,8 @@ namespace BARANGAY
                     if (MessageBox.Show("Do you want to delete this?", clsvar._title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         conn.Open();
-                        cmd = new SQLiteCommand("delete FROM bbcf WHERE id like'" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", conn);
-                        cmd.ExecuteNonQuery();
+                        cmdCertificationsCertifications = new SQLiteCommand("delete FROM bbcf WHERE id like'" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", conn);
+                        cmdCertificationsCertifications.ExecuteNonQuery();
                         conn.Close();
                         MessageBox.Show("Record has been successfully deleted", clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadRecord();
@@ -107,8 +107,8 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SQLiteCommand("SELECT * FROM bbcf", conn);
-                dr = cmd.ExecuteReader();
+                cmdCertificationsCertifications = new SQLiteCommand("SELECT * FROM bbcf", conn);
+                dr = cmdCertificationsCertifications.ExecuteReader();
                 while (dr.Read())
                 {
                     dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), dr["address"].ToString(), dr["business_name"].ToString(), dr["business_type"].ToString(), dr["day_of_issuance"].ToString(), dr["monthyear_of_issuance"].ToString(), DateTime.Parse(dr["or_date"].ToString()).ToShortDateString(), dr["amount"].ToString(), dr["administered_by"].ToString());

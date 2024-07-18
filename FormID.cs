@@ -16,7 +16,7 @@ namespace BARANGAY
     public partial class FormID : Form
     {
         SQLiteConnection conn;
-        SQLiteCommand cmd;
+        SQLiteCommand cmdID;
         SQLiteDataReader dr;
         public string _ID;
 
@@ -70,8 +70,8 @@ namespace BARANGAY
                     if (MessageBox.Show("Do you want to delete this ?", clsvar._title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         conn.Open();
-                        cmd = new SQLiteCommand("delete FROM id_card WHERE id like'" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", conn);
-                        cmd.ExecuteNonQuery();
+                        cmdID = new SQLiteCommand("delete FROM id_card WHERE id like'" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", conn);
+                        cmdID.ExecuteNonQuery();
                         conn.Close();
                         MessageBox.Show("Record has been successfully deleted", clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadRecord();
@@ -110,7 +110,7 @@ namespace BARANGAY
             {
                 dataGridView1.Rows.Clear();
                 conn.Open();
-                cmd = new SQLiteCommand("SELECT * FROM id_card", conn); dr = cmd.ExecuteReader();
+                cmdID = new SQLiteCommand("SELECT * FROM id_card", conn); dr = cmdID.ExecuteReader();
                 while (dr.Read())
                 {
                     dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString(), dr["id_num"].ToString(), dr["image"].ToString());

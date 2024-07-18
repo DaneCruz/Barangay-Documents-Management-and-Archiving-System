@@ -94,7 +94,7 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE business_permit SET Business_Name=@business_name, business_type=@business_type, business_address=@business_address, busienss_owner=@business_owner WHERE id = @ID";
+                    string sql = "UPDATE business_permit SET Business_Name=@business_name, business_type=@business_type, business_address=@business_address, business_owner=@business_owner WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@business_name", txtName.Text);
                     cmd.Parameters.AddWithValue("@business_type", txtBusinessType.Text);
