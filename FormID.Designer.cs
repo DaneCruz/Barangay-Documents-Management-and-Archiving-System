@@ -41,6 +41,7 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelContainer = new System.Windows.Forms.Panel();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.last_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.first_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,10 +56,8 @@
             this.expire = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -200,7 +199,6 @@
             this.expire,
             this.Condition,
             this.id_num,
-            this.image,
             this.btnEdit1,
             this.btnDelete1});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -238,6 +236,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(1924, 717);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // panelContainer
+            // 
+            this.panelContainer.AutoScroll = true;
+            this.panelContainer.Controls.Add(this.dataGridView1);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelContainer.Location = new System.Drawing.Point(0, 95);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(1924, 717);
+            this.panelContainer.TabIndex = 3;
             // 
             // id
             // 
@@ -352,15 +361,7 @@
             this.id_num.MinimumWidth = 8;
             this.id_num.Name = "id_num";
             this.id_num.Visible = false;
-            this.id_num.Width = 212;
-            // 
-            // image
-            // 
-            this.image.HeaderText = "";
-            this.image.MinimumWidth = 8;
-            this.image.Name = "image";
-            this.image.Visible = false;
-            this.image.Width = 35;
+            this.id_num.Width = 211;
             // 
             // btnEdit1
             // 
@@ -379,17 +380,6 @@
             this.btnDelete1.MinimumWidth = 8;
             this.btnDelete1.Name = "btnDelete1";
             this.btnDelete1.Width = 8;
-            // 
-            // panelContainer
-            // 
-            this.panelContainer.AutoScroll = true;
-            this.panelContainer.Controls.Add(this.dataGridView1);
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelContainer.Location = new System.Drawing.Point(0, 95);
-            this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1924, 717);
-            this.panelContainer.TabIndex = 3;
             // 
             // FormID
             // 

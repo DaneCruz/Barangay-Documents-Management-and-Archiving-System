@@ -59,8 +59,6 @@ namespace BARANGAY
                     f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["birth_date"].Value.ToString());
                     f.dtRegisteredOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["register"].Value.ToString());
                     f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["expire"].Value.ToString());
-
-                    // Pass image path to FrmAccounts
                     f.ShowDialog();
                 }
                 else if (colName == "btnDelete1")
@@ -111,7 +109,7 @@ namespace BARANGAY
                 cmdID = new SQLiteCommand("SELECT * FROM id_card", conn); dr = cmdID.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString(), dr["id_num"].ToString(), dr["image"].ToString());
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Guardian"].ToString(), dr["Relationship"].ToString(), dr["Contact_Number"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString(), dr["Condition"].ToString(), dr["id_num"].ToString());
                 }
                 dr.Close();
                 conn.Close();
@@ -136,20 +134,30 @@ namespace BARANGAY
 
         private void FilterRecords(string searchTerm)
         {
+            // Convert the search term to lowercase for case-insensitive comparison
+            string lowerSearchTerm = searchTerm.ToLower();
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 bool isVisible = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.ToString().Contains(searchTerm))
+                    if (cell.Value != null)
                     {
-                        isVisible = true;
-                        break;
+                        // Convert cell value to lowercase for case-insensitive comparison
+                        string lowerCellValue = cell.Value.ToString().ToLower();
+
+                        if (lowerCellValue.Contains(lowerSearchTerm))
+                        {
+                            isVisible = true;
+                            break;
+                        }
                     }
                 }
                 row.Visible = isVisible;
             }
         }
+
 
     }
 }

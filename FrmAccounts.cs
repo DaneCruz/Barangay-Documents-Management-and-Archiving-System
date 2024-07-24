@@ -151,8 +151,7 @@ namespace BARANGAY
                                  "birth_date=@birth_date, status=@status, address=@address, " +
                                  "Guardian=@Guardian, Relationship=@Relationship, Contact_Number=@Contact_Number, " +
                                  "Registered_On=@Registered_On, Expires_On=@Expires_On, Condition=@Condition, " +
-                                 "id_num=@id_num" +
-                                 "WHERE id = @id";
+                                 "id_num=@id_num WHERE id = @id";
 
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", _ID);
