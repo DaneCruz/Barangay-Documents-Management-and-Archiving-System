@@ -61,8 +61,6 @@ namespace BARANGAY
                     f.dtExpiresOn.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["expire"].Value.ToString());
 
                     // Pass image path to FrmAccounts
-                    f.LoadImage(dataGridView1.Rows[e.RowIndex].Cells["image"].Value.ToString());
-
                     f.ShowDialog();
                 }
                 else if (colName == "btnDelete1")
@@ -130,6 +128,7 @@ namespace BARANGAY
         {
             FilterRecords(searchBox.Text);
         }
+
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterRecords(searchBox.Text);
@@ -142,7 +141,7 @@ namespace BARANGAY
                 bool isVisible = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    if (cell.Value != null && cell.Value.ToString().Contains(searchTerm))
                     {
                         isVisible = true;
                         break;
@@ -151,5 +150,6 @@ namespace BARANGAY
                 row.Visible = isVisible;
             }
         }
+
     }
 }

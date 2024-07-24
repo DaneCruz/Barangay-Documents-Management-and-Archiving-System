@@ -62,7 +62,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(7, 203);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 17);
+            this.label12.Size = new System.Drawing.Size(103, 23);
             this.label12.TabIndex = 71;
             this.label12.Text = "ADDRESS:";
             // 
@@ -106,13 +106,13 @@
             // 
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
-            "single",
-            "married",
-            "divorced",
-            "widowed"});
+            "Single",
+            "Married",
+            "Divorced",
+            "Widowed"});
             this.cboStatus.Location = new System.Drawing.Point(10, 175);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(383, 25);
+            this.cboStatus.Size = new System.Drawing.Size(383, 31);
             this.cboStatus.TabIndex = 65;
             this.cboStatus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboStatus_KeyPress);
             // 
@@ -121,7 +121,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 155);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 17);
+            this.label8.Size = new System.Drawing.Size(74, 23);
             this.label8.TabIndex = 64;
             this.label8.Text = "STATUS";
             // 
@@ -130,7 +130,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.Size = new System.Drawing.Size(103, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Accounts";
             // 
@@ -151,14 +151,14 @@
             this.dtBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtBirthDate.Location = new System.Drawing.Point(10, 129);
             this.dtBirthDate.Name = "dtBirthDate";
-            this.dtBirthDate.Size = new System.Drawing.Size(383, 23);
+            this.dtBirthDate.Size = new System.Drawing.Size(383, 31);
             this.dtBirthDate.TabIndex = 63;
             // 
             // txtContactNumber
             // 
             this.txtContactNumber.Location = new System.Drawing.Point(10, 269);
             this.txtContactNumber.Name = "txtContactNumber";
-            this.txtContactNumber.Size = new System.Drawing.Size(383, 23);
+            this.txtContactNumber.Size = new System.Drawing.Size(383, 31);
             this.txtContactNumber.TabIndex = 61;
             // 
             // label6
@@ -166,7 +166,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(7, 249);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.Size = new System.Drawing.Size(102, 23);
             this.label6.TabIndex = 60;
             this.label6.Text = "PURPOSE:";
             // 
@@ -174,14 +174,14 @@
             // 
             this.txtAddress.Location = new System.Drawing.Point(10, 223);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(383, 23);
+            this.txtAddress.Size = new System.Drawing.Size(383, 31);
             this.txtAddress.TabIndex = 59;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(10, 83);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(383, 23);
+            this.txtName.Size = new System.Drawing.Size(383, 31);
             this.txtName.TabIndex = 58;
             // 
             // label2
@@ -189,7 +189,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.Size = new System.Drawing.Size(73, 23);
             this.label2.TabIndex = 57;
             this.label2.Text = "NAME:";
             // 
@@ -198,7 +198,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 109);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 17);
+            this.label7.Size = new System.Drawing.Size(115, 23);
             this.label7.TabIndex = 62;
             this.label7.Text = "BIRTH DATE";
             // 
@@ -218,7 +218,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 372);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 17);
+            this.label3.Size = new System.Drawing.Size(148, 23);
             this.label3.TabIndex = 76;
             this.label3.Text = "MONTH, YEAR:";
             // 
@@ -227,7 +227,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(126, 305);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 17);
+            this.label4.Size = new System.Drawing.Size(162, 23);
             this.label4.TabIndex = 75;
             this.label4.Text = "DATE OF ISSUED";
             // 
@@ -235,14 +235,14 @@
             // 
             this.txtMonthYear.Location = new System.Drawing.Point(11, 392);
             this.txtMonthYear.Name = "txtMonthYear";
-            this.txtMonthYear.Size = new System.Drawing.Size(383, 23);
+            this.txtMonthYear.Size = new System.Drawing.Size(383, 31);
             this.txtMonthYear.TabIndex = 74;
             // 
             // txtDay
             // 
             this.txtDay.Location = new System.Drawing.Point(11, 342);
             this.txtDay.Name = "txtDay";
-            this.txtDay.Size = new System.Drawing.Size(383, 23);
+            this.txtDay.Size = new System.Drawing.Size(383, 31);
             this.txtDay.TabIndex = 73;
             // 
             // label5
@@ -250,7 +250,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 322);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 17);
+            this.label5.Size = new System.Drawing.Size(58, 23);
             this.label5.TabIndex = 72;
             this.label5.Text = "DAY:";
             // 
@@ -271,7 +271,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(13, 473);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 17);
+            this.label10.Size = new System.Drawing.Size(121, 23);
             this.label10.TabIndex = 80;
             this.label10.Text = "EXPIRES ON";
             // 
@@ -280,7 +280,7 @@
             this.dtRegisteredOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtRegisteredOn.Location = new System.Drawing.Point(11, 447);
             this.dtRegisteredOn.Name = "dtRegisteredOn";
-            this.dtRegisteredOn.Size = new System.Drawing.Size(383, 23);
+            this.dtRegisteredOn.Size = new System.Drawing.Size(383, 31);
             this.dtRegisteredOn.TabIndex = 79;
             // 
             // label9
@@ -288,7 +288,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(13, 427);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(105, 17);
+            this.label9.Size = new System.Drawing.Size(160, 23);
             this.label9.TabIndex = 78;
             this.label9.Text = "REGISTERED ON";
             // 
@@ -297,12 +297,12 @@
             this.dtExpiresOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtExpiresOn.Location = new System.Drawing.Point(10, 493);
             this.dtExpiresOn.Name = "dtExpiresOn";
-            this.dtExpiresOn.Size = new System.Drawing.Size(381, 23);
+            this.dtExpiresOn.Size = new System.Drawing.Size(381, 31);
             this.dtExpiresOn.TabIndex = 81;
             // 
             // FrmAccountsBC1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 617);
             this.ControlBox = false;

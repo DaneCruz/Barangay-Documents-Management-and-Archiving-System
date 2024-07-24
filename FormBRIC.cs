@@ -133,6 +133,7 @@ namespace BARANGAY
         {
             FilterRecords(searchBox.Text);
         }
+
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterRecords(searchBox.Text);
@@ -145,7 +146,7 @@ namespace BARANGAY
                 bool isVisible = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    if (cell.Value != null && cell.Value.ToString().Contains(searchTerm))
                     {
                         isVisible = true;
                         break;
@@ -154,5 +155,6 @@ namespace BARANGAY
                 row.Visible = isVisible;
             }
         }
+
     }
 }

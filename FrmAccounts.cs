@@ -16,6 +16,9 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Drawing.Imaging;
 using iText.Kernel.Exceptions;
+using iText.IO.Image;
+using iText.Layout;
+using iText.Layout.Element;
 
 namespace BARANGAY
 {
@@ -34,27 +37,8 @@ namespace BARANGAY
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
             cmd = new SQLiteCommand();
             this.f = f;
-            InitializeCamera(); // Initialize camera on form load
         }
 
-        private void InitializeCamera()
-        {
-            try
-            {
-                _capture = new Capture(); // Initialize camera capture
-                if (_capture == null || _capture.Ptr == IntPtr.Zero)
-                {
-                    MessageBox.Show("Failed to open webcam. Please make sure it is connected and try again.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                Application.Idle += Streaming; // Start streaming frames
-                _streaming = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error initializing webcam capture: {ex.Message}", "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void Streaming(object sender, EventArgs e)
         {
@@ -85,8 +69,8 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO id_card (last_name, first_name, middle_name, birth_date, status, address, Guardian, Relationship, Contact_Number, Registered_On, Expires_On, Condition, id_num, image) " +
-                                "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @Guardian, @Relationship, @Contact_Number, @Registered_On, @Expires_On, @Condition, @id_num, @image)"; // Included id_num and image in column list
+                    string sql = "INSERT INTO id_card (last_name, first_name, middle_name, birth_date, status, address, Guardian, Relationship, Contact_Number, Registered_On, Expires_On, Condition, id_num) " +
+                                "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @Guardian, @Relationship, @Contact_Number, @Registered_On, @Expires_On, @Condition, @id_num)"; // Included id_num and image in column list
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
                     cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
@@ -101,7 +85,6 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@Expires_On", dtExpiresOn.Value);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
                     cmd.Parameters.AddWithValue("@id_num", id_num.Text);
-                    cmd.Parameters.AddWithValue("@image", savedImagePath); // Add image path parameter
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully saved!", "Save Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -131,6 +114,9 @@ namespace BARANGAY
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             id_num.Clear();
+            pictureBox1.Image = null;
+            pictureBox2.Image = null;
+            pictureBox3.Image = null;
             txtLastName.Focus();
         }
 
@@ -165,7 +151,7 @@ namespace BARANGAY
                                  "birth_date=@birth_date, status=@status, address=@address, " +
                                  "Guardian=@Guardian, Relationship=@Relationship, Contact_Number=@Contact_Number, " +
                                  "Registered_On=@Registered_On, Expires_On=@Expires_On, Condition=@Condition, " +
-                                 "id_num=@id_num, image=@image " +
+                                 "id_num=@id_num" +
                                  "WHERE id = @id";
 
                     cmd = new SQLiteCommand(sql, conn);
@@ -183,7 +169,6 @@ namespace BARANGAY
                     cmd.Parameters.AddWithValue("@Expires_On", dtExpiresOn.Value);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
                     cmd.Parameters.AddWithValue("@id_num", id_num.Text);
-                    cmd.Parameters.AddWithValue("@image", savedImagePath);
 
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -235,7 +220,7 @@ namespace BARANGAY
                 }
                 else
                 {
-                    MessageBox.Show("Failed to capture image. Please try again.", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to capture image. Pleaseimag try again.", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -244,64 +229,6 @@ namespace BARANGAY
             }
         }
 
-        private string savedImagePath;
-
-        private void btn_imgSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var saveFileDialog = new SaveFileDialog
-                {
-                    Title = "Save Your Photo",
-                    Filter = "JPEG Image|*.jpg",
-                    InitialDirectory = @"C:\Users\user\source\repos\Project - Copy\ID Images" // Set your desired folder path here
-                };
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    if (pictureBox3.Image != null)
-                    {
-                        pictureBox3.Image.Save(saveFileDialog.FileName, ImageFormat.Jpeg); // Save captured image
-                        savedImagePath = saveFileDialog.FileName; // Store the path
-                        MessageBox.Show("Picture Saved Successfully!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No image to save.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred during image save: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void LoadImage(string imagePath)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(imagePath))
-                {
-                    if (System.IO.File.Exists(imagePath))
-                    {
-                        pictureBox3.Image = Image.FromFile(imagePath); // Load image into pictureBox3
-                    }
-                    else
-                    {
-                        MessageBox.Show("Image file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Image path is empty or null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void FrmAccounts_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -328,7 +255,7 @@ namespace BARANGAY
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var signatureImage = Image.FromFile(openFileDialog.FileName);
+                    var signatureImage = System.Drawing.Image.FromFile(openFileDialog.FileName);
                     pictureBox2.Image = signatureImage; // Preview signature image in pictureBox2
                 }
             }
@@ -345,22 +272,33 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, dtBirthDate.Text, cboStatus.Text, txtAddress.Text, id_num.Text, txtGuardian.Text, txtRelationship.Text, txtAddress.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text);
+            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, dtBirthDate.Text, cboStatus.Text, txtAddress.Text, id_num.Text, txtGuardian.Text, txtRelationship.Text, txtAddress.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text, pictureBox3.Image);
         }
 
-        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string id_num, string Guardian, string Relationship, string address1, string Contact_Number, string Registered_On, string Expires_On)
+        private void AddImageToPdf(byte[] imageBytes, Document document, float x, float y, float width, float height)
+        {
+            ImageData imageData = ImageDataFactory.Create(imageBytes);
+            iText.Layout.Element.Image pdfImage = new iText.Layout.Element.Image(imageData)
+                .SetFixedPosition(x, y)
+                .ScaleToFit(width, height);
+            // Add the image to the document
+            document.Add(pdfImage);
+        }
+
+        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string id_num, string Guardian, string Relationship, string address1, string Contact_Number, string Registered_On, string Expires_On, System.Drawing.Image image)
         {
             try
             {
                 // Use an absolute path or ensure the relative path is correct
                 string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"ID Template.pdf");
 
-                // Ensure the output directory exists
+                // Ensure the template file exists
                 if (!File.Exists(templatePath))
                 {
                     MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 // Show SaveFileDialog to allow user to specify output path and name
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
@@ -375,74 +313,96 @@ namespace BARANGAY
                     using (PdfReader reader = new PdfReader(templatePath))
                     using (PdfWriter writer = new PdfWriter(outputPath))
                     using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                    using (Document document = new Document(pdfDoc))
                     {
                         PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
                         IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
                         // Case-insensitive field lookup
                         string lastnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "lastnamefield");
-                    string firstnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "firstnamefield");
-                    string middlenameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "middlenamefield");
-                    string birthdateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "birthdatefield");
-                    string statusFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "statusfield");
-                    string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield");
-                    string idnumFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "idnumfield");
-                    string guardianFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "guardianfield");
-                    string relationshipFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "relationshipfield");
-                    string address1FieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield1");
-                    string contactFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "contactnumberfield");
-                    string registerFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "registerfield");
-                    string expireFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "expirefield");
+                        string firstnameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "firstnamefield");
+                        string middlenameFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "middlenamefield");
+                        string birthdateFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "birthdatefield");
+                        string statusFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "statusfield");
+                        string addressFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield");
+                        string idnumFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "idnumfield");
+                        string guardianFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "guardianfield");
+                        string relationshipFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "relationshipfield");
+                        string address1FieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "addressfield1");
+                        string contactFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "contactnumberfield");
+                        string registerFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "registerfield");
+                        string expireFieldName = fields.Keys.FirstOrDefault(k => k.ToLower() == "expirefield");
 
+                        if (string.IsNullOrEmpty(lastnameFieldName) ||
+                           string.IsNullOrEmpty(firstnameFieldName) ||
+                           string.IsNullOrEmpty(middlenameFieldName) ||
+                           string.IsNullOrEmpty(birthdateFieldName) ||
+                           string.IsNullOrEmpty(statusFieldName) ||
+                           string.IsNullOrEmpty(addressFieldName) ||
+                           string.IsNullOrEmpty(guardianFieldName) ||
+                           string.IsNullOrEmpty(relationshipFieldName) ||
+                           string.IsNullOrEmpty(idnumFieldName) ||
+                           string.IsNullOrEmpty(address1FieldName) ||
+                           string.IsNullOrEmpty(contactFieldName) ||
+                           string.IsNullOrEmpty(registerFieldName) ||
+                           string.IsNullOrEmpty(expireFieldName))
+                        {
+                            MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
 
-                    if (string.IsNullOrEmpty(lastnameFieldName) || 
-                       (string.IsNullOrEmpty(firstnameFieldName) || 
-                       (string.IsNullOrEmpty(middlenameFieldName) || 
-                       (string.IsNullOrEmpty(birthdateFieldName) || 
-                       (string.IsNullOrEmpty(statusFieldName) || 
-                       (string.IsNullOrEmpty(addressFieldName) || 
-                       (string.IsNullOrEmpty(guardianFieldName) || 
-                       (string.IsNullOrEmpty(relationshipFieldName) ||
-                       (string.IsNullOrEmpty(idnumFieldName) ||
-                       (string.IsNullOrEmpty(address1FieldName) ||
-                       (string.IsNullOrEmpty(contactFieldName) || 
-                       (string.IsNullOrEmpty(registerFieldName) || 
-                       (string.IsNullOrEmpty(expireFieldName))))))))))))))
-                    {
-                        MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        // Set the values for the fields
+                        fields[lastnameFieldName].SetValue(last_name);
+                        fields[firstnameFieldName].SetValue(first_name);
+                        fields[middlenameFieldName].SetValue(middle_name);
+                        fields[birthdateFieldName].SetValue(birth_date);
+                        fields[statusFieldName].SetValue(status);
+                        fields[addressFieldName].SetValue(address);
+                        fields[guardianFieldName].SetValue(Guardian);
+                        fields[relationshipFieldName].SetValue(Relationship);
+                        fields[address1FieldName].SetValue(address1);
+                        fields[contactFieldName].SetValue(Contact_Number);
+                        fields[registerFieldName].SetValue(Registered_On);
+                        fields[expireFieldName].SetValue(Expires_On);
+                        fields[idnumFieldName].SetValue(id_num);
+
+                        if (image != null)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                                byte[] imageBytes = memoryStream.ToArray();
+
+                                // Adjust the x, y, width, and height values as needed
+                                float x = 15;  // X position
+                                float y = 45; // Y position
+                                float width = 52; // Width of the image
+                                float height = 175; // Height of the image
+
+                                // Add image to PDF
+                                AddImageToPdf(imageBytes, document, x, y, width, height);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        form.FlattenFields();
                     }
-
-                    // Use more specific field setting methods if available
-                    fields[lastnameFieldName].SetValue(last_name);
-                    fields[firstnameFieldName].SetValue(first_name);
-                    fields[middlenameFieldName].SetValue(middle_name);
-                    fields[birthdateFieldName].SetValue(birth_date);
-                    fields[statusFieldName].SetValue(status);
-                    fields[addressFieldName].SetValue(address);
-                    fields[guardianFieldName].SetValue(Guardian);
-                    fields[relationshipFieldName].SetValue(Relationship);
-                    fields[address1FieldName].SetValue(address1);
-                    fields[contactFieldName].SetValue(Contact_Number);
-                    fields[registerFieldName].SetValue(Registered_On);
-                    fields[expireFieldName].SetValue(Expires_On);
-                    fields[idnumFieldName].SetValue(id_num);
-
-                    form.FlattenFields();
-                }
 
                     // Inform the user of successful PDF creation
                     MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Open the PDF in print mode
-                    System.Diagnostics.Process printProcess = new System.Diagnostics.Process();
-                    printProcess.StartInfo = new System.Diagnostics.ProcessStartInfo
+                    // Open the PDF with the default PDF reader
+                    try
                     {
-                        FileName = outputPath,
-                        UseShellExecute = true,
-                        Verb = "print"
-                    };
-                    printProcess.Start();
+                        System.Diagnostics.Process.Start(outputPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error opening PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (PdfException pdfEx)
@@ -460,5 +420,50 @@ namespace BARANGAY
         }
 
 
+        private void btn_openclose_Click(object sender, EventArgs e)
+        {
+            if (_streaming)
+            {
+                StopCamera();
+                pictureBox1.Image = null;
+            }
+            else
+            {
+                InitializeCamera();
+            }
+        }
+        private void StopCamera()
+        {
+            if (_capture != null)
+            {
+                Application.Idle -= Streaming;
+                _capture.Dispose();
+                _capture = null;
+                _streaming = false;
+            }
+        }
+        private void InitializeCamera()
+        {
+            try
+            {
+                _capture = new Capture(); // Initialize camera capture
+                if (_capture == null || _capture.Ptr == IntPtr.Zero)
+                {
+                    MessageBox.Show("Failed to open webcam. Please make sure it is connected and try again.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Application.Idle += Streaming; // Start streaming frames
+                _streaming = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing webcam capture: {ex.Message}", "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBox3.Image = null;
+        }
     }
 }

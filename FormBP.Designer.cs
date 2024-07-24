@@ -63,8 +63,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1083, 32);
+            this.panel1.Size = new System.Drawing.Size(1624, 47);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -75,9 +76,10 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(325, 0);
+            this.label1.Location = new System.Drawing.Point(488, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(418, 32);
+            this.label1.Size = new System.Drawing.Size(632, 47);
             this.label1.TabIndex = 1;
             this.label1.Text = "Barangay Business Permit Form";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,9 +89,10 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Dock = System.Windows.Forms.DockStyle.Right;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(976, 0);
+            this.button2.Location = new System.Drawing.Point(1464, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 32);
+            this.button2.Size = new System.Drawing.Size(160, 47);
             this.button2.TabIndex = 3;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = false;
@@ -103,17 +106,19 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 32);
+            this.panel2.Location = new System.Drawing.Point(0, 47);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1083, 32);
+            this.panel2.Size = new System.Drawing.Size(1624, 48);
             this.panel2.TabIndex = 2;
             // 
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(859, 5);
+            this.searchBox.Location = new System.Drawing.Point(1288, 8);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(221, 21);
+            this.searchBox.Size = new System.Drawing.Size(330, 28);
             this.searchBox.TabIndex = 6;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
@@ -122,9 +127,10 @@
             this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_search.BackColor = System.Drawing.Color.Tomato;
             this.btn_search.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Location = new System.Drawing.Point(749, 1);
+            this.btn_search.Location = new System.Drawing.Point(1124, 2);
+            this.btn_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(107, 30);
+            this.btn_search.Size = new System.Drawing.Size(160, 45);
             this.btn_search.TabIndex = 5;
             this.btn_search.Text = "Search";
             this.btn_search.UseVisualStyleBackColor = false;
@@ -136,8 +142,9 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 32);
+            this.button1.Size = new System.Drawing.Size(160, 48);
             this.button1.TabIndex = 4;
             this.button1.Text = "Add New";
             this.button1.UseVisualStyleBackColor = false;
@@ -149,9 +156,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContainer.AutoScroll = true;
             this.panelContainer.Controls.Add(this.dataGridView1);
-            this.panelContainer.Location = new System.Drawing.Point(0, 64);
+            this.panelContainer.Location = new System.Drawing.Point(0, 96);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1083, 563);
+            this.panelContainer.Size = new System.Drawing.Size(1624, 789);
             this.panelContainer.TabIndex = 3;
             // 
             // dataGridView1
@@ -196,78 +204,85 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 40;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1083, 563);
+            this.dataGridView1.Size = new System.Drawing.Size(1598, 844);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
-            this.Column1.Width = 45;
+            this.Column1.Width = 67;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.HeaderText = "Business Name";
+            this.Column2.MinimumWidth = 8;
             this.Column2.Name = "Column2";
             // 
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column4.HeaderText = "Business Type";
+            this.Column4.MinimumWidth = 8;
             this.Column4.Name = "Column4";
-            this.Column4.Width = 120;
+            this.Column4.Width = 176;
             // 
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column5.HeaderText = "Business Address";
+            this.Column5.MinimumWidth = 8;
             this.Column5.Name = "Column5";
-            this.Column5.Width = 139;
+            this.Column5.Width = 204;
             // 
             // Column11
             // 
             this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column11.HeaderText = "Name of Owner";
+            this.Column11.MinimumWidth = 8;
             this.Column11.Name = "Column11";
-            this.Column11.Width = 122;
+            this.Column11.Width = 182;
             // 
             // btnEdit1
             // 
             this.btnEdit1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.btnEdit1.HeaderText = "";
             this.btnEdit1.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit1.Image")));
+            this.btnEdit1.MinimumWidth = 8;
             this.btnEdit1.Name = "btnEdit1";
-            this.btnEdit1.Width = 5;
+            this.btnEdit1.Width = 8;
             // 
             // btnDelete1
             // 
             this.btnDelete1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.btnDelete1.HeaderText = "";
             this.btnDelete1.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete1.Image")));
+            this.btnDelete1.MinimumWidth = 8;
             this.btnDelete1.Name = "btnDelete1";
-            this.btnDelete1.Width = 5;
+            this.btnDelete1.Width = 8;
             // 
             // FormBP
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1083, 627);
+            this.ClientSize = new System.Drawing.Size(1624, 772);
             this.ControlBox = false;
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.Name = "FormBP";
             this.Text = "Business Permit";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

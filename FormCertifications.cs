@@ -27,13 +27,6 @@ namespace BARANGAY
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
         }
 
-        private void addUserControl(UserControl userControl)
-        {
-            userControl.Dock = DockStyle.Fill;
-            panelContainer.Controls.Clear();
-            panelContainer.Controls.Add(userControl);
-            userControl.BringToFront();
-        }
 
 
         private void button2_Click(object sender, EventArgs e)
@@ -128,6 +121,7 @@ namespace BARANGAY
         {
             FilterRecords(searchBox.Text);
         }
+
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterRecords(searchBox.Text);
@@ -140,7 +134,7 @@ namespace BARANGAY
                 bool isVisible = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    if (cell.Value != null && cell.Value.ToString().Contains(searchTerm))
                     {
                         isVisible = true;
                         break;
@@ -149,5 +143,6 @@ namespace BARANGAY
                 row.Visible = isVisible;
             }
         }
+
     }
 }
