@@ -27,14 +27,6 @@ namespace BARANGAY
             conn = new SQLiteConnection("Data Source=database.db;Version=3");
         }
 
-        private void addUserControl(UserControl userControl)
-        {
-            userControl.Dock = DockStyle.Fill;
-            panelContainer.Controls.Clear();
-            panelContainer.Controls.Add(userControl);
-            userControl.BringToFront();
-        }
-
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -123,7 +115,7 @@ namespace BARANGAY
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString(), dr["day_of_issuance"].ToString(), dr["monthyear_of_issuance"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()));
+                    dataGridView1.Rows.Add(dr["id"].ToString(), dr["Name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["Address"].ToString(), dr["purpose"].ToString(), dr["day_of_issuance"].ToString(), dr["monthyear_of_issuance"].ToString(), DateTime.Parse(dr["Registered_On"].ToString()).ToShortDateString(), DateTime.Parse(dr["Expires_On"].ToString()).ToShortDateString());
                 }
                 dr.Close();
                 conn.Close();
@@ -140,6 +132,7 @@ namespace BARANGAY
         {
             FilterRecords(searchBox.Text);
         }
+
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterRecords(searchBox.Text);
@@ -147,19 +140,29 @@ namespace BARANGAY
 
         private void FilterRecords(string searchTerm)
         {
+            // Convert the search term to lowercase for case-insensitive comparison
+            string lowerSearchTerm = searchTerm.ToLower();
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 bool isVisible = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    if (cell.Value != null)
                     {
-                        isVisible = true;
-                        break;
+                        // Convert cell value to lowercase for case-insensitive comparison
+                        string lowerCellValue = cell.Value.ToString().ToLower();
+
+                        if (lowerCellValue.Contains(lowerSearchTerm))
+                        {
+                            isVisible = true;
+                            break;
+                        }
                     }
                 }
                 row.Visible = isVisible;
             }
         }
+
     }
 }

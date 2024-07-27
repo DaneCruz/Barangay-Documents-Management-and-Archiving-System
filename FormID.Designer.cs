@@ -41,6 +41,7 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelContainer = new System.Windows.Forms.Panel();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.last_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.first_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,10 +56,8 @@
             this.expire = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,8 +74,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1083, 32);
+            this.panel1.Size = new System.Drawing.Size(1924, 47);
             this.panel1.TabIndex = 1;
             // 
             // button2
@@ -84,9 +84,10 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Dock = System.Windows.Forms.DockStyle.Right;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(976, 0);
+            this.button2.Location = new System.Drawing.Point(1764, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 32);
+            this.button2.Size = new System.Drawing.Size(160, 47);
             this.button2.TabIndex = 1;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = false;
@@ -101,9 +102,10 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(274, 0);
+            this.label1.Location = new System.Drawing.Point(411, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(524, 32);
+            this.label1.Size = new System.Drawing.Size(790, 47);
             this.label1.TabIndex = 1;
             this.label1.Text = "Barangay Residents Identification Card";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -116,17 +118,19 @@
             this.panel2.Controls.Add(this.btn_search);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 32);
+            this.panel2.Location = new System.Drawing.Point(0, 47);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1083, 32);
+            this.panel2.Size = new System.Drawing.Size(1924, 48);
             this.panel2.TabIndex = 2;
             // 
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(859, 5);
+            this.searchBox.Location = new System.Drawing.Point(1588, 8);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(221, 23);
+            this.searchBox.Size = new System.Drawing.Size(330, 31);
             this.searchBox.TabIndex = 2;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
@@ -135,9 +139,10 @@
             this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_search.BackColor = System.Drawing.Color.Tomato;
             this.btn_search.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Location = new System.Drawing.Point(746, 1);
+            this.btn_search.Location = new System.Drawing.Point(1419, 2);
+            this.btn_search.Margin = new System.Windows.Forms.Padding(4);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(107, 30);
+            this.btn_search.Size = new System.Drawing.Size(160, 45);
             this.btn_search.TabIndex = 1;
             this.btn_search.Text = "Search";
             this.btn_search.UseVisualStyleBackColor = false;
@@ -149,8 +154,9 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 32);
+            this.button1.Size = new System.Drawing.Size(160, 48);
             this.button1.TabIndex = 0;
             this.button1.Text = "Add New";
             this.button1.UseVisualStyleBackColor = false;
@@ -193,7 +199,6 @@
             this.expire,
             this.Condition,
             this.id_num,
-            this.image,
             this.btnEdit1,
             this.btnDelete1});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -209,6 +214,7 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -227,13 +233,25 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1083, 563);
+            this.dataGridView1.Size = new System.Drawing.Size(1924, 717);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // panelContainer
+            // 
+            this.panelContainer.AutoScroll = true;
+            this.panelContainer.Controls.Add(this.dataGridView1);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelContainer.Location = new System.Drawing.Point(0, 95);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(1924, 717);
+            this.panelContainer.TabIndex = 3;
+            // 
             // id
             // 
-            this.id.HeaderText = "id";
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.id.HeaderText = "#";
             this.id.MinimumWidth = 120;
             this.id.Name = "id";
             this.id.Visible = false;
@@ -243,22 +261,25 @@
             // 
             this.last_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.last_name.HeaderText = "Last Name";
+            this.last_name.MinimumWidth = 8;
             this.last_name.Name = "last_name";
-            this.last_name.Width = 107;
+            this.last_name.Width = 156;
             // 
             // first_name
             // 
             this.first_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.first_name.HeaderText = "First Name";
+            this.first_name.MinimumWidth = 8;
             this.first_name.Name = "first_name";
-            this.first_name.Width = 105;
+            this.first_name.Width = 152;
             // 
             // middle_name
             // 
             this.middle_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.middle_name.HeaderText = "Middle Name";
+            this.middle_name.MinimumWidth = 8;
             this.middle_name.Name = "middle_name";
-            this.middle_name.Width = 125;
+            this.middle_name.Width = 184;
             // 
             // birth_date
             // 
@@ -266,7 +287,7 @@
             this.birth_date.HeaderText = "Birth Date";
             this.birth_date.MinimumWidth = 8;
             this.birth_date.Name = "birth_date";
-            this.birth_date.Width = 101;
+            this.birth_date.Width = 145;
             // 
             // status
             // 
@@ -274,7 +295,7 @@
             this.status.HeaderText = "Civil Status";
             this.status.MinimumWidth = 8;
             this.status.Name = "status";
-            this.status.Width = 108;
+            this.status.Width = 155;
             // 
             // address
             // 
@@ -283,7 +304,7 @@
             this.address.MinimumWidth = 8;
             this.address.Name = "address";
             this.address.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.address.Width = 87;
+            this.address.Width = 129;
             // 
             // guardian
             // 
@@ -291,7 +312,7 @@
             this.guardian.HeaderText = "Guardian";
             this.guardian.MinimumWidth = 8;
             this.guardian.Name = "guardian";
-            this.guardian.Width = 99;
+            this.guardian.Width = 143;
             // 
             // relationship
             // 
@@ -299,7 +320,7 @@
             this.relationship.HeaderText = "Relationship";
             this.relationship.MinimumWidth = 8;
             this.relationship.Name = "relationship";
-            this.relationship.Width = 116;
+            this.relationship.Width = 167;
             // 
             // contact_number
             // 
@@ -307,7 +328,7 @@
             this.contact_number.HeaderText = "Contact Number";
             this.contact_number.MinimumWidth = 8;
             this.contact_number.Name = "contact_number";
-            this.contact_number.Width = 149;
+            this.contact_number.Width = 218;
             // 
             // register
             // 
@@ -315,7 +336,7 @@
             this.register.HeaderText = "Registered on";
             this.register.MinimumWidth = 8;
             this.register.Name = "register";
-            this.register.Width = 126;
+            this.register.Width = 184;
             // 
             // expire
             // 
@@ -323,7 +344,7 @@
             this.expire.HeaderText = "Expires on";
             this.expire.MinimumWidth = 8;
             this.expire.Name = "expire";
-            this.expire.Width = 101;
+            this.expire.Width = 147;
             // 
             // Condition
             // 
@@ -331,7 +352,7 @@
             this.Condition.HeaderText = "Condition";
             this.Condition.MinimumWidth = 8;
             this.Condition.Name = "Condition";
-            this.Condition.Width = 103;
+            this.Condition.Width = 144;
             // 
             // id_num
             // 
@@ -340,15 +361,7 @@
             this.id_num.MinimumWidth = 8;
             this.id_num.Name = "id_num";
             this.id_num.Visible = false;
-            this.id_num.Width = 143;
-            // 
-            // image
-            // 
-            this.image.HeaderText = "";
-            this.image.MinimumWidth = 8;
-            this.image.Name = "image";
-            this.image.Visible = false;
-            this.image.Width = 24;
+            this.id_num.Width = 211;
             // 
             // btnEdit1
             // 
@@ -368,32 +381,23 @@
             this.btnDelete1.Name = "btnDelete1";
             this.btnDelete1.Width = 8;
             // 
-            // panelContainer
-            // 
-            this.panelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelContainer.AutoScroll = true;
-            this.panelContainer.Controls.Add(this.dataGridView1);
-            this.panelContainer.Location = new System.Drawing.Point(0, 64);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1083, 563);
-            this.panelContainer.TabIndex = 3;
-            // 
             // FormID
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1083, 627);
+            this.ClientSize = new System.Drawing.Size(1924, 815);
+            this.ControlBox = false;
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximizeBox = false;
             this.Name = "FormID";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Barangay Residents Identification Card";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormID_Load);
@@ -418,6 +422,7 @@
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Button btn_search;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn last_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn first_name;
@@ -435,6 +440,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn image;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete1;
-        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

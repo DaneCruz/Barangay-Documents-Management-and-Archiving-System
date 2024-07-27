@@ -133,6 +133,7 @@ namespace BARANGAY
         {
             FilterRecords(searchBox.Text);
         }
+
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterRecords(searchBox.Text);
@@ -140,19 +141,29 @@ namespace BARANGAY
 
         private void FilterRecords(string searchTerm)
         {
+            // Convert the search term to lowercase for case-insensitive comparison
+            string lowerSearchTerm = searchTerm.ToLower();
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 bool isVisible = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchTerm.ToLower()))
+                    if (cell.Value != null)
                     {
-                        isVisible = true;
-                        break;
+                        // Convert cell value to lowercase for case-insensitive comparison
+                        string lowerCellValue = cell.Value.ToString().ToLower();
+
+                        if (lowerCellValue.Contains(lowerSearchTerm))
+                        {
+                            isVisible = true;
+                            break;
+                        }
                     }
                 }
                 row.Visible = isVisible;
             }
         }
+
     }
 }

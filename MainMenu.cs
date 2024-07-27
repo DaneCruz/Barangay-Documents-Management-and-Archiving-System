@@ -15,7 +15,6 @@ namespace BARANGAY
     public partial class MainMenu : Form
     {
         public FormID formID;
-        public FormBP formBP;
         public FormBRIC formBRIC;
         public FormCertifications formCertifications;
         public UCBC formUCBC;
@@ -128,14 +127,6 @@ namespace BARANGAY
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FormBP f = new FormBP();
-            f.TopLevel = false;
-            panel3.Controls.Add(f);
-            f.BringToFront();
-            f.Show();
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {

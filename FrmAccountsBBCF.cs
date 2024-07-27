@@ -27,8 +27,6 @@ namespace BARANGAY
         SQLiteCommand cmd;
         FormCertifications f; // Changed type to FormCertifications to match the calling form
         public string _ID;
-        Capture _capture;
-        bool _streaming;
 
         public FrmAccountsBBCF(FormCertifications form) // Constructor accepting FormCertifications instance
         {
