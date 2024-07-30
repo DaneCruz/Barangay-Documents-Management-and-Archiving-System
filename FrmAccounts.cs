@@ -12,13 +12,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Emgu.CV;
-using Emgu.CV.Structure;
 using System.Drawing.Imaging;
 using iText.Kernel.Exceptions;
 using iText.IO.Image;
 using iText.Layout;
 using iText.Layout.Element;
+using Emgu.CV;
+using Emgu.CV.Structure;
+using Emgu.CV.UI;
 
 namespace BARANGAY
 {
@@ -464,5 +465,6 @@ namespace BARANGAY
         {
             pictureBox3.Image = null;
         }
+
     }
 }

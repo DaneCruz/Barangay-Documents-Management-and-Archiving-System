@@ -436,9 +436,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn register;
         private System.Windows.Forms.DataGridViewTextBoxColumn expire;
         private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn image;
-        private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_num;        private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete1;
     }
 }
