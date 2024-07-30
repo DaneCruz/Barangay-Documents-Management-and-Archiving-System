@@ -1,25 +1,17 @@
-﻿using iText.Forms;
+﻿using Emgu.CV;
+using Emgu.CV.Structure;
+using iText.Forms;
 using iText.Forms.Fields;
+using iText.IO.Image;
+using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
+using iText.Layout;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Imaging;
-using iText.Kernel.Exceptions;
-using iText.IO.Image;
-using iText.Layout;
-using iText.Layout.Element;
-using Emgu.CV;
-using Emgu.CV.Structure;
-using Emgu.CV.UI;
 
 namespace BARANGAY
 {

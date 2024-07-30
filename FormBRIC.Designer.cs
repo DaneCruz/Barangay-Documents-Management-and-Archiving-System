@@ -72,9 +72,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1624, 47);
+            this.panel1.Size = new System.Drawing.Size(924, 32);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -85,10 +84,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(612, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(408, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(490, 47);
+            this.label1.Size = new System.Drawing.Size(325, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Certificate of Residency";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -98,10 +96,9 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Dock = System.Windows.Forms.DockStyle.Right;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1464, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(817, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 47);
+            this.button2.Size = new System.Drawing.Size(107, 32);
             this.button2.TabIndex = 2;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = false;
@@ -115,19 +112,17 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 47);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1624, 48);
+            this.panel2.Size = new System.Drawing.Size(924, 32);
             this.panel2.TabIndex = 1;
             // 
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(1288, 4);
-            this.searchBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBox.Location = new System.Drawing.Point(700, 3);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(330, 31);
+            this.searchBox.Size = new System.Drawing.Size(221, 23);
             this.searchBox.TabIndex = 5;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
@@ -136,10 +131,9 @@
             this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_search.BackColor = System.Drawing.Color.Tomato;
             this.btn_search.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Location = new System.Drawing.Point(1119, -2);
-            this.btn_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_search.Location = new System.Drawing.Point(587, -1);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(160, 45);
+            this.btn_search.Size = new System.Drawing.Size(107, 30);
             this.btn_search.TabIndex = 4;
             this.btn_search.Text = "Search";
             this.btn_search.UseVisualStyleBackColor = false;
@@ -151,9 +145,8 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 48);
+            this.button1.Size = new System.Drawing.Size(107, 32);
             this.button1.TabIndex = 3;
             this.button1.Text = "Add New";
             this.button1.UseVisualStyleBackColor = false;
@@ -164,10 +157,9 @@
             this.panelContainer.AutoScroll = true;
             this.panelContainer.Controls.Add(this.dataGridView1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelContainer.Location = new System.Drawing.Point(0, 95);
-            this.panelContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelContainer.Location = new System.Drawing.Point(0, 64);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1624, 717);
+            this.panelContainer.Size = new System.Drawing.Size(924, 478);
             this.panelContainer.TabIndex = 0;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContainer_Paint_1);
             // 
@@ -219,7 +211,6 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -235,7 +226,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1624, 717);
+            this.dataGridView1.Size = new System.Drawing.Size(924, 478);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -245,7 +236,7 @@
             this.id.MinimumWidth = 8;
             this.id.Name = "id";
             this.id.Visible = false;
-            this.id.Width = 66;
+            this.id.Width = 38;
             // 
             // last_name
             // 
@@ -253,7 +244,7 @@
             this.last_name.HeaderText = "Last Name";
             this.last_name.MinimumWidth = 8;
             this.last_name.Name = "last_name";
-            this.last_name.Width = 86;
+            this.last_name.Width = 60;
             // 
             // first_name
             // 
@@ -261,7 +252,7 @@
             this.first_name.HeaderText = "First Name";
             this.first_name.MinimumWidth = 8;
             this.first_name.Name = "first_name";
-            this.first_name.Width = 85;
+            this.first_name.Width = 62;
             // 
             // middle_name
             // 
@@ -269,7 +260,7 @@
             this.middle_name.HeaderText = "Middle Name";
             this.middle_name.MinimumWidth = 8;
             this.middle_name.Name = "middle_name";
-            this.middle_name.Width = 96;
+            this.middle_name.Width = 68;
             // 
             // birth_date
             // 
@@ -277,7 +268,7 @@
             this.birth_date.HeaderText = "Birth Date";
             this.birth_date.MinimumWidth = 8;
             this.birth_date.Name = "birth_date";
-            this.birth_date.Width = 82;
+            this.birth_date.Width = 58;
             // 
             // status
             // 
@@ -285,7 +276,7 @@
             this.status.HeaderText = "Status";
             this.status.MinimumWidth = 8;
             this.status.Name = "status";
-            this.status.Width = 71;
+            this.status.Width = 49;
             // 
             // address
             // 
@@ -293,7 +284,7 @@
             this.address.HeaderText = "Address";
             this.address.MinimumWidth = 8;
             this.address.Name = "address";
-            this.address.Width = 79;
+            this.address.Width = 56;
             // 
             // contact_number
             // 
@@ -301,7 +292,7 @@
             this.contact_number.HeaderText = "Contact Number";
             this.contact_number.MinimumWidth = 8;
             this.contact_number.Name = "contact_number";
-            this.contact_number.Width = 109;
+            this.contact_number.Width = 77;
             // 
             // condition
             // 
@@ -309,7 +300,7 @@
             this.condition.HeaderText = "Condition";
             this.condition.MinimumWidth = 8;
             this.condition.Name = "condition";
-            this.condition.Width = 85;
+            this.condition.Width = 60;
             // 
             // date_issued
             // 
@@ -317,7 +308,7 @@
             this.date_issued.HeaderText = "Issued";
             this.date_issued.MinimumWidth = 8;
             this.date_issued.Name = "date_issued";
-            this.date_issued.Width = 72;
+            this.date_issued.Width = 50;
             // 
             // Valid_Until
             // 
@@ -325,7 +316,7 @@
             this.Valid_Until.HeaderText = "Valid Until";
             this.Valid_Until.MinimumWidth = 8;
             this.Valid_Until.Name = "Valid_Until";
-            this.Valid_Until.Width = 82;
+            this.Valid_Until.Width = 59;
             // 
             // administered_by
             // 
@@ -333,7 +324,7 @@
             this.administered_by.HeaderText = "Administered by";
             this.administered_by.MinimumWidth = 8;
             this.administered_by.Name = "administered_by";
-            this.administered_by.Width = 106;
+            this.administered_by.Width = 77;
             // 
             // btnEdit1
             // 
@@ -355,14 +346,13 @@
             // 
             // FormBRIC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1624, 815);
+            this.ClientSize = new System.Drawing.Size(924, 525);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormBRIC";
             this.Text = "FormBRIC";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
