@@ -43,17 +43,16 @@
             this.panelContainer = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.last_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.first_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.middle_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birth_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contact_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.residency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date_issued = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valid_Until = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.administered_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDelete1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -185,17 +184,16 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.last_name,
-            this.first_name,
-            this.middle_name,
+            this.name,
             this.birth_date,
             this.status,
             this.address,
-            this.contact_number,
+            this.residency,
             this.condition,
             this.date_issued,
             this.Valid_Until,
             this.administered_by,
+            this.Reference,
             this.btnEdit1,
             this.btnDelete1});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -236,31 +234,14 @@
             this.id.MinimumWidth = 8;
             this.id.Name = "id";
             this.id.Visible = false;
-            this.id.Width = 38;
+            this.id.Width = 36;
             // 
-            // last_name
+            // name
             // 
-            this.last_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.last_name.HeaderText = "Last Name";
-            this.last_name.MinimumWidth = 8;
-            this.last_name.Name = "last_name";
-            this.last_name.Width = 60;
-            // 
-            // first_name
-            // 
-            this.first_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.first_name.HeaderText = "First Name";
-            this.first_name.MinimumWidth = 8;
-            this.first_name.Name = "first_name";
-            this.first_name.Width = 62;
-            // 
-            // middle_name
-            // 
-            this.middle_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.middle_name.HeaderText = "Middle Name";
-            this.middle_name.MinimumWidth = 8;
-            this.middle_name.Name = "middle_name";
-            this.middle_name.Width = 68;
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 8;
+            this.name.Name = "name";
             // 
             // birth_date
             // 
@@ -286,13 +267,13 @@
             this.address.Name = "address";
             this.address.Width = 56;
             // 
-            // contact_number
+            // residency
             // 
-            this.contact_number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.contact_number.HeaderText = "Contact Number";
-            this.contact_number.MinimumWidth = 8;
-            this.contact_number.Name = "contact_number";
-            this.contact_number.Width = 77;
+            this.residency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.residency.HeaderText = "Year of Residency";
+            this.residency.MinimumWidth = 8;
+            this.residency.Name = "residency";
+            this.residency.Width = 83;
             // 
             // condition
             // 
@@ -325,6 +306,13 @@
             this.administered_by.MinimumWidth = 8;
             this.administered_by.Name = "administered_by";
             this.administered_by.Width = 77;
+            // 
+            // Reference
+            // 
+            this.Reference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Reference.HeaderText = "Reference No.";
+            this.Reference.Name = "Reference";
+            this.Reference.Width = 71;
             // 
             // btnEdit1
             // 
@@ -379,17 +367,16 @@
         private System.Windows.Forms.Button btn_search;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn last_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn first_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn middle_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn birth_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contact_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn residency;
         private System.Windows.Forms.DataGridViewTextBoxColumn condition;
         private System.Windows.Forms.DataGridViewTextBoxColumn date_issued;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valid_Until;
         private System.Windows.Forms.DataGridViewTextBoxColumn administered_by;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reference;
         private System.Windows.Forms.DataGridViewImageColumn btnEdit1;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete1;
     }

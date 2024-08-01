@@ -85,7 +85,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1135, 42);
+            this.panel2.Size = new System.Drawing.Size(1123, 42);
             this.panel2.TabIndex = 3;
             // 
             // label1
@@ -101,7 +101,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1048, 9);
+            this.button2.Location = new System.Drawing.Point(1037, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 30);
             this.button2.TabIndex = 1;
@@ -280,7 +280,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Tomato;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(34, 599);
+            this.btnSave.Location = new System.Drawing.Point(34, 591);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 29);
             this.btnSave.TabIndex = 25;
@@ -292,7 +292,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Tomato;
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(147, 599);
+            this.btnUpdate.Location = new System.Drawing.Point(147, 591);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(107, 29);
             this.btnUpdate.TabIndex = 26;
@@ -304,7 +304,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(260, 599);
+            this.btnCancel.Location = new System.Drawing.Point(260, 591);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(107, 29);
             this.btnCancel.TabIndex = 27;
@@ -325,9 +325,9 @@
             // 
             this.btn_captureImg.BackColor = System.Drawing.Color.Tomato;
             this.btn_captureImg.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_captureImg.Location = new System.Drawing.Point(646, 376);
+            this.btn_captureImg.Location = new System.Drawing.Point(823, 390);
             this.btn_captureImg.Name = "btn_captureImg";
-            this.btn_captureImg.Size = new System.Drawing.Size(113, 29);
+            this.btn_captureImg.Size = new System.Drawing.Size(135, 29);
             this.btn_captureImg.TabIndex = 30;
             this.btn_captureImg.Text = "CAPTURE IMAGE";
             this.btn_captureImg.UseVisualStyleBackColor = false;
@@ -353,9 +353,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Location = new System.Drawing.Point(408, 74);
+            this.pictureBox1.Location = new System.Drawing.Point(456, 86);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(351, 303);
+            this.pictureBox1.Size = new System.Drawing.Size(267, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
@@ -396,12 +396,13 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(784, 74);
+            this.pictureBox3.Location = new System.Drawing.Point(823, 86);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(351, 303);
+            this.pictureBox3.Size = new System.Drawing.Size(267, 300);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 38;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // label13
             // 
@@ -411,15 +412,17 @@
             this.label13.Size = new System.Drawing.Size(59, 17);
             this.label13.TabIndex = 39;
             this.label13.Text = "Preview";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(909, 54);
+            this.label14.Location = new System.Drawing.Point(900, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(117, 17);
             this.label14.TabIndex = 40;
             this.label14.Text = "Captured Image";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label15
             // 
@@ -467,7 +470,7 @@
             // 
             this.btn_openclose.BackColor = System.Drawing.Color.Tomato;
             this.btn_openclose.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_openclose.Location = new System.Drawing.Point(408, 376);
+            this.btn_openclose.Location = new System.Drawing.Point(512, 390);
             this.btn_openclose.Name = "btn_openclose";
             this.btn_openclose.Size = new System.Drawing.Size(165, 29);
             this.btn_openclose.TabIndex = 46;
@@ -479,7 +482,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Tomato;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1022, 376);
+            this.button1.Location = new System.Drawing.Point(977, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 29);
             this.button1.TabIndex = 47;
@@ -491,7 +494,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 632);
+            this.ClientSize = new System.Drawing.Size(1123, 620);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_openclose);

@@ -52,6 +52,7 @@ namespace BARANGAY
 
         private void button2_Click(object sender, EventArgs e)
         {
+            StopCamera();
             this.Dispose();
         }
 
@@ -212,7 +213,7 @@ namespace BARANGAY
                 }
                 else
                 {
-                    MessageBox.Show("Failed to capture image. Pleaseimag try again.", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to capture image. Please capture image and try again.", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -264,7 +265,8 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, dtBirthDate.Text, cboStatus.Text, txtAddress.Text, id_num.Text, txtGuardian.Text, txtRelationship.Text, txtAddress.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text, pictureBox3.Image);
+            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, dtBirthDate.Text, cboStatus.Text, txtAddress.Text, id_num.Text, txtGuardian.Text, txtRelationship.Text, txtAddress.Text, txtContactNumber.Text, dtRegisteredOn.Text, dtExpiresOn.Text, pictureBox2.Image, pictureBox3.Image);
+            StopCamera();
         }
 
         private void AddImageToPdf(byte[] imageBytes, Document document, float x, float y, float width, float height)
@@ -277,7 +279,7 @@ namespace BARANGAY
             document.Add(pdfImage);
         }
 
-        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string id_num, string Guardian, string Relationship, string address1, string Contact_Number, string Registered_On, string Expires_On, System.Drawing.Image image)
+        private void PrintToPdf(string last_name, string first_name, string middle_name, string birth_date, string status, string address, string id_num, string Guardian, string Relationship, string address1, string Contact_Number, string Registered_On, string Expires_On, System.Drawing.Image signature_image, System.Drawing.Image id_image)
         {
             try
             {
@@ -358,18 +360,18 @@ namespace BARANGAY
                         fields[expireFieldName].SetValue(Expires_On);
                         fields[idnumFieldName].SetValue(id_num);
 
-                        if (image != null)
+                        if (id_image != null)
                         {
                             using (var memoryStream = new MemoryStream())
                             {
-                                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                                id_image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
                                 byte[] imageBytes = memoryStream.ToArray();
 
                                 // Adjust the x, y, width, and height values as needed
                                 float x = 15;  // X position
-                                float y = 45; // Y position
+                                float y = 47; // Y position
                                 float width = 52; // Width of the image
-                                float height = 175; // Height of the image
+                                float height = 200; // Height of the image
 
                                 // Add image to PDF
                                 AddImageToPdf(imageBytes, document, x, y, width, height);
@@ -377,7 +379,29 @@ namespace BARANGAY
                         }
                         else
                         {
-                            MessageBox.Show("No image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No id image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        if (signature_image != null)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                signature_image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                                byte[] signature_imageBytes = memoryStream.ToArray();
+
+                                // Adjust the x, y, width, and height values as needed
+                                float x = 196;  // X position
+                                float y = 10; // Y position
+                                float width = 52; // Width of the image
+                                float height = 10; // Height of the image
+
+                                // Add image to PDF
+                                AddImageToPdf(signature_imageBytes, document, x, y, width, height);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No signature image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                         form.FlattenFields();
@@ -458,5 +482,19 @@ namespace BARANGAY
             pictureBox3.Image = null;
         }
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

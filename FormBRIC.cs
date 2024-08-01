@@ -46,17 +46,16 @@ namespace BARANGAY
                     FrmAccountsBRIC f = new FrmAccountsBRIC(this);
                     f.btnSave.Enabled = false;
                     f._ID = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                    f.txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells["last_name"].Value.ToString();
-                    f.txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells["first_name"].Value.ToString();
-                    f.txtMiddleName.Text = dataGridView1.Rows[e.RowIndex].Cells["middle_name"].Value.ToString();
+                    f.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     f.txtAddress.Text = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
-                    f.txtContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells["contact_number"].Value.ToString();
+                    f.txtResidency.Text = dataGridView1.Rows[e.RowIndex].Cells["residency"].Value.ToString();
                     f.cboStatus.Text = dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString();
                     f.cboCondition.Text = dataGridView1.Rows[e.RowIndex].Cells["condition"].Value.ToString();
                     f.dtBirthDate.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["birth_date"].Value.ToString());
                     f.dtIssued.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["date_issued"].Value.ToString());
                     f.dtValidUntil.Value = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells["Valid_Until"].Value.ToString());
                     f.txtAdministeredBy.Text = dataGridView1.Rows[e.RowIndex].Cells["administered_by"].Value.ToString();
+                    f.txtReference.Text = dataGridView1.Rows[e.RowIndex].Cells["Reference"].Value.ToString();
                     f.ShowDialog();
                 }
                 else if (colName == "btnDelete1")
@@ -65,7 +64,7 @@ namespace BARANGAY
                     {
                         conn.Open();
                         cmdBRIC = new SQLiteCommand("DELETE FROM residency WHERE id = @id", conn);
-                        cmdBRIC.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        cmdBRIC.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
                         cmdBRIC.ExecuteNonQuery();
                         conn.Close();
                         MessageBox.Show("Record has been successfully deleted", clsvar._title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -116,7 +115,7 @@ namespace BARANGAY
                 dr = cmdBRIC.ExecuteReader();
                 while (dr.Read())
                 {
-                    int v = dataGridView1.Rows.Add(dr["id"].ToString(), dr["last_name"].ToString(), dr["first_name"].ToString(), dr["middle_name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["Status"].ToString(), dr["Address"].ToString(), dr["Contact_Number"].ToString(), dr["Condition"].ToString(), DateTime.Parse(dr["Issued"].ToString()).ToShortDateString(), DateTime.Parse(dr["Valid_Until"].ToString()).ToShortDateString(), dr["administered_by"].ToString());
+                    int v = dataGridView1.Rows.Add(dr["id"].ToString(), dr["name"].ToString(), DateTime.Parse(dr["birth_date"].ToString()).ToShortDateString(), dr["status"].ToString(), dr["address"].ToString(), dr["start_year"].ToString(), dr["condition"].ToString(), DateTime.Parse(dr["issued"].ToString()).ToShortDateString(), DateTime.Parse(dr["valid_until"].ToString()).ToShortDateString(), dr["administered_by"].ToString(), dr["reference"].ToString());
                 }
                 dr.Close();
                 conn.Close();

@@ -17,6 +17,9 @@ using Emgu.CV.Structure;
 using System.Drawing.Imaging;
 using iText.Kernel.Exceptions;
 using System.Drawing.Printing;
+using System.Text.RegularExpressions;
+using iText.IO.Image;
+using iText.Layout;
 
 
 namespace BARANGAY
@@ -25,6 +28,8 @@ namespace BARANGAY
     {
         SQLiteConnection conn;
         SQLiteCommand cmd;
+        bool _streaming;
+        Emgu.CV.Capture _capture;
         FormCertifications f; // Changed type to FormCertifications to match the calling form
         public string _ID;
 
@@ -135,13 +140,21 @@ namespace BARANGAY
         {
 
         }
-
+        private void AddImageToPdf(byte[] imageBytes, Document document, float x, float y, float width, float height)
+        {
+            ImageData imageData = ImageDataFactory.Create(imageBytes);
+            iText.Layout.Element.Image pdfImage = new iText.Layout.Element.Image(imageData)
+                .SetFixedPosition(x, y)
+                .ScaleToFit(width, height);
+            // Add the image to the document
+            document.Add(pdfImage);
+        }
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtOwnersName.Text, txtAddress.Text, txtBusinessName.Text, txtBusinessType.Text, txtDay.Text, txtMonthYear.Text, dtRegisteredOn.Text, txtAmount.Text, txtAdministeredBy.Text);
+            PrintToPdf(txtOwnersName.Text, txtAddress.Text, txtBusinessName.Text, txtBusinessType.Text, txtDay.Text, txtMonthYear.Text, dtRegisteredOn.Text, txtAmount.Text, txtAdministeredBy.Text, pictureBox3.Image);
         }
-        private void PrintToPdf(string Name, string address, string business_name, string business_type, string day_of_issuance, string monthyear_of_issuance, string or_date, string amount, string administered_by)
+        private void PrintToPdf(string Name, string address, string business_name, string business_type, string day_of_issuance, string monthyear_of_issuance, string or_date, string amount, string administered_by, System.Drawing.Image id_image)
         {
             try
             {
@@ -169,6 +182,7 @@ namespace BARANGAY
                     using (PdfReader reader = new PdfReader(templatePath))
                     using (PdfWriter writer = new PdfWriter(outputPath))
                     using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                    using (Document document = new Document(pdfDoc))
                     {
                         PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
                         IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
@@ -202,6 +216,28 @@ namespace BARANGAY
                         fields[amountFieldName].SetValue(amount);
                         fields[administratorFieldName].SetValue(administered_by);
 
+                        if (id_image != null)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                id_image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                                byte[] imageBytes = memoryStream.ToArray();
+
+                                // Adjust the x, y, width, and height values as needed
+                                float x = 478;  // X position
+                                float y = 548; // Y position
+                                float width = 100; // Width of the image
+                                float height = 500; // Height of the image
+
+                                // Add image to PDF
+                                AddImageToPdf(imageBytes, document, x, y, width, height);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No id image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         form.FlattenFields();
                     }
 
@@ -233,6 +269,97 @@ namespace BARANGAY
                 MessageBox.Show($"An unknown error occurred while filling the PDF: {ex.Message}", "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void Streaming(object sender, EventArgs e)
+        {
+            try
+            {
+                var frame = _capture.QueryFrame()?.ToImage<Bgr, byte>();
+                if (frame != null)
+                {
+                    var bmp = frame.Bitmap;
+                    pictureBox1.Image = bmp; // Display frame in pictureBox1
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during streaming: {ex.Message}", "Streaming Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void StopCamera()
+        {
+            if (_capture != null)
+            {
+                Application.Idle -= Streaming;
+                _capture.Dispose();
+                _capture = null;
+                _streaming = false;
+            }
+        }
+        private void InitializeCamera()
+        {
+            try
+            {
+                _capture = new Emgu.CV.Capture(); // Initialize camera capture
+                if (_capture == null || _capture.Ptr == IntPtr.Zero)
+                {
+                    MessageBox.Show("Failed to open webcam. Please make sure it is connected and try again.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Application.Idle += Streaming; // Start streaming frames
+                _streaming = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing webcam capture: {ex.Message}", "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_openclose_Click(object sender, EventArgs e)
+        {
+                if (_streaming)
+                {
+                    StopCamera();
+                    pictureBox1.Image = null;
+                }
+                else
+                {
+                    InitializeCamera();
+                }
+        }
+        private void FrmAccountsBBCF_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_capture != null)
+            {
+                _capture.Dispose(); // Release camera capture resources
+            }
+        }
+
+        private void btn_captureImg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frame = _capture.QueryFrame()?.ToImage<Bgr, byte>();
+                if (frame != null)
+                {
+                    var bmp = frame.Bitmap;
+                    pictureBox3.Image = bmp;
+                    MessageBox.Show("Image captured successfully!", "Capture Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to capture image. Please capture image and try again.", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during image capture: {ex.Message}", "Capture Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            pictureBox3.Image = null;
+        }
     }
 }
