@@ -19,6 +19,7 @@ using iText.Kernel.Exceptions;
 using iText.IO.Image;
 using iText.Layout;
 using iText.Layout.Element;
+using System.Xml.Linq;
 
 namespace BARANGAY
 {
@@ -74,20 +75,19 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to save this record?", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "INSERT INTO residency (last_name, first_name, middle_name, birth_date, status, address, Contact_Number, Condition, issued, valid_until,administered_by) " +
-                                 "VALUES (@last_name, @first_name, @middle_name, @birth_date, @status, @address, @Contact_Number, @Condition, @issued, @valid_until, @administered_by)";
+                    string sql = "INSERT INTO residency (name, birth_date, status, address, Condition, issued, valid_until,administered_by, reference, start_year) " +
+                                 "VALUES (@name, @birth_date, @status, @address, @Condition, @issued, @valid_until, @administered_by, @reference, @start_year)";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
-                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
-                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
+                    cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Contact_Number", txtContactNumber.Text);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
+                    cmd.Parameters.AddWithValue("@start_year", txtResidency.Text);
                     cmd.Parameters.AddWithValue("issued", dtIssued.Value);
                     cmd.Parameters.AddWithValue("valid_until", dtValidUntil.Value);
                     cmd.Parameters.AddWithValue("@administered_by", txtAdministeredBy.Text);
+                    cmd.Parameters.AddWithValue("@reference", txtReference.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Record has been successfully saved!", "Save Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -104,21 +104,19 @@ namespace BARANGAY
 
         public void clear()
         {
-            txtLastName.Clear();
-            txtFirstName.Clear();
-            txtMiddleName.Clear();
+            txtName.Clear();
             txtAddress.Clear();
-            txtContactNumber.Clear();
             cboStatus.SelectedIndex = 0;
             cboCondition.SelectedIndex = 0;
             dtBirthDate.Value = DateTime.Now;
             dtIssued.Value = DateTime.Now;
             dtValidUntil.Value = DateTime.Now;
             txtAdministeredBy.Clear();
+            txtReference.Clear();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             pictureBox3.Image = null;
-            txtLastName.Focus();
+            txtName.Focus();
         }
 
         private void cboCondition_KeyPress(object sender, KeyPressEventArgs e)
@@ -139,19 +137,18 @@ namespace BARANGAY
                 if (MessageBox.Show("Do you want to update this record?", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     conn.Open();
-                    string sql = "UPDATE residency SET last_name=@last_name, first_name=@first_name, middle_name=@middle_name, birth_date=@birth_date, status=@status, address=@address, Contact_Number=@Contact_Number, Condition=@Condition, issued=@issued, valid_until=@valid_until, administered_by=@administered_by WHERE id = @ID";
+                    string sql = "UPDATE residency SET name=@name, birth_date=@birth_date, status=@status, address=@address, Condition=@Condition, issued=@issued, valid_until=@valid_until, administered_by=@administered_by, start_year=@start_year, reference=@reference WHERE id = @ID";
                     cmd = new SQLiteCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@last_name", txtLastName.Text);
-                    cmd.Parameters.AddWithValue("@first_name", txtFirstName.Text);
-                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text);
+                    cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@birth_date", dtBirthDate.Value);
                     cmd.Parameters.AddWithValue("@status", cboStatus.Text);
                     cmd.Parameters.AddWithValue("@address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Contact_Number", txtContactNumber.Text);
                     cmd.Parameters.AddWithValue("@Condition", cboCondition.Text);
+                    cmd.Parameters.AddWithValue("@start_year", txtResidency.Text);
                     cmd.Parameters.AddWithValue("@issued", dtIssued.Value);
                     cmd.Parameters.AddWithValue("@valid_until", dtValidUntil.Value);
                     cmd.Parameters.AddWithValue("@administered_by", txtAdministeredBy.Text);
+                    cmd.Parameters.AddWithValue("@reference", txtReference.Text);
                     cmd.Parameters.AddWithValue("@ID", _ID);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -205,7 +202,7 @@ namespace BARANGAY
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintToPdf(txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text, pictureBox3.Image);
+            PrintToPdf(txtName.Text, txtAddress.Text, dtBirthDate.Text, cboStatus.Text, dtIssued.Text, dtIssued.Text, dtValidUntil.Text, txtAdministeredBy.Text , txtReference.Text , txtResidency.Text, pictureBox3.Image);
         }
         private void AddImageToPdf(byte[] imageBytes, Document document, float x, float y, float width, float height)
         {
@@ -216,99 +213,98 @@ namespace BARANGAY
             // Add the image to the document
             document.Add(pdfImage);
         }
-        private void PrintToPdf(string last_name, string first_name, string middle_name, string address, string birth_date, string status, string issued, string issued1, string ValidUntil, System.Drawing.Image image)
+        private void PrintToPdf(string name, string address, string birth_date, string status, string issued, string issued1, string ValidUntil, string administered_by, string reference, string start_year, System.Drawing.Image image)
         {
             try
             {
                 // Use an absolute path or ensure the relative path is correct
-                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"BRIC Template.pdf");
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string outputPath = Path.Combine(desktopPath, @"Certificate of Residency Template.pdf");
-                // Ensure the output directory exists
-                string outputDir = Path.GetDirectoryName(outputPath);
-                if (!Directory.Exists(outputDir))
-                {
-                    Directory.CreateDirectory(outputDir);
-                }
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Certificate_Of_Residency_Template.pdf");
 
+                // Ensure the template file exists
                 if (!File.Exists(templatePath))
                 {
                     MessageBox.Show($"Template file not found at: {templatePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                using (PdfReader reader = new PdfReader(templatePath))
-                using (PdfWriter writer = new PdfWriter(outputPath))
-                using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
-                using (Document document = new Document(pdfDoc))
+                // Show SaveFileDialog to allow user to specify output path and name
+                SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
-                    IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
+                    Filter = "PDF Files (*.pdf)|*.pdf",
+                    Title = "Save PDF File"
+                };
 
-                    // Case-insensitive field lookup
-                    string lastnameFieldName = fields.Keys.FirstOrDefault(k => k == "lastNameField");
-                    string firstnameFieldName = fields.Keys.FirstOrDefault(k => k == "firstNameField");
-                    string middlenameFieldName = fields.Keys.FirstOrDefault(k => k == "middleNameField");
-                    string addressFieldName = fields.Keys.FirstOrDefault(k => k == "AddressField");
-                    string birth_dateFieldName = fields.Keys.FirstOrDefault(k => k == "Birth_dateField");
-                    string statusFieldName = fields.Keys.FirstOrDefault(k => k == "StatusField");
-                    string issuedFieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField");
-                    string issued1FieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField1");
-                    string validuntilFieldName = fields.Keys.FirstOrDefault(k => k == "ValidUntilField");
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string outputPath = saveFileDialog.FileName;
 
-                    if (string.IsNullOrEmpty(lastnameFieldName) || (string.IsNullOrEmpty(firstnameFieldName) || (string.IsNullOrEmpty(middlenameFieldName) || string.IsNullOrEmpty(birth_dateFieldName) || string.IsNullOrEmpty(statusFieldName) || string.IsNullOrEmpty(addressFieldName) || string.IsNullOrEmpty(issuedFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName))))
+                    using (PdfReader reader = new PdfReader(templatePath))
+                    using (PdfWriter writer = new PdfWriter(outputPath))
+                    using (PdfDocument pdfDoc = new PdfDocument(reader, writer))
+                    using (Document document = new Document(pdfDoc))
                     {
-                        MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                        PdfAcroForm form = PdfAcroForm.GetAcroForm(pdfDoc, true);
+                        IDictionary<string, PdfFormField> fields = form.GetAllFormFields();
 
-                    // Use more specific field setting methods if available
-                    fields[lastnameFieldName].SetValue(last_name);
-                    fields[firstnameFieldName].SetValue(first_name);
-                    fields[middlenameFieldName].SetValue(middle_name);
-                    fields[addressFieldName].SetValue(address);
-                    fields[birth_dateFieldName].SetValue(birth_date);
-                    fields[statusFieldName].SetValue(status);
-                    fields[issuedFieldName].SetValue(issued);
-                    fields[issued1FieldName].SetValue(issued1);
-                    fields[validuntilFieldName].SetValue(ValidUntil);
+                        // Case-insensitive field lookup
+                        string paragraph1 = fields.Keys.FirstOrDefault(k => k == "ParagraphField");
+                        string issuedFieldName = fields.Keys.FirstOrDefault(k => k == "IssuedField");
+                        string issued1FieldName = fields.Keys.FirstOrDefault(k => k == "Issued1Field");
+                        string validuntilFieldName = fields.Keys.FirstOrDefault(k => k == "ValidUntilField");
+                        string administered_by_FieldName = fields.Keys.FirstOrDefault(k => k == "Administered_By_Field");
+                        string referenceFieldName = fields.Keys.FirstOrDefault(k => k == "ReferenceField");
 
-                    if (image != null)
-                    {
-                        using (var memoryStream = new MemoryStream())
+                        if (string.IsNullOrEmpty(paragraph1) || string.IsNullOrEmpty(issuedFieldName) || string.IsNullOrEmpty(issued1FieldName) || string.IsNullOrEmpty(validuntilFieldName) || string.IsNullOrEmpty(administered_by_FieldName) || string.IsNullOrEmpty(referenceFieldName))
                         {
-                            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                            byte[] imageBytes = memoryStream.ToArray();
-
-                            // Adjust the x, y, width, and height values as needed
-                            float x = 15;  // X position
-                            float y = 45; // Y position
-                            float width = 52; // Width of the image
-                            float height = 175; // Height of the image
-
-                            // Add image to PDF
-                            AddImageToPdf(imageBytes, document, x, y, width, height);
+                            MessageBox.Show("One or more form fields are missing in the template PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
+
+                        // Use more specific field setting methods if available
+                        fields[paragraph1].SetValue("    " + "This is to certify that " + name + ", born on " + birth_date + ", " + status + ", is a resident of " + address + ", DISTRICT IV, Quezon City since " + start_year );
+                        fields[issuedFieldName].SetValue("Issued this day " + issued + " " + " at Barangay Krus Na Ligas, District IV, Quezon City.");
+                        fields[issued1FieldName].SetValue(issued);
+                        fields[validuntilFieldName].SetValue(ValidUntil);
+                        fields[referenceFieldName].SetValue(reference);
+                        fields[administered_by_FieldName].SetValue(administered_by);
+
+                        if (image != null)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                                byte[] imageBytes = memoryStream.ToArray();
+
+                                // Adjust the x, y, width, and height values as needed
+                                float x = 60;  // X position
+                                float y = 213; // Y position
+                                float width = 105; // Width of the image
+                                float height = 300; // Height of the image
+
+                                // Add image to PDF
+                                AddImageToPdf(imageBytes, document, x, y, width, height);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        form.FlattenFields();
                     }
-                    else
+
+                    // Inform the user of successful PDF creation
+                    MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Open the PDF with the default PDF reader
+                    try
                     {
-                        MessageBox.Show("No image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Diagnostics.Process.Start(outputPath);
                     }
-
-                    form.FlattenFields();
-                }
-
-                // Inform the user of successful PDF creation
-                MessageBox.Show("PDF filled and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Open the PDF with the default PDF reader
-                try
-                {
-                    System.Diagnostics.Process.Start(outputPath);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error opening PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error opening PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (PdfException pdfEx)
@@ -387,6 +383,26 @@ namespace BARANGAY
         private void button1_Click(object sender, EventArgs e)
         {
             pictureBox3.Image = null;
+        }
+
+        private void dtIssued_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtValidUntil_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAdministeredBy_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
